@@ -1,11 +1,45 @@
 html {
     height: 100%;
     width: 100%;
-    font-family: Caveat, serif;
+    font-family: Eczar, serif;
     display: inline;
   }
   
   body {
+    height: 80%;
+    width: 80%;
+    margin:auto;
+    padding: 50px; 
+    text-align: center;
     background-image: url(img/poke-background-bright.png);
+    background-size: 500px;
     background-position: center;
+  }
+  h1 {
+    font-family: Oswald, serif;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    font-size: 40px;
+    font-style: bold;
+    text-shadow: 3px 3px 6px #6b6b6b;
+  }
+  h2 {
+    font-family: Eczar, serif;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    font-size: 20px;
+    font-style: bold;
+    text-shadow: 3px 3px 6px #6b6b6b;
+  }
+  #root {
+    margin: 30px;;
+    border-color: black;
+    border-style: double;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .section {
+    margin: 30px;;
+    border-color: black;
+    border-style: double;
+    background-color: rgba(255, 255, 255, 0.5);
   }
