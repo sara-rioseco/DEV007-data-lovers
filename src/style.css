@@ -39,7 +39,6 @@ div {
   border-color: black;
   border-style: double;
   background-color: rgba(255, 255, 255, 0.5);
-
 }
 
 section {
@@ -47,7 +46,6 @@ section {
   border-color: black;
   border-style: none;
   background-color: rgba(255, 255, 255, 0.5);
-  display: contents;
 }
 
 section#bar {
@@ -95,4 +93,15 @@ form.searchbar:after {
   content: "";
   clear: both;
   display: table;
+}
+
+#data-output {
+    font-family: Eczar, serif;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    font-size: 20px;
+    font-style: normal;
+    text-shadow: 3px 3px 6px #6b6b6b;
+    display:auto;
+
 }
