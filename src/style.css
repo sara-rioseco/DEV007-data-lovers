@@ -1,45 +1,91 @@
 html {
-    height: 100%;
-    width: 100%;
-    font-family: Eczar, serif;
-    display: inline;
-  }
-  
-  body {
-    height: 80%;
-    width: 80%;
-    margin:auto;
-    padding: 50px; 
-    text-align: center;
-    background-image: url(img/poke-background-full.png);
-    background-size: 500px;
-    background-position: center;
-  }
-  h1 {
-    font-family: Oswald, serif;
-    color: rgb(0, 0, 0);
-    opacity: 1;
-    font-size: 40px;
-    font-style: bold;
-    text-shadow: 3px 3px 6px #6b6b6b;
-  }
-  h2 {
-    font-family: Eczar, serif;
-    color: rgb(0, 0, 0);
-    opacity: 1;
-    font-size: 20px;
-    font-style: bold;
-    text-shadow: 3px 3px 6px #6b6b6b;
-  }
-  #root {
-    margin: 30px;;
-    border-color: black;
-    border-style: double;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  .section {
-    margin: 30px;;
-    border-color: black;
-    border-style: double;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+  height: 100%;
+  width: 100%;
+  font-family: Eczar, serif;
+}
+
+body {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+  background-image: url(img/poke-background-full.png);
+  background-size: 500px;
+  background-position: center;
+}
+
+h1 {
+  font-family: Oswald, serif;
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  font-size: 40px;
+  font-style: bold;
+  text-shadow: 3px 3px 6px #6b6b6b;
+}
+
+h2 {
+  font-family: Eczar, serif;
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  font-size: 20px;
+  font-style: bold;
+  text-shadow: 3px 3px 6px #6b6b6b;
+}
+
+#root {
+  margin: auto;
+  border-color: black;
+  border-style: double;
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+section {
+  margin: 30px;
+  display: flex;
+  align-content: center;
+  border-color: black;
+  border-style: double;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#searchform {
+  margin: auto;
+  max-width: 300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.searchbar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.searchbar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #757575;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.searchbar button:hover {
+  background: #424242;
+}
+
+form.searchbar:after {
+  content: "";
+  clear: both;
+  display: table;
+}
