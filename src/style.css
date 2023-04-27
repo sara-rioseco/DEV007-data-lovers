@@ -89,3 +89,8 @@ form.searchbar:after {
   clear: both;
   display: table;
 }
+
+#pokebox {
+  border-style: double;
+  border-color: black;
+}
