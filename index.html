@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro">
-  </head>
-  <body>
-    <div id="root">
-      <main>
-        <h1 class="title">Pokedex Database</h1>
-        <h2>¡Bienvenid@ a la Pokedex Database!</h2>
-        <section class="section" id="bar">
-          <p>Search bar and button, filters and sort by options</p>
-        </section>
-        <section class="section" id="grid">
-          <p>search and filter results</p>
-        </section>
-      </main>
-    </div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Data Lovers</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="root">
+    <main>
+      <h1 class="title">Pokedex Database</h1>
+      <h2>¡Bienvenid@ a la Pokedex Database!</h2>
+      <section class="section" id="bar">
+        <form class="searchbar" id="searchform">
+          <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search">
+          <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
+        </form><br>
+      </section>
+      <div class="flex-container" id="data-output">
+         <!--showing pokemon from .json file here-->
+      <br>
+      </div>
+    </main>
+  </div>
+  <script src="main.js" type="module"></script>
+</body>
+
 </html>
