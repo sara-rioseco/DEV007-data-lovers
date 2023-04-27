@@ -12,20 +12,26 @@
 
 <body>
   <div id="root">
-    <main>
+    <header>
       <h1 class="title">Pokedex Database</h1>
       <h2>¡Bienvenid@ a la Pokedex Database!</h2>
-      <section class="section" id="bar">
-        <form class="searchbar" id="searchform">
-          <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search">
-          <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
-        </form><br>
-      </section>
+      <nav>
+        <section class="section" id="bar">
+          <form class="searchbar" id="searchform">
+            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search">
+            <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
+          </form><br>
+        </section>
+      </nav>
+    </header>
+    <main>
       <div class="flex-container" id="data-output">
-         <!--showing pokemon from .json file here-->
-      <br>
+        <!--showing pokemon from .json file here--><br>
       </div>
     </main>
+    <footer>
+
+    </footer>
   </div>
   <script src="main.js" type="module"></script>
 </body>
