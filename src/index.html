@@ -5,6 +5,7 @@
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <div id="root">
@@ -12,9 +13,27 @@
         <h1 class="title">Pokedex Database</h1>
         <h2>¡Bienvenid@ a la Pokedex Database!</h2>
         <section class="section" id="bar">
-          <p>Search bar and button, filters and sort by</p>
+          <form class="searchbar" id="searchform">
+            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search">
+            <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
+          </form><br>
+        <p>Filters and Sort by</p>
         </section>
         <section class="section" id="grid">
+          <table>
+            <thead>
+              <tr>
+                 <th>Image</th>
+                 <th>Product name</th>
+                 <th>Price</th>
+                 <th>inventory</th>
+                 <th>Product code</th>
+              </tr>
+           </thead>
+            <tbody id="dataoutput">
+             <!--showing pokemon from .json file here--> 
+            </tbody>
+          </table>
           <p>Search results / grid view / details view</p>
         </section>
       </main>
