@@ -33,8 +33,9 @@ h2 {
   text-shadow: 3px 3px 6px #6b6b6b;
 }
 
-#root {
+div {
   margin: auto;
+  size:100%;
   border-color: black;
   border-style: double;
   background-color: rgba(255, 255, 255, 0.5);
@@ -42,16 +43,22 @@ h2 {
 }
 
 section {
-  margin: 30px;
-  display: flex;
-  align-content: center;
+  margin: 20px;
   border-color: black;
-  border-style: double;
+  border-style: none;
   background-color: rgba(255, 255, 255, 0.5);
+  display: contents;
+}
+
+section#bar {
+  margin: 20px;
+  padding: 0px;
+  align-content: center;
 }
 
 #searchform {
   margin: auto;
+  align-self: center;
   max-width: 300px;
 }
 
@@ -88,9 +95,4 @@ form.searchbar:after {
   content: "";
   clear: both;
   display: table;
-}
-
-#pokebox {
-  border-style: double;
-  border-color: black;
 }
