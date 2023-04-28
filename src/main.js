@@ -3,17 +3,17 @@ fetch("./data/pokemon/pokemon.json")
     return response.json();
   })
   .then(function (pokemon) {
-    for (var i = 0; i < pokemon.pokemon.length; i++) {
-      var src =
+    for (let i = 0; i < pokemon.pokemon.length; i++) {
+      const src =
         "https://www.serebii.net/pokemongo/pokemon/" +
         pokemon.pokemon[i].num +
         ".png";
-      var img = document.createElement("img");
+      const img = document.createElement("img");
       img.src = src;
       document.getElementById("data-output").appendChild(img);
-      var pokebox = document.createElement("div");
+      const pokebox = document.createElement("div");
       pokebox.innerHTML = document.getElementById("data-output").innerHTML +=
-        "<br />" + 
+        "<br />" +
         pokemon.pokemon[i].num +
         "<br />" +
         pokemon.pokemon[i].name +
