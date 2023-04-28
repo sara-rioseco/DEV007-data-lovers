@@ -102,6 +102,6 @@ form.searchbar:after {
     font-size: 20px;
     font-style: normal;
     text-shadow: 3px 3px 6px #6b6b6b;
-    display:auto;
-
+    display:flex;
+    flex-wrap: wrap;
 }
