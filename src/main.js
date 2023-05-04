@@ -16,24 +16,3 @@ function showPokemon() {
   }
 }
 showPokemon();
-
-/*    const src =
-      "https://www.serebii.net/pokemongo/pokemon/" +
-      pokemon[i].num +
-      ".png";
-    const img = document.createElement("img");
-    img.src = src;
-    document.getElementById("data-output").appendChild(img);
-    pokebox.innerHTML = document.getElementById("data-output").innerHTML +=
-      "<br />" +
-      pokemon[i].num +
-      "<br />" +
-      pokemon[i].name +
-      "<br />" +
-      pokemon[i].generation.num +
-      "<br />" +
-      pokemon[i].generation.name +
-      "<br />";
-  }
-  return showPokemon();
-};*/
