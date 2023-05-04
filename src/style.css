@@ -5,8 +5,9 @@ html {
 }
 
 body {
-  height: 80%;
-  width: 80%;
+  height: 90%;
+  width: 95%;
+  max-width: 1200px;
   margin: auto;
   padding: 50px;
   text-align: center;
@@ -35,17 +36,17 @@ h2 {
 
 div {
   margin: auto;
-  size:100%;
+  width:100%;
   border-color: black;
-  border-style: double;
-  background-color: rgba(255, 255, 255, 0.5);
+  border-style: none;
+  /*background-color: rgba(255, 255, 255, 0.5);*/
 }
 
 section {
   margin: 20px;
   border-color: black;
   border-style: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  /*background-color: rgba(255, 255, 255, 0.5);*/
 }
 
 section#bar {
@@ -98,10 +99,20 @@ form.searchbar:after {
 #data-output {
     font-family: Eczar, serif;
     color: rgb(0, 0, 0);
-    opacity: 1;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
     font-size: 20px;
     font-style: normal;
     text-shadow: 3px 3px 6px #6b6b6b;
     display:flex;
     flex-wrap: wrap;
+}
+
+.pokeDiv {
+    background-color: rgba(255, 255, 255, 0.7);
+    width:200px;
+    height:200px;
+    margin:20px;
+    border-radius: 40px;
 }
