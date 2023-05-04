@@ -125,5 +125,6 @@ form.searchbar:after {
     background-repeat:no-repeat;
     background-size: 200% 100%; 
     transition:background-size 1s, background-color 1s;
-
 }
+
+.pokeDiv:active {background-color:#ffffff; transition:background-size 0}
