@@ -104,4 +104,5 @@ form.searchbar:after {
     text-shadow: 3px 3px 6px #6b6b6b;
     display:flex;
     flex-wrap: wrap;
+    border-radius: 5px;
 }

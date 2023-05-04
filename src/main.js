@@ -23,7 +23,4 @@ fetch("./data/pokemon/pokemon.json")
         pokemon.pokemon[i].generation.name +
         "<br />";
     }
-  })
-  .catch(function (err) {
-    console.log(err);
   });
