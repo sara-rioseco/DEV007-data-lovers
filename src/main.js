@@ -4,8 +4,8 @@ function showPokemon() {
   const pokeContainer = document.querySelector(".flex-container");
   for (let i = 0; i < data.pokemon.length; i++) {
     const createPokebox = document.createElement("div");
-    let pokeName = data.pokemon[i].name
-    let pokeNum = data.pokemon[i].num
+    const pokeName = data.pokemon[i].name
+    const pokeNum = data.pokemon[i].num
     createPokebox.className = "pokeDiv";
     createPokebox.innerHTML += pokeNum.toString()
     createPokebox.innerHTML += "<br>"
