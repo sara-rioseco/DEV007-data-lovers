@@ -18,7 +18,7 @@
       <nav>
         <section class="section" id="bar">
           <form class="searchbar" id="searchform">
-            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false" autocomplete="off">
+            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false" autocomplete="off" minlength="1" required pattern="[A-Za-z0-9 ]{1,}" oninput="validity.valid||(value='');">
             <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
           </form><br>
         </section>
@@ -26,7 +26,7 @@
     </header>
     <main>
       <div class="flex-container" id="data-output">
-        <!--showing pokemon from data.js file here--><br>
+        <!--showing pokemon from js data file here--><br>
       </div>
     </main>
     <footer>
