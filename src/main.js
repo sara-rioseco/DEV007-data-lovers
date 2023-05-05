@@ -21,8 +21,8 @@ function showPokemon() {
 showPokemon();
 
 
-/*function searchPokemon () {
-  const input = document.getElementById("searchbar");
+function searchPokemon () {
+  const input = document.getElementById("searchbar").value;
   const filter = input.value.toUpperCase();
   const pokeContainer = document.getElementById("flex-container");
   const pokeDiv = pokeContainer.getElementsByClassName("pokeDiv");
@@ -35,4 +35,4 @@ showPokemon();
       pokeDiv[i].style.display = "none";
     }
   }
-}*/
+}
