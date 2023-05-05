@@ -70,9 +70,16 @@ form.searchbar input[type=text] {
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 80%;
+  width: 60%;
   background: #f1f1f1;
+  position: inherit;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
+
+form.searchbar input[type=text]:focus {
+  width: 80%;
+} 
 
 form.searchbar button {
   float: left;
@@ -103,7 +110,7 @@ form.searchbar:after {
     margin: 20px;
     padding: 20px;
     font-size: 20px;
-    font-style: normal;
+    font-style: bold;
     text-shadow: 3px 3px 10px #000000;
     display:flex;
     flex-wrap: wrap;
@@ -121,6 +128,7 @@ form.searchbar:after {
 
 .pokeDiv:hover {
   background-color:  rgba(137, 216, 130, 0.7);
+  background-position: left top;
   background-image:linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,.7) 100%);
   background-repeat:no-repeat;
   background-size: 200% 100%; 
