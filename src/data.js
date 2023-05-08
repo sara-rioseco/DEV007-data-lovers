@@ -23,12 +23,11 @@ const dataFunctions = {
     const pokeDiv = [];
     for (let i = 0; i < pokeDiv.length; i++) {
       pokeDiv.push(document.getElementsByClassName("pokeDiv"));
-      if (!pokeDiv[i].innerHTML.toLowerCase().includes(input,0)) {
+      if (pokeDiv[i].innerHTML.toLowerCase().includes(input,0)) {
         pokeDiv[i].style.display = "none";
       } else {
         pokeDiv[i].style.display = "flex";
       }    
-      return pokeDiv
     }
   },
 };
