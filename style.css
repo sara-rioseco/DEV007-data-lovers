@@ -16,17 +16,14 @@ body {
   background-position: center;
 }
 
+div#homebanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 footer {
   font-size: smaller;
-}
-
-section#homebannerleft {
-  display: block;
-  width: 300px;
-}
-
-section#hommebannerright {
-  width: 60%;
 }
 
 ul {
