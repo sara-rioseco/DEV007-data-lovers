@@ -16,6 +16,9 @@ body {
   background-position: center;
 }
 
+footer {
+  font-size: smaller;
+}
 
 section#homebannerleft {
   display: block;
