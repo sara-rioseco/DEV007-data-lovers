@@ -16,9 +16,20 @@ const dataFunctions = {
       pokeContainer.insertAdjacentElement("beforeend", createPokebox);
     }
   },
-  pokeNames: function (input) {
+  searchName: function (input) {
     return data.pokemon.filter((poke) => {
       return poke.name.includes(input.toLowerCase());
+    });
+  },
+  searchNumber: function (input) {
+    return data.pokemon.filter((poke) => {
+      return poke.num.includes(input);
+    });
+  },
+  searchType: function (input) {
+    return data.pokemon.filter((poke) => {
+      return poke.type.includes(input);
+      
     });
   },
 };

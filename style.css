@@ -16,6 +16,16 @@ body {
   background-position: center;
 }
 
+
+section#homebannerleft {
+  display: block;
+  width: 300px;
+}
+
+section#hommebannerright {
+  width: 60%;
+}
+
 ul {
   list-style-type: none;
 }
@@ -36,21 +46,6 @@ h2 {
   font-size: 20px;
   font-style: bold;
   text-shadow: 3px 3px 6px #6b6b6b;
-}
-
-div {
-  margin: 20px;
-  width: 100%;
-  border-color: black;
-  border-style: none;
-  /*background-color: rgba(255, 255, 255, 0.5);*/
-}
-
-section {
-  margin: 20px;
-  border-color: black;
-  border-style: none;
-  /*background-color: rgba(255, 255, 255, 0.5);*/
 }
 
 section#bar {
@@ -131,4 +126,15 @@ form.searchbar:after {
   background-repeat: no-repeat;
   background-size: 200% 100%;
   transition: background-size 1s, background-color 1s;
+}
+
+.messages {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: fit-content;
+  margin: 30px;
+  padding: 20px;
+  font-family: Eczar, serif;
+  border-radius: 40px;
+  display: inline-block;
 }
