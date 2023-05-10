@@ -13,17 +13,22 @@
 <body>
   <div id="root">
     <header>
-      <h1 class="title">Pokedex Database</h1>
-      <h2>¡Bienvenid@ a la Pokedex Database!</h2>
-      <nav>
-        <section class="section" id="bar">
-          <form class="searchbar" id="searchform">
-            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false"
-              autocomplete="off" minlength="1" pattern="[A-Za-z0-9]{1,}" oninput="validity.valid||(value='');">
-            <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
-          </form><br>
-        </section>
-      </nav>
+      <aside id="homebannerleft">
+        <img src="./img/NurseJoyVerySmall.png" alt="Nurse Joy and Chansey"/>
+      </aside>
+      <div id="homebannerright">
+        <h1 class="title">Pokedex Database</h1>
+        <h2>¡Bienvenid@ a la Pokedex Database!</h2>
+        <nav>
+          <section class="section" id="bar">
+            <form class="searchbar" id="searchform">
+              <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false"
+                autocomplete="off" minlength="1" pattern="[A-Za-z0-9]{1,}" oninput="validity.valid||(value='');">
+              <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
+            </form><br>
+          </section>
+        </nav>
+      </div>
     </header>
       <main>
       <ul class="flex-container" id="data-output">
