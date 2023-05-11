@@ -93,7 +93,7 @@ function addAction() {
     dataFunctions.pushPokemon(sorted);
     break;
   case "za":
-    dataFunctions.pushPokemon(sortedrev);
+    console.log(sortedrev);
     break;
   }
 }
