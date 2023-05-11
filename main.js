@@ -5,6 +5,7 @@ dataFunctions.showPokemon();
 const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
+const selectMenu = document.getElementById("selectmenu");
 
 searchBttn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -25,7 +26,9 @@ searchBttn.addEventListener("click", (e) => {
     createMessage1.innerHTML += "<img src=./img/HappyPikachu.png>";
     pokeContainer.insertAdjacentElement("beforeend", createMessage1);
   } else if (
-    (searchNameResult.toString() === "" && searchNumberResult.toString() === "" && searchTypeResult.toString() === "")
+    searchNameResult.toString() === "" &&
+    searchNumberResult.toString() === "" &&
+    searchTypeResult.toString() === ""
   ) {
     const createMessage2 = document.createElement("div");
     createMessage2.id = "notfoundmessage";
@@ -76,3 +79,22 @@ searchBttn.addEventListener("click", (e) => {
     }
   }
 });
+
+function select(event) { 
+  selectMenu.addEventListener("change", addAction, false);
+  event.preventDefault();
+}
+function addAction() {
+  const namesToSort = dataFunctions.getNames();
+  const sorted = dataFunctions.sortByName(namesToSort);
+  const sortedrev = dataFunctions.sortByNameRev(sorted)
+  switch (selectMenu.value) {
+  case "az":
+    dataFunctions.pushPokemon(sorted);
+    break;
+  case "za":
+    dataFunctions.pushPokemon(sortedrev);
+    break;
+  }
+}
+window.addEventListener("load", select, false);
