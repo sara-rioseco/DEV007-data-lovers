@@ -14,8 +14,6 @@ body {
   background-image: url(img/poke-background-full.png);
   background-size: 500px;
   background-position: center;
-  cursor: url('togepi.gif'), auto;
-
 }
 
 div#homebanner {
