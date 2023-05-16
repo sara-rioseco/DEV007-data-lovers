@@ -6,6 +6,7 @@ const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
+const homeBanner = document.getElementById("homebanner");
 
 searchBttn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -80,36 +81,45 @@ searchBttn.addEventListener("click", (e) => {
   }
 });
 
-function select(event) { 
+function select(e) { 
   selectMenu.addEventListener("change", addActionToSelect, false);
-  event.preventDefault();
+  e.preventDefault();
 }
 function addActionToSelect() {
-  const namesToSort = dataFunctions.getNames();
   switch (selectMenu.value) {
   case "az": 
-    { const sorted = orderList();
-      const finalList = showList(sorted);
+    { const sorted = orderListAZ();
+      const listResult = showList(sorted);
       console.log(sorted)
     }
     break;
   case "za":
-    { const sortedrev = dataFunctions.sortByNameRev(namesToSort);
+    { const sortedrev = orderListZA();
+      const listResult = showList(sortedrev);
       console.log(sortedrev)
     }
     break;
   case "09":
-    console.log("ordenando numéricamente de forma ascendente");
+    { const sortednum = orderList09();
+      const listResult = showList(sortednum);
+      console.log(sortednum)
+    }
     break;
   case "90":
-    console.log("ordenando numéricamente de forma descendente");
+    { const sortednumrev = orderList90();
+      const listResult = showList(sortednumrev);
+      console.log(sortednumrev)
+    }
     break;
-  default: 
-    console.log("no se está ordenando nada");
+  default:
   }
-
 }
-function orderList() { 
+
+function showList (sortedList) {
+  dataFunctions.pushPokemon(sortedList);
+}
+
+function orderListAZ() { 
   const onScreenList = document.querySelectorAll("li");
   const sortedList = []
   for (let i=0; i<onScreenList.length; i++) { 
@@ -117,7 +127,34 @@ function orderList() {
   }
   return sortedList.sort()
 }
-function showList (sortedList) {
-  dataFunctions.pushPokemon(sortedList);
+
+function orderListZA() { 
+  const onScreenList = document.querySelectorAll("li");
+  const sortedList = []
+  for (let i=0; i<onScreenList.length; i++) { 
+    sortedList.push(onScreenList[i].innerText.slice(5).toLowerCase());
+  }
+  return sortedList.sort().reverse()
 }
+
+function orderList09() { 
+  const onScreenList = document.querySelectorAll("li");
+  const sortedList = []
+  for (let i=0; i<onScreenList.length; i++) { 
+    sortedList.push(onScreenList[i].innerText);
+  }
+  return sortedList.sort()
+}
+
+function orderList90() { 
+  const onScreenList = document.querySelectorAll("li");
+  const sortedList = []
+  for (let i=0; i<onScreenList.length; i++) { 
+    sortedList.push(onScreenList[i].innerText);
+  }
+  return sortedList.sort().reverse()
+}
+
+homeBanner.addEventListener("click")
+
 window.addEventListener("load", select, false);
