@@ -7,6 +7,7 @@ const dataFunctions = {
   createPokebox: function (data) {
     const pokeContainer = document.querySelector(".flex-container");
     const pokeData = data
+    pokeContainer.innerHTML = ""
     for (let i = 0; i < pokeData.length; i++) {
       const createPokebox = document.createElement("li");
       const pokeName = pokeData[i].name;
@@ -35,33 +36,6 @@ const dataFunctions = {
     return data.pokemon.filter((poke) => {
       return poke.type.includes(input);
     });
-  },
-  /*getNames: function () {
-    const pokesName = data.pokemon;
-    const namesArray = [];
-    for (let i = 0; i < pokesName.length; i++) {
-      namesArray.push(pokesName[i].name.toLowerCase());
-    }
-    return namesArray;
-  },
-  sortByName: function (pokeArray) {
-    return pokeArray.sort();
-  },
-  sortByNameRev: function (pokeArray) {
-    const pokeArraySorted = pokeArray.sort()
-    return pokeArraySorted.reverse();
-  },*/
-  pushPokemon: function (sortedArr) {
-    const pokeContainer = document.querySelector(".flex-container");
-    pokeContainer.innerHTML = "";
-    const pokeData = data.pokemon
-    for (let i = 0; i < sortedArr.length; i++) {
-      for (let j = 0; j < pokeData.length; j++) {
-        if (sortedArr[i].value === pokeData[j].name) {
-          this.createPokeboxcreatePokebox(pokeData[j])
-        }
-      }
-    }
   },
 };
 export default dataFunctions;
