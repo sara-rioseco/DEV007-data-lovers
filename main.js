@@ -81,20 +81,43 @@ searchBttn.addEventListener("click", (e) => {
 });
 
 function select(event) { 
-  selectMenu.addEventListener("change", addAction, false);
+  selectMenu.addEventListener("change", addActionToSelect, false);
   event.preventDefault();
 }
-function addAction() {
+function addActionToSelect() {
   const namesToSort = dataFunctions.getNames();
-  const sorted = dataFunctions.sortByName(namesToSort);
-  const sortedrev = dataFunctions.sortByNameRev(sorted)
   switch (selectMenu.value) {
-  case "az":
-    dataFunctions.pushPokemon(sorted);
+  case "az": 
+    { const sorted = orderList();
+      const finalList = showList(sorted);
+      console.log(sorted)
+    }
     break;
   case "za":
-    dataFunctions.pushPokemon(sortedrev);
+    { const sortedrev = dataFunctions.sortByNameRev(namesToSort);
+      console.log(sortedrev)
+    }
     break;
+  case "09":
+    console.log("ordenando numéricamente de forma ascendente");
+    break;
+  case "90":
+    console.log("ordenando numéricamente de forma descendente");
+    break;
+  default: 
+    console.log("no se está ordenando nada");
   }
+
+}
+function orderList() { 
+  const onScreenList = document.querySelectorAll("li");
+  const sortedList = []
+  for (let i=0; i<onScreenList.length; i++) { 
+    sortedList.push(onScreenList[i].innerText.slice(5).toLowerCase());
+  }
+  return sortedList.sort()
+}
+function showList (sortedList) {
+  dataFunctions.pushPokemon(sortedList);
 }
 window.addEventListener("load", select, false);

@@ -43,24 +43,28 @@ const dataFunctions = {
     return pokeArray.sort();
   },
   sortByNameRev: function (pokeArray) {
-    return pokeArray.reverse();
+    const pokeArraySorted = pokeArray.sort()
+    return pokeArraySorted.reverse();
   },
   pushPokemon: function (sortedArray) {
     const pokeContainer = document.querySelector(".flex-container");
     pokeContainer.innerHTML = "";
-    for (let i = 0; i < sortedArray; i++) {
-      if (sortedArray[i].value === data.pokemon[i].name.value) {
-        const createPokebox = document.createElement("li");
-        const pokeName = data.pokemon[i].name;
-        const pokeNum = data.pokemon[i].num;
-        createPokebox.className = "pokeLi";
-        createPokebox.id = "pokeLi" + [i];
-        createPokebox.innerHTML += pokeNum.toString();
-        createPokebox.innerHTML += "<br>";
-        createPokebox.innerHTML += `<img src= "${data.pokemon[i].img}" alt= "pokeImg${data.pokemon[i].name}" class="image" id="${data.pokemon[i].id}">`;
-        createPokebox.innerHTML += "<br>";
-        createPokebox.innerHTML += pokeName.toUpperCase();
-        pokeContainer.insertAdjacentElement("beforeend", createPokebox);
+    const pokeData = data.pokemon
+    for (let i = 0; i < sortedArray.length; i++) {
+      for (let j = 0; j < pokeData.length; j++) {
+        if (sortedArray[i].value === pokeData[j].name) {
+          const createPokebox = document.createElement("li");
+          const pokeName = pokeData[i].name;
+          const pokeNum = pokeData[i].num;
+          createPokebox.className = "pokeLi";
+          createPokebox.id = "pokeLi" + [i];
+          createPokebox.innerHTML += pokeNum.toString();
+          createPokebox.innerHTML += "<br>";
+          createPokebox.innerHTML += `<img src= "${pokeData[i].img}" alt= "pokeImg${pokeData[i].name}" class="image" id="${data.pokemon[i].id}">`;
+          createPokebox.innerHTML += "<br>";
+          createPokebox.innerHTML += pokeName.toUpperCase();
+          pokeContainer.insertAdjacentElement("beforeend", createPokebox);
+        }
       }
     }
   },
