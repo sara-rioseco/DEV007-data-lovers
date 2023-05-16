@@ -26,9 +26,9 @@ const dataFunctions = {
       return poke.num.includes(input);
     });
   },
-  searchType: function (input) {
+  searchType: function (botonescheck) {
     return data.pokemon.filter((poke) => {
-      return poke.type.includes(input);
+      return poke.type.includes(botonescheck);
     });
   },
   getNames: function () {
@@ -65,4 +65,18 @@ const dataFunctions = {
     }
   },
 };
+
+const tipo = [];
+data.pokemon.forEach((pokemones) => {
+  tipo.push(pokemones.type);
+});
+console.log(tipo.flat(2));
+const cons = tipo.flat(2);
+for (let i = 0; i < cons.length; i++){
+  const resultado = []
+  if (cons[i] !== cons[i-1]){
+    resultado.push(cons[i])
+    console.log (resultado)
+  }
+} 
 export default dataFunctions;

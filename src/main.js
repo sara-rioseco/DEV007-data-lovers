@@ -6,6 +6,7 @@ const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
+const typeSelect = document.getElementById("poketype");
 
 searchBttn.addEventListener("click", (e) => {
   e.preventDefault();
