@@ -1,4 +1,5 @@
 import dataFunctions from "./data.js";
+import data from './data/pokemon/pokemon.js'
 
 dataFunctions.showPokemon();
 
@@ -89,34 +90,42 @@ function addActionToSelect() {
   switch (selectMenu.value) {
   case "az": 
     { const sorted = orderListAZ();
-      const listResult = showList(sorted);
-      console.log(sorted)
+      const pokeResult = [];
+      sorted.forEach(pokemon => {
+        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.name))
+      })
+      dataFunctions.createPokebox(pokeResult)
     }
     break;
   case "za":
-    { const sortedrev = orderListZA();
-      const listResult = showList(sortedrev);
-      console.log(sortedrev)
+    { const sortedRev = orderListZA();
+      const pokeResult = [];
+      sortedRev.forEach(pokemon => {
+        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.name))
+      })
+      dataFunctions.createPokebox(pokeResult)
     }
     break;
   case "09":
-    { const sortednum = orderList09();
-      const listResult = showList(sortednum);
-      console.log(sortednum)
+    { const sortedNum = orderList09();
+      const pokeResult = [];
+      sortedNum.forEach(pokemon => {
+        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.num))
+      })
+      dataFunctions.createPokebox(pokeResult)
     }
     break;
   case "90":
-    { const sortednumrev = orderList90();
-      const listResult = showList(sortednumrev);
-      console.log(sortednumrev)
+    { const sortedNumRev = orderList90();
+      const pokeResult = [];
+      sortedNumRev.forEach(pokemon => {
+        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.num))
+      })
+      dataFunctions.createPokebox(pokeResult)
     }
     break;
   default:
   }
-}
-
-function showList (sortedList) {
-  dataFunctions.pushPokemon(sortedList);
 }
 
 function orderListAZ() { 
@@ -141,7 +150,7 @@ function orderList09() {
   const onScreenList = document.querySelectorAll("li");
   const sortedList = []
   for (let i=0; i<onScreenList.length; i++) { 
-    sortedList.push(onScreenList[i].innerText);
+    sortedList.push(onScreenList[i].innerText.slice(0,3));
   }
   return sortedList.sort()
 }
@@ -150,11 +159,9 @@ function orderList90() {
   const onScreenList = document.querySelectorAll("li");
   const sortedList = []
   for (let i=0; i<onScreenList.length; i++) { 
-    sortedList.push(onScreenList[i].innerText);
+    sortedList.push(onScreenList[i].innerText.slice(0,3));
   }
   return sortedList.sort().reverse()
 }
-
-homeBanner.addEventListener("click")
 
 window.addEventListener("load", select, false);
