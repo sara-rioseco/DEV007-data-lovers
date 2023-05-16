@@ -3,8 +3,8 @@ html {
   width: 100%;
   font-family: Eczar, serif;
 }
-
 body {
+  cursor: url(/img/pngegg.png), auto;
   height: 90%;
   width: 95%;
   max-width: 1200px;
@@ -15,7 +15,9 @@ body {
   background-size: 500px;
   background-position: center;
 }
-
+.checkbox {
+  
+}
 div#homebanner {
   display: flex;
   align-items: center;
