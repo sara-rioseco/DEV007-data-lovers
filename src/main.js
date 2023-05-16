@@ -7,7 +7,7 @@ const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
-const homeBanner = document.getElementById("homebanner");
+/*const homeBanner = document.getElementById("homebanner");*/
 
 searchBttn.addEventListener("click", (e) => {
   e.preventDefault();
