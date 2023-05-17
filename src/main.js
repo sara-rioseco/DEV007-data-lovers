@@ -7,6 +7,9 @@ const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
+const pokeBoxesOnScreen = document.querySelectorAll("li");
+const pokeDialogsOnScreen = document.querySelectorAll("dialog");
+
 /*const homeBanner = document.getElementById("homebanner");*/
 
 searchBttn.addEventListener("click", (e) => {
@@ -183,6 +186,45 @@ function orderList90() {
   }
   return sortedList.sort().reverse();
 }
+
+function createPokeDialog (e) {
+  e.preventDefault();
+  const pokeDialogs = []
+  pokeBoxesOnScreen.forEach ((pokebox) => {
+    pokebox.innerHTML = `<dialog>pokebox</dialog>`
+    pokeDialogs.push(pokebox);
+  });
+  pokeDialogs.forEach((pokemon) => {
+    pokemon.addEventListener("click", openModal, false)
+  });
+  console.log ("ejecutando función")
+}
+//Mostrando dialog modal
+const dialogs = document.querySelectorAll("dialog")
+
+
+function openModal() {
+  pokeDialogsOnScreen.addEventListener("click", e => {
+    e.preventDefault();
+    pokeDialogsOnScreen.forEach ((dialog) => {
+      dialog.showModal()
+    });
+  });
+}
+
+/*pokeDialogsOnScreen.addEventListener("click", e => {
+  const dialogDimensions = dialogs.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    dialogs.close()
+  }
+});*/
+
+window.addEventListener("load", createPokeDialog, false);
 
 window.addEventListener("load", select, false);
 
