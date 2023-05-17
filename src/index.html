@@ -17,11 +17,43 @@
         <img src="./img/NurseJoyReallyVerySmall.png" alt="Nurse Joy and Chansey"/>
         <section>
           <h1 class="title">Pokedex Database</h1>
-          <h2>¡Bienvenid@ a la base de pokedatos de la enfermera Joy</h2>
+          <h2>¡Bienvenid@ a la base de pokedatos de la enfermera Joy!</h2>
         </section>
         <img class="togeright" src="./img/togepi.gif" alt="togepi"/>
       </div>
       <nav>
+        <section class="section" id="filterlist">
+          <form id="filterform">
+            <div class="multipleSelection">
+              <div class="selectBox" onclick="showCheckboxes()">
+                <select class="select">
+                  <option> Tipo de Pokemon</option>
+                </select>
+                <div class="overSelect"></div>
+              </div>
+              <div class="dropdown-list" id="checkboxes">
+                <label class="dropdown-option" for="steel"><input type="checkbox" name="poketype" id="steel "value="steel"> Acero </label>
+                <label class="dropdown-option" for="water"><input type="checkbox" name="poketype" id="water" value="water"> Agua </label>
+                <label class="dropdown-option" for="bug"><input type="checkbox" name="poketype" id="bug" value="bug"> Bicho </label>
+                <label class="dropdown-option" for="dragon"><input type="checkbox" name="poketype" id="dragon" value="dragon"> Dragón </label>
+                <label class="dropdown-option" for="electric"><input type="checkbox" name="poketype" id="electric" value="electric"> Eléctrico </label>
+                <label class="dropdown-option" for="ghost"><input type="checkbox" name="poketype" id="ghost" value="ghost"> Fantasma </label>
+                <label class="dropdown-option" for="fire"><input type="checkbox" name="poketype" id="fire" value="fire"> Fuego </label>
+                <label class="dropdown-option" for="fairy"><input type="checkbox" name="poketype" id="fairy" value="fairy"> Hada </label>
+                <label class="dropdown-option" for="poison"><input type="checkbox" name="poketype" id="poison" value="poison"> Veneno </label>
+                <label class="dropdown-option" for="grass"><input type="checkbox" name="poketype" id="grass" value="grass"> Hierba </label>
+                <label class="dropdown-option" for="psychic"><input type="checkbox" name="poketype" id="psychic" value="psychic"> Psíquico </label>
+                <label class="dropdown-option" for="flying"><input type="checkbox" name="poketype" id="flying" value="flying"> Volador </label>
+                <label class="dropdown-option" for="dark"><input type="checkbox" name="poketype" id="dark" value="dark"> Siniestro </label>
+                <label class="dropdown-option" for="rock"><input type="checkbox" name="poketype" id="rock" value="rock"> Roca </label>
+                <label class="dropdown-option" for="ground"><input type="checkbox" name="poketype" id="ground" value="ground"> Tierra </label>
+                <label class="dropdown-option" for="normal"><input type="checkbox" name="poketype" id="normal" value="normal"> Normal </label>
+                <label class="dropdown-option" for="ice"><input type="checkbox" name="poketype" id="ice" value="ice"> Hielo </label>
+                <label class="dropdown-option" for="fighting"><input type="checkbox" name="poketype" id="fighting" value="fighting"> Lucha </label>
+              </div>
+            </div>
+          </form>
+        </section>
         <section class="section" id="bar">
           <form class="searchbar" id="searchform">
             <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false"
@@ -60,7 +92,7 @@
         </form>
         </section>
         <section>
-          <select id="selectmenu" name="selectmenu" required>
+          <select id="selectmenu" class="section" name="selectmenu" required>
             <option value="" id="selectplaceholder"disabled selected hidden>Ordenar</option>
             <option value="az" id="az"> Alfabéticamente (ascendente) </option>
             <option value="za" id="za"> Alfabéticamente (descendente) </option>
@@ -80,7 +112,22 @@
       <p> &copy; Elena Norambuena y Sara Rioseco. 2023.</p>
     </footer>
   </div>
+  <script>
+    let show = true;
+
+    function showCheckboxes() {
+        const checkboxes = 
+            document.getElementById("checkboxes");
+
+        if (show) {
+            checkboxes.style.display = "block";
+            show = false;
+        } else {
+            checkboxes.style.display = "none";
+            show = true;
+        }
+    }
+</script>
   <script src="main.js" type="module"></script>
 </body>
-
 </html>
