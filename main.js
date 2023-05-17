@@ -1,5 +1,5 @@
 import dataFunctions from "./data.js";
-import data from './data/pokemon/pokemon.js'
+import data from "./data/pokemon/pokemon.js";
 
 dataFunctions.showPokemon();
 
@@ -7,7 +7,7 @@ const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
-const homeBanner = document.getElementById("homebanner");
+/*const homeBanner = document.getElementById("homebanner");*/
 
 searchBttn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -82,86 +82,108 @@ searchBttn.addEventListener("click", (e) => {
   }
 });
 
-function select(e) { 
+function select(e) {
   selectMenu.addEventListener("change", addActionToSelect, false);
   e.preventDefault();
 }
 function addActionToSelect() {
   switch (selectMenu.value) {
-  case "az": 
-    { const sorted = orderListAZ();
+  case "az":
+    {
+      const sorted = orderListAZ();
       const pokeResult = [];
-      sorted.forEach(pokemon => {
-        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.name))
-      })
-      dataFunctions.createPokebox(pokeResult)
+      sorted.forEach((pokemon) => {
+        pokeResult.push(
+          data.pokemon.find(
+            (pokemonArrData) => pokemon === pokemonArrData.name
+          )
+        );
+      });
+      dataFunctions.createPokebox(pokeResult);
     }
     break;
   case "za":
-    { const sortedRev = orderListZA();
+    {
+      const sortedRev = orderListZA();
       const pokeResult = [];
-      sortedRev.forEach(pokemon => {
-        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.name))
-      })
-      dataFunctions.createPokebox(pokeResult)
+      sortedRev.forEach((pokemon) => {
+        pokeResult.push(
+          data.pokemon.find(
+            (pokemonArrData) => pokemon === pokemonArrData.name
+          )
+        );
+      });
+      dataFunctions.createPokebox(pokeResult);
     }
     break;
   case "09":
-    { const sortedNum = orderList09();
+    {
+      const sortedNum = orderList09();
       const pokeResult = [];
-      sortedNum.forEach(pokemon => {
-        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.num))
-      })
-      dataFunctions.createPokebox(pokeResult)
+      sortedNum.forEach((pokemon) => {
+        pokeResult.push(
+          data.pokemon.find(
+            (pokemonArrData) => pokemon === pokemonArrData.num
+          )
+        );
+      });
+      dataFunctions.createPokebox(pokeResult);
     }
     break;
   case "90":
-    { const sortedNumRev = orderList90();
+    {
+      const sortedNumRev = orderList90();
       const pokeResult = [];
-      sortedNumRev.forEach(pokemon => {
-        pokeResult.push(data.pokemon.find(pokemonArrData => pokemon === pokemonArrData.num))
-      })
-      dataFunctions.createPokebox(pokeResult)
+      sortedNumRev.forEach((pokemon) => {
+        pokeResult.push(
+          data.pokemon.find(
+            (pokemonArrData) => pokemon === pokemonArrData.num
+          )
+        );
+      });
+      dataFunctions.createPokebox(pokeResult);
     }
     break;
   default:
   }
 }
 
-function orderListAZ() { 
+function orderListAZ() {
   const onScreenList = document.querySelectorAll("li");
-  const sortedList = []
-  for (let i=0; i<onScreenList.length; i++) { 
+  const sortedList = [];
+  for (let i = 0; i < onScreenList.length; i++) {
     sortedList.push(onScreenList[i].innerText.slice(5).toLowerCase());
   }
-  return sortedList.sort()
+  return sortedList.sort();
 }
 
-function orderListZA() { 
+function orderListZA() {
   const onScreenList = document.querySelectorAll("li");
-  const sortedList = []
-  for (let i=0; i<onScreenList.length; i++) { 
+  const sortedList = [];
+  for (let i = 0; i < onScreenList.length; i++) {
     sortedList.push(onScreenList[i].innerText.slice(5).toLowerCase());
   }
-  return sortedList.sort().reverse()
+  return sortedList.sort().reverse();
 }
 
-function orderList09() { 
+function orderList09() {
   const onScreenList = document.querySelectorAll("li");
-  const sortedList = []
-  for (let i=0; i<onScreenList.length; i++) { 
-    sortedList.push(onScreenList[i].innerText.slice(0,3));
+  const sortedList = [];
+  for (let i = 0; i < onScreenList.length; i++) {
+    sortedList.push(onScreenList[i].innerText.slice(0, 3));
   }
-  return sortedList.sort()
+  return sortedList.sort();
 }
 
-function orderList90() { 
+function orderList90() {
   const onScreenList = document.querySelectorAll("li");
-  const sortedList = []
-  for (let i=0; i<onScreenList.length; i++) { 
-    sortedList.push(onScreenList[i].innerText.slice(0,3));
+  const sortedList = [];
+  for (let i = 0; i < onScreenList.length; i++) {
+    sortedList.push(onScreenList[i].innerText.slice(0, 3));
   }
-  return sortedList.sort().reverse()
+  return sortedList.sort().reverse();
 }
 
 window.addEventListener("load", select, false);
+
+
