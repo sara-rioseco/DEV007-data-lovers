@@ -1,7 +1,7 @@
 html {
   height: 100%;
   width: 100%;
-  font-family: Eczar, serif;
+  font-family: serif;
 }
 body {
   cursor: url(/img/pngegg.png), auto;
@@ -226,6 +226,10 @@ form.searchbar:after {
   display: block;
 }
 
+#checkboxes label input {
+  font-family: serif;
+}
+
 #checkboxes label:hover {
   background-color: rgba(137, 216, 130, 1);
 }
@@ -233,5 +237,4 @@ form.searchbar:after {
 label.dropdown-option {
   font-size: 12px;
   font-weight: normal;
-  font-family: Eczar, serif;
 }
