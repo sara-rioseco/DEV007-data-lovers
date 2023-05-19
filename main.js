@@ -64,6 +64,7 @@ searchBttn.addEventListener("click", (e) => {
       createPokebox.innerHTML += "<br>"; //agregando línea vacía a cada li
       createPokebox.innerHTML += pokeName.toUpperCase(); //agregando nombre de pokemon a cada li
       pokeContainer.insertAdjacentElement("beforeend", createPokebox); //insertando cada li dentro de contenedor flex
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     for (let i = 0; i < searchNumberResult.length; i++) {
       //iterando por cada número en resultados para crear tarjetas
@@ -78,6 +79,7 @@ searchBttn.addEventListener("click", (e) => {
       createPokebox.innerHTML += "<br>"; //agregando línea vacía a cada li
       createPokebox.innerHTML += pokeName.toUpperCase(); //agregando nombre de pokemon a cada li
       pokeContainer.insertAdjacentElement("beforeend", createPokebox); //insertando cada li dentro de contenedor flex
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     for (let i = 0; i < searchTypeResult.length; i++) {
       //iterando por cada tipo en resultados para crear tarjetas
@@ -92,6 +94,7 @@ searchBttn.addEventListener("click", (e) => {
       createPokebox.innerHTML += "<br>"; //agregando línea vacía a cada li
       createPokebox.innerHTML += pokeName.toUpperCase(); //agregando imagen a cada li
       pokeContainer.insertAdjacentElement("beforeend", createPokebox); //insertando cada li dentro de contenedor flex
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
   }
 });
@@ -121,6 +124,7 @@ function addActionToSelect() {
         );
       });
       dataFunctions.createPokebox(pokeResult); //creando cada tarjeta para mostrar en pantalla de cada pokemon dentro del resultado
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     break; //terminando primer caso
   case "za": //declarando segundo caso de switch
@@ -138,6 +142,7 @@ function addActionToSelect() {
         );
       });
       dataFunctions.createPokebox(pokeResult); //creando cada tarjeta para mostrar en pantalla de cada pokemon dentro del resultado
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     break; //terminando segundo caso
   case "09": //declarando tercer caso de switch
@@ -155,6 +160,7 @@ function addActionToSelect() {
         );
       });
       dataFunctions.createPokebox(pokeResult); //creando cada tarjeta para mostrar en pantalla de cada pokemon dentro del resultado
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     break; //terminando tercer caso
   case "90": //declarando cuarto caso de switch
@@ -172,6 +178,7 @@ function addActionToSelect() {
         );
       });
       dataFunctions.createPokebox(pokeResult); //creando cada tarjeta para mostrar en pantalla de cada pokemon dentro del resultado
+      openPokeDialog(); //llamando función para abrir elemento dialog
     }
     break; //terminando cuarto caso
   default: //declarando caso default vacío, aunque no es mandatorio
