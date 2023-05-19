@@ -10,6 +10,7 @@ const selectMenu = document.getElementById("selectmenu"); //seleccionando menú 
 const pokeDialog = document.getElementById("dialog-modal");
 const closeBttn = document.createElement("button");
 closeBttn.id = "close-button";
+closeBttn.className = "close-button";
 closeBttn.innerHTML = "Cerrar";
 
 //====================FUNCIÓN PARA MOSTRAR DATA=============================
