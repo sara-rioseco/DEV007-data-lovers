@@ -1,10 +1,11 @@
 html {
   height: 100%;
   width: 100%;
-  font-family: Eczar, serif;
+  font-family: serif;
 }
 
 body {
+  display:flex;
   height: 90%;
   width: 95%;
   max-width: 1200px;
@@ -17,6 +18,7 @@ body {
   background-image: url(img/poke-background-full.png);
   background-size: 500px;
   background-position: center;
+  justify-content: center;
 }
 
 div#homebanner {
@@ -39,16 +41,17 @@ a {
   color: #379937;
 }
 
-body {
-  margin: 40px;
-}
-
 footer {
   font-size: smaller;
 }
 
 ul {
   list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
 }
 
 h1 {
@@ -69,6 +72,28 @@ h2 {
   text-shadow: 3px 3px 6px #6b6b6b;
 }
 
+dialog {
+  max-width: 400px;
+  border-style: none;
+  border-radius: 40px;
+  font-family: Quicksand, serif;
+}
+
+dialog::backdrop {
+  position: fixed;
+  inset: 0px;
+  background: rgba(36, 36, 36, 0.3);
+}
+
+div .dialog-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+div .dialog-div#dialog-lower-div{
+  display: inline;
+}
+
 section#bar {
   margin: 10px;
   padding: 0px;
@@ -79,10 +104,6 @@ section#bar {
   margin: auto;
   align-self: center;
   max-width: 300px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 form.searchbar {
@@ -152,13 +173,14 @@ form.searchbar:after {
   font-family: Eczar, serif;
   color: rgb(0, 0, 0);
   width: 100%;
-  margin: 20px;
-  padding: 20px;
+  margin: auto;
+  padding: auto;
   font-size: 20px;
   font-style: bold;
   text-shadow: 3px 3px 10px #000000;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .pokeLi {
@@ -224,6 +246,10 @@ form.searchbar:after {
   display: block;
 }
 
+#checkboxes label input {
+  font-family: serif;
+}
+
 #checkboxes label:hover {
   background-color: rgba(137, 216, 130, 1);
 }
@@ -231,5 +257,4 @@ form.searchbar:after {
 label.dropdown-option {
   font-size: 12px;
   font-weight: normal;
-  font-family: Eczar, serif;
 }
