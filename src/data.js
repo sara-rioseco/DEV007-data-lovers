@@ -32,9 +32,9 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar funciones
       return poke.num.includes(input);
     });
   },
-  searchType: function (botonescheck) {
+  checkType: function (checkfilter) {
     return data.pokemon.filter((poke) => {
-      return poke.type.includes(botonescheck);
+      return poke.type(checkfilter);
     });
   },
   /*createDialog: function (pokename) {
