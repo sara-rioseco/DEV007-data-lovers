@@ -270,4 +270,4 @@ function closeDialog() { //declarando función para cerrar el elemento dialog
   pokeDialog.innerHTML = "" //vaciando contenedor para que cuando se vuelva a abrir solo muestre la nueva data
 }
 
-window.addEventListener("load", openPokeDialog()); //ejecutando función createPokeDialog al cargar la página
+window.addEventListener("load", openPokeDialog()); //ejecutando función openPokeDialog al cargar la página
