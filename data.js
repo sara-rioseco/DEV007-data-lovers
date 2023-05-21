@@ -1,7 +1,7 @@
 //==============IMPORTANDO DATA DESDE ARCHIVO POKEMONS.JS=================
 import data from "./data/pokemon/pokemon.js"; //importando data
 
-//========================================================================
+//======================FUNCIONES PARA MOSTRAR DATA====================
 const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
   showPokemon: function () { //creando método para mostrar pokemones en pantalla
     const pokeData = data.pokemon //almacenando la data en una variable
@@ -25,6 +25,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       pokeContainer.insertAdjacentElement("beforeend", createPokebox); //agregando cada elemento li con todo lo que contiene al contenedor flex
     }
   },
+  //========================FUNCIONES PARA BUSCAR EN LA DATA================
   searchName: function (input) { //declarando función para buscar por nombre usando un parámetro input
     return data.pokemon.filter((poke) => { //tomando los nombres retornados por la línea siguiente, filtrándolos en la data y retornándolos como objeto
       return poke.name.includes(input.toLowerCase());//retornando los nombres de pokemones que incluyen el input
@@ -40,66 +41,177 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       return poke.type.includes(input);//retornando los tipos de pokemones que incluyen el input
     });
   },
+  //================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
 
-  /*createTypeImg: function (typeArr) {
-    let imgsrc = ""
+  //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
+  translateType: function (typeArr) {
+    const translatedTypeArr = []
+    for (let i = 0; i<typeArr.length; i++)
+      if (typeArr[i] === "steel") {
+        translatedTypeArr.push("acero")
+      } else if (typeArr[i] === "water") {
+        translatedTypeArr.push("agua")
+      } else if (typeArr[i] === "bug") {
+        translatedTypeArr.push("bicho")
+      } else if (typeArr[i] === "dragon") {
+        translatedTypeArr.push("dragón")
+      } else if (typeArr[i] === "electric") {
+        translatedTypeArr.push("eléctrico")
+      } else if (typeArr[i] === "ghost") {
+        translatedTypeArr.push("fantasma")
+      } else if (typeArr[i] === "fire") {  
+        translatedTypeArr.push("fuego")
+      } else if (typeArr[i] === "fairy") {
+        translatedTypeArr.push("hada")
+      } else if (typeArr[i] === "poison") {
+        translatedTypeArr.push("veneno")
+      } else if (typeArr[i] === "grass") {
+        translatedTypeArr.push("hierba")
+      } else if (typeArr[i] === "psychic") {
+        translatedTypeArr.push("psíquico")
+      } else if (typeArr[i] === "flying") {
+        translatedTypeArr.push("volador")
+      } else if (typeArr[i] === "dark") {
+        translatedTypeArr.push("siniestro")
+      } else if (typeArr[i] === "rock") {
+        translatedTypeArr.push("roca")
+      } else if (typeArr[i] === "ground") {
+        translatedTypeArr.push("tierra")
+      } else if (typeArr[i] === "normal") {
+        translatedTypeArr.push("normal")
+      } else if (typeArr[i] === "ice") {
+        translatedTypeArr.push("hielo")
+      } else if (typeArr[i] === "fighting") {
+        translatedTypeArr.push("lucha")
+      } 
+    return translatedTypeArr;
+  },
+  //=============FUNCIONES PARA MOSTRAR IMAGEN DE TIPOS DE POKEMON==============
+  createImgSrcArr: function (typeArr) {
+    const imgSrcArr = []
     for (let i = 0; i < typeArr.length; i++) {
       if (typeArr[i] === "steel") {
-        imgsrc = "./img/pokemon-types/tipo-acero.jpg"
-        return imgsrc
+        const imgSrcSteel = "./img/pokemon-types/tipo-acero.jpg"
+        imgSrcArr.push(imgSrcSteel)
       } else if (typeArr[i] === "water") {
-        imgsrc = "./img/pokemon-types/tipo-agua.jpg"
-        return imgsrc
+        const imgSrcWater = "./img/pokemon-types/tipo-agua.jpg"
+        imgSrcArr.push(imgSrcWater)
       } else if (typeArr[i] === "bug") {
-        imgsrc = "./img/pokemon-types/tipo-bicho.jpg"
-        return imgsrc
+        const imgSrcBug = "./img/pokemon-types/tipo-bicho.jpg"
+        imgSrcArr.push(imgSrcBug)
       } else if (typeArr[i] === "dragon") {
-        imgsrc = "./img/pokemon-types/tipo-dragon.jpg"
-        return imgsrc
+        const imgSrcDragon = "./img/pokemon-types/tipo-dragon.jpg"
+        imgSrcArr.push(imgSrcDragon)
       } else if (typeArr[i] === "electric") {
-        imgsrc = "./img/pokemon-types/tipo-electrico.jpg"
-        return imgsrc
+        const imgSrcElectric = "./img/pokemon-types/tipo-electrico.jpg"
+        imgSrcArr.push(imgSrcElectric)
       } else if (typeArr[i] === "ghost") {
-        imgsrc = "./img/pokemon-types/tipo-fantasma.jpg"
-        return imgsrc
+        const imgSrcGhost = "./img/pokemon-types/tipo-fantasma.jpg"
+        imgSrcArr.push(imgSrcGhost)
       } else if (typeArr[i] === "fire") {
-        imgsrc = "./img/pokemon-types/tipo-fuego.jpg"
-        return imgsrc
+        const imgSrcFire = "./img/pokemon-types/tipo-fuego.jpg"
+        imgSrcArr.push(imgSrcFire)
       } else if (typeArr[i] === "fairy") {
-        imgsrc = "./img/pokemon-types/tipo-hada.jpg"
-        return imgsrc
+        const imgSrcFairy = "./img/pokemon-types/tipo-hada.jpg"
+        imgSrcArr.push(imgSrcFairy)
       } else if (typeArr[i] === "poison") {
-        imgsrc = "./img/pokemon-types/tipo-veneno.jpg"
-        return imgsrc
+        const imgSrcPoison = "./img/pokemon-types/tipo-veneno.jpg"
+        imgSrcArr.push(imgSrcPoison)
       } else if (typeArr[i] === "grass") {
-        imgsrc = "./img/pokemon-types/tipo-planta.jpg"
-        return imgsrc
+        const imgSrcGrass = "./img/pokemon-types/tipo-planta.jpg"
+        imgSrcArr.push(imgSrcGrass)
       } else if (typeArr[i] === "psychic") {
-        imgsrc = "./img/pokemon-types/tipo-psiquico.jpg"
-        return imgsrc
+        const imgSrcPsychic = "./img/pokemon-types/tipo-psiquico.jpg"
+        imgSrcArr.push(imgSrcPsychic)
       } else if (typeArr[i] === "flying") {
-        imgsrc = "./img/pokemon-types/tipo-volador.jpg"
-        return imgsrc
+        const imgSrcFlying = "./img/pokemon-types/tipo-volador.jpg"
+        imgSrcArr.push(imgSrcFlying)
       } else if (typeArr[i] === "dark") {
-        imgsrc = "./img/pokemon-types/tipo-siniestro.jpg"
-        return imgsrc
+        const imgSrcDark = "./img/pokemon-types/tipo-siniestro.jpg"
+        imgSrcArr.push(imgSrcDark)
       } else if (typeArr[i] === "rock") {
-        imgsrc = "./img/pokemon-types/tipo-roca.jpg"
-        return imgsrc
+        const imgSrcRock = "./img/pokemon-types/tipo-roca.jpg"
+        imgSrcArr.push(imgSrcRock)
       } else if (typeArr[i] === "ground") {
-        imgsrc = "./img/pokemon-types/tipo-tierra.jpg"
-        return imgsrc
+        const imgSrcGround = "./img/pokemon-types/tipo-tierra.jpg"
+        imgSrcArr.push(imgSrcGround)
       } else if (typeArr[i] === "normal") {
-        imgsrc = "./img/pokemon-types/tipo-normal.jpg"
-        return imgsrc
+        const imgSrcNormal = "./img/pokemon-types/tipo-normal.jpg"
+        imgSrcArr.push(imgSrcNormal)
       } else if (typeArr[i] === "ice") {
-        imgsrc = "./img/pokemon-types/tipo-hielo.jpg"
-        return imgsrc 
+        const imgSrcIce = "./img/pokemon-types/tipo-hielo.jpg"
+        imgSrcArr.push(imgSrcIce)
       } else if (typeArr[i] === "fighting") {
-        imgsrc = "./img/pokemon-types/tipo-lucha.jpg"
-        return imgsrc
+        const imgSrcFighting = "./img/pokemon-types/tipo-lucha.jpg"
+        imgSrcArr.push(imgSrcFighting)
+      } 
+    } return imgSrcArr;
+  },
+
+  createImg: function (imgSrcArr) {
+    if (imgSrcArr.length === 1) {
+      return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">';
+    } else {
+      return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">' + '<img src="' + imgSrcArr[1] + '" alt= "tipo de pokemon" class="image">'
+    }
+  },
+
+  //==============FUNCIÓN PARA MOSTRAR LOS ATAQUES RAPIDOS Y CARGADOS==============
+  showAttacks: function (attacksArr) {
+    if (attacksArr.length === 1) {
+      return attacksArr[0].name
+    } else if (attacksArr.length === 2) {
+      return attacksArr[0].name + ', ' + attacksArr[1].name
+    } else {
+      return attacksArr[0].name + ', ' + attacksArr[1].name + ', ' + attacksArr[2].name
+    }
+  },
+
+  //=======================FUNCIONES PARA MOSTRAR LAS EVOLUCIONES==================
+  listPrevEvolutions: function (Obj) {
+    const prevEvo = []
+    if (Obj.evolution['prev-evolution'] !== undefined) {
+      if (Obj.evolution['prev-evolution'][0]['prev-evolution'] !== undefined) {
+        prevEvo.push(Obj.evolution['prev-evolution'][0]['prev-evolution'][0].name);
+        prevEvo.push(Obj.evolution['prev-evolution'][0].name);
+        return prevEvo
+      } else {
+        prevEvo.push(Obj.evolution['prev-evolution'][0].name);
+        return prevEvo
+      }
+    } 
+  },
+ 
+  listNextEvolutions: function (Obj) {
+    const nextEvo = []
+    if (Obj.evolution['next-evolution'] !== undefined) {
+      if (Obj.evolution['next-evolution'][0]['next-evolution'] !== undefined) {
+        nextEvo.push(Obj.evolution['next-evolution'][0].name);
+        nextEvo.push(Obj.evolution['next-evolution'][0]['next-evolution'][0].name);
+        return nextEvo
+      } else {
+        nextEvo.push(Obj.evolution['next-evolution'][0].name);
+        return nextEvo
       }
     }
-  },*/
+  },
+
+  joinEvolutions: function (pokemon) {
+    const result = []
+    const prevEvolutions = this.listPrevEvolutions(pokemon)
+    const nextEvolutions = this.listNextEvolutions(pokemon)
+    const currentEvolution = pokemon.name
+    if (nextEvolutions === undefined && prevEvolutions === undefined) {
+      result.push(currentEvolution)
+    } else if (prevEvolutions === undefined) {
+      result.push(currentEvolution, nextEvolutions)
+    } else if (nextEvolutions === undefined) {
+      result.push(prevEvolutions, currentEvolution)
+    } else {
+      result.push(prevEvolutions, currentEvolution, nextEvolutions)
+    }
+    return result.flat().join(' -> ');  
+  },
+
 };
 export default dataFunctions; //exportando objeto dataFunctions
