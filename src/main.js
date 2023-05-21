@@ -2,7 +2,7 @@
 import dataFunctions from "./data.js"; //importando objeto que contiene funciones desde data.js
 import data from "./data/pokemon/pokemon.js"; //importando data
 
-//====================VARIABLES DE USO GENERAL======================
+//========================VARIABLES DE USO GENERAL==========================
 const pokeContainer = document.querySelector(".flex-container"); //seleccionando contenedor flex para pokemones
 const pokeInput = document.getElementById("searchbar"); //seleccionando barra búsqueda
 const searchBttn = document.getElementById("searchbutton"); //seleccionando botón búqueda
@@ -117,7 +117,7 @@ function addActionToSelect() {
       sorted.forEach((pokemon) => {
         //declarando qué hacer por cada uno de los li ordenados de la A a la Z
         pokeResult.push(
-          //indicando que se debe agregar el elemento soguiente al final del array pokeResult
+          //indicando que se debe agregar el elemento siguiente al final del array pokeResult
           data.pokemon.find(
             //buscando dentro de la data desde archivo pokemon.js
             (pokemonArrData) => pokemon === pokemonArrData.name //entregando cada pokemon que coincida con cualquier elemento dentro de la data con una propiedad name igual
@@ -252,17 +252,17 @@ function printPokeDetails(pokemon) { //declarando función para agregarr detalle
   const pokeDialogLowestDiv = document.createElement("div"); //creando div adicional que irá dentro del dialog
   const pokeDetails = pokeData.find((poke) => pokemon === poke.name); //buscando dentro de la data el nombre del pokemon que coincide con el ingresado
   const pokeTypes = pokeDetails.type
-  const pokeImgSrcArr = createImgSrcArr(pokeTypes)
-  const createTypeImg = createImg(pokeImgSrcArr)
+  const pokeImgSrcArr = dataFunctions.createImgSrcArr(pokeTypes)
+  const createTypeImg = dataFunctions.createImg(pokeImgSrcArr)
   const pokeResistant = pokeDetails.resistant
   const pokeWeakness = pokeDetails.weaknesses
-  const pokeResistantTranslated = translateType(pokeResistant)
-  const pokeWeaknessTranslated = translateType(pokeWeakness)
+  const pokeResistantTranslated = dataFunctions.translateType(pokeResistant)
+  const pokeWeaknessTranslated = dataFunctions.translateType(pokeWeakness)
   const pokeAttackQuick = pokeDetails["quick-move"]
   const pokeAttackSpecial = pokeDetails["special-attack"]
-  const pokeAttackQuickList = showAttacks(pokeAttackQuick)
-  const pokeAttackSpecialList = showAttacks(pokeAttackSpecial)
-  const pokeEvolutionsResult = joinEvolutions(pokeDetails)
+  const pokeAttackQuickList = dataFunctions.showAttacks(pokeAttackQuick)
+  const pokeAttackSpecialList = dataFunctions.showAttacks(pokeAttackSpecial)
+  const pokeEvolutionsResult = dataFunctions.joinEvolutions(pokeDetails)
   pokeDialogUpperDiv.className = "dialog-div" //agregando el atributo clase al div superior
   pokeDialogUpperDiv.id = "dialog-upper-div" //agregando el atributo id al div superior
   pokeDialogMiddleDiv.className = "dialog-div" //agregando el atributo clase al div intermedio
@@ -297,173 +297,3 @@ function closeDialog() { //declarando función para cerrar el elemento dialog
 }
 
 window.addEventListener("load", openPokeDialog()); //ejecutando función openPokeDialog al cargar la página
-
-//==================FUNCIONES PARA TRADUCIR TIPOS DE POKEMON=====================
-
-function translateType(typeArr) {
-  const translatedTypeArr = []
-  for (let i = 0; i<typeArr.length; i++)
-    if (typeArr[i] === "steel") {
-      translatedTypeArr.push("acero")
-    } else if (typeArr[i] === "water") {
-      translatedTypeArr.push("agua")
-    } else if (typeArr[i] === "bug") {
-      translatedTypeArr.push("bicho")
-    } else if (typeArr[i] === "dragon") {
-      translatedTypeArr.push("dragón")
-    } else if (typeArr[i] === "electric") {
-      translatedTypeArr.push("eléctrico")
-    } else if (typeArr[i] === "ghost") {
-      translatedTypeArr.push("fantasma")
-    } else if (typeArr[i] === "fire") {
-      translatedTypeArr.push("fuego")
-    } else if (typeArr[i] === "fairy") {
-      translatedTypeArr.push("hada")
-    } else if (typeArr[i] === "poison") {
-      translatedTypeArr.push("veneno")
-    } else if (typeArr[i] === "grass") {
-      translatedTypeArr.push("hierba")
-    } else if (typeArr[i] === "psychic") {
-      translatedTypeArr.push("psíquico")
-    } else if (typeArr[i] === "flying") {
-      translatedTypeArr.push("volador")
-    } else if (typeArr[i] === "dark") {
-      translatedTypeArr.push("siniestro")
-    } else if (typeArr[i] === "rock") {
-      translatedTypeArr.push("roca")
-    } else if (typeArr[i] === "ground") {
-      translatedTypeArr.push("tierra")
-    } else if (typeArr[i] === "normal") {
-      translatedTypeArr.push("normal")
-    } else if (typeArr[i] === "ice") {
-      translatedTypeArr.push("hielo")
-    } else if (typeArr[i] === "fighting") {
-      translatedTypeArr.push("lucha")
-    } 
-  return translatedTypeArr;
-}
-
-//==================FUNCIONES PARA MOSTRAR IMAGEN DE TIPOS DE POKEMON=====================
-function createImgSrcArr(typeArr) {
-  const imgSrcArr = []
-  for (let i = 0; i < typeArr.length; i++) {
-    if (typeArr[i] === "steel") {
-      const imgSrcSteel = "./img/pokemon-types/tipo-acero.jpg"
-      imgSrcArr.push(imgSrcSteel)
-    } else if (typeArr[i] === "water") {
-      const imgSrcWater = "./img/pokemon-types/tipo-agua.jpg"
-      imgSrcArr.push(imgSrcWater)
-    } else if (typeArr[i] === "bug") {
-      const imgSrcBug = "./img/pokemon-types/tipo-bicho.jpg"
-      imgSrcArr.push(imgSrcBug)
-    } else if (typeArr[i] === "dragon") {
-      const imgSrcDragon = "./img/pokemon-types/tipo-dragon.jpg"
-      imgSrcArr.push(imgSrcDragon)
-    } else if (typeArr[i] === "electric") {
-      const imgSrcElectric = "./img/pokemon-types/tipo-electrico.jpg"
-      imgSrcArr.push(imgSrcElectric)
-    } else if (typeArr[i] === "ghost") {
-      const imgSrcGhost = "./img/pokemon-types/tipo-fantasma.jpg"
-      imgSrcArr.push(imgSrcGhost)
-    } else if (typeArr[i] === "fire") {
-      const imgSrcFire = "./img/pokemon-types/tipo-fuego.jpg"
-      imgSrcArr.push(imgSrcFire)
-    } else if (typeArr[i] === "fairy") {
-      const imgSrcFairy = "./img/pokemon-types/tipo-hada.jpg"
-      imgSrcArr.push(imgSrcFairy)
-    } else if (typeArr[i] === "poison") {
-      const imgSrcPoison = "./img/pokemon-types/tipo-veneno.jpg"
-      imgSrcArr.push(imgSrcPoison)
-    } else if (typeArr[i] === "grass") {
-      const imgSrcGrass = "./img/pokemon-types/tipo-planta.jpg"
-      imgSrcArr.push(imgSrcGrass)
-    } else if (typeArr[i] === "psychic") {
-      const imgSrcPsychic = "./img/pokemon-types/tipo-psiquico.jpg"
-      imgSrcArr.push(imgSrcPsychic)
-    } else if (typeArr[i] === "flying") {
-      const imgSrcFlying = "./img/pokemon-types/tipo-volador.jpg"
-      imgSrcArr.push(imgSrcFlying)
-    } else if (typeArr[i] === "dark") {
-      const imgSrcDark = "./img/pokemon-types/tipo-siniestro.jpg"
-      imgSrcArr.push(imgSrcDark)
-    } else if (typeArr[i] === "rock") {
-      const imgSrcRock = "./img/pokemon-types/tipo-roca.jpg"
-      imgSrcArr.push(imgSrcRock)
-    } else if (typeArr[i] === "ground") {
-      const imgSrcGround = "./img/pokemon-types/tipo-tierra.jpg"
-      imgSrcArr.push(imgSrcGround)
-    } else if (typeArr[i] === "normal") {
-      const imgSrcNormal = "./img/pokemon-types/tipo-normal.jpg"
-      imgSrcArr.push(imgSrcNormal)
-    } else if (typeArr[i] === "ice") {
-      const imgSrcIce = "./img/pokemon-types/tipo-hielo.jpg"
-      imgSrcArr.push(imgSrcIce)
-    } else if (typeArr[i] === "fighting") {
-      const imgSrcFighting = "./img/pokemon-types/tipo-lucha.jpg"
-      imgSrcArr.push(imgSrcFighting)
-    } 
-  } return imgSrcArr;
-}
-
-function createImg(imgSrcArr) {
-  if (imgSrcArr.length === 1) {
-    return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">';
-  } else {
-    return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">' + '<img src="' + imgSrcArr[1] + '" alt= "tipo de pokemon" class="image">'
-  }
-}
-
-//==============FUNCIONES PARA MOSTRAR LOS ATAQUES RAPIDOS Y CARGADOS==============
-function showAttacks(attacksArr) {
-  if (attacksArr.length === 1) {
-    return attacksArr[0].name
-  } else if (attacksArr.length === 2) {
-    return attacksArr[0].name + ', ' + attacksArr[1].name
-  } else {
-    return attacksArr[0].name + ', ' + attacksArr[1].name + ', ' + attacksArr[2].name
-  }
-}
-
-//=======================FUNCIONES PARA MOSTRAR LAS EVOLUCIONES=====================
-function listPrevEvolutions (Obj) {
-  const prevEvo = []
-  if (Obj.evolution['prev-evolution'] !== undefined) {
-    if (Obj.evolution['prev-evolution'][0]['prev-evolution'] !== undefined) {
-      prevEvo.push(Obj.evolution['prev-evolution'][0]['prev-evolution'][0].name);
-      prevEvo.push(Obj.evolution['prev-evolution'][0].name);
-      return prevEvo
-    } else {
-      prevEvo.push(Obj.evolution['prev-evolution'][0].name);
-      return prevEvo
-    }
-  } 
-}
- 
-function listNextEvolutions (Obj) {
-  const nextEvo = []
-  if (Obj.evolution['next-evolution'] !== undefined) {
-    if (Obj.evolution['next-evolution'][0]['next-evolution'] !== undefined) {
-      nextEvo.push(Obj.evolution['next-evolution'][0].name);
-      nextEvo.push(Obj.evolution['next-evolution'][0]['next-evolution'][0].name);
-      return nextEvo
-    } else {
-      nextEvo.push(Obj.evolution['next-evolution'][0].name);
-      return nextEvo
-    }
-  }
-}
-
-function joinEvolutions (pokemon) {
-  const result = []
-  const prevEvolutions = listPrevEvolutions(pokemon)
-  const nextEvolutions = listNextEvolutions(pokemon)
-  const currentEvolution = pokemon.name
-  if (prevEvolutions === undefined) {
-    result.push(currentEvolution, nextEvolutions)
-  } else if ( nextEvolutions === undefined) {
-    result.push(prevEvolutions, currentEvolution)
-  } else {
-    result.push(prevEvolutions, currentEvolution, nextEvolutions)
-  }
-  return result.flat(1).join(' -> ');  
-}
