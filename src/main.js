@@ -249,17 +249,35 @@ function printPokeDetails(pokemon) { //declarando función para agregarr detalle
   const pokeDialogUpperDiv = document.createElement("div"); //creando div superior que irá dentro del dialog
   const pokeDialogMiddleDiv = document.createElement("div"); //creando div intermedio que irá dentro del dialog
   const pokeDialogLowerDiv = document.createElement("div"); //creando div inferior que irá dentro del dialog 
+  const pokeDialogLowestDiv = document.createElement("div"); //creando div adicional que irá dentro del dialog
   const pokeDetails = pokeData.find((poke) => pokemon === poke.name); //buscando dentro de la data el nombre del pokemon que coincide con el ingresado
+  const pokeTypes = pokeDetails.type
+  const pokeImgSrcArr = createImgSrcArr(pokeTypes)
+  const createTypeImg = createImg(pokeImgSrcArr)
+  const pokeResistant = pokeDetails.resistant
+  const pokeWeakness = pokeDetails.weaknesses
+  const pokeResistantTranslated = translateType(pokeResistant)
+  const pokeWeaknessTranslated = translateType(pokeWeakness)
+  const pokeAttackQuick = pokeDetails["quick-move"]
+  const pokeAttackSpecial = pokeDetails["special-attack"]
+  const pokeAttackQuickList = showAttacks(pokeAttackQuick)
+  const pokeAttackSpecialList = showAttacks(pokeAttackSpecial)
+  const pokeEvolutionsResult = joinEvolutions(pokeDetails)
   pokeDialogUpperDiv.className = "dialog-div" //agregando el atributo clase al div superior
+  pokeDialogUpperDiv.id = "dialog-upper-div" //agregando el atributo id al div superior
   pokeDialogMiddleDiv.className = "dialog-div" //agregando el atributo clase al div intermedio
   pokeDialogLowerDiv.className = "dialog-lower-div" //agregando el atributo clase al div inferior
-  pokeDialogLowerDiv.id = "dialog-div" //agregando el atributo id al div inferior
-  pokeDialogUpperDiv.innerHTML += `<h2>${pokeDetails.num}</h2><h2>${pokeDetails.name.toUpperCase()}</h2><h2>${pokeDetails.type.join(", ")}</h2>`; //agregando el número, nombre y tipo de pokemon al div superior
+  pokeDialogLowerDiv.id = "dialog-lower-div" //agregando el atributo id al div inferior
+  pokeDialogLowestDiv.className = "dialog-div" //agregando el atributo clase al div adicional
+  pokeDialogLowestDiv.id = "dialog-lowest-div" //agregando el atributo id al div adicional
+  pokeDialogUpperDiv.innerHTML += `<h2>${pokeDetails.num}</h2><h2>${pokeDetails.name.toUpperCase()}</h2><h2 id="img-container">${createTypeImg}</h2>`; //agregando el número, nombre y tipo de pokemon al div superior
   pokeDialogMiddleDiv.innerHTML += `<img src= "${pokeDetails.img}" alt= "pokeImg${pokeDetails.name}" class="image">`; //agregando imagen al div intermedio
-  pokeDialogLowerDiv.innerHTML += `<h3>Resistente a: ${pokeDetails.resistant.join(", ")}<h3><h3>Débil frente a: ${pokeDetails.weaknesses.join(", ")}</h3><h3>Ataque(s) rápido(s): ${pokeDetails["quick-move"][0].name}, ${pokeDetails["quick-move"][1].name}</h3><h3>Ataque(s) cargado(s): ${pokeDetails["special-attack"][0].name}, ${pokeDetails["special-attack"][1].name}, ${pokeDetails["special-attack"][2].name}</h3><h3>Evoluciones: ${pokeDetails.evolution}</h3>`; //agregando otros detalles al div inferior
+  pokeDialogLowerDiv.innerHTML += `<h3> Resistente a: ${pokeResistantTranslated.join(", ")}<h3><h3>Débil frente a: ${pokeWeaknessTranslated.join(", ")}</h3><h3>Ataque(s) rápido(s): ${pokeAttackQuickList}</h3><h3>Ataque(s) cargado(s): ${pokeAttackSpecialList}</h3>`; //agregando otros detalles al div inferior
+  pokeDialogLowestDiv.innerHTML += `<h3>Evoluciones: ${pokeEvolutionsResult}</h3>`
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogUpperDiv);//agregando el div superior al elemento dialog
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogMiddleDiv);//agregando el div intermedio al elemento dialog
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowerDiv);//agregando el div inferior al elemento dialog
+  pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowestDiv);//agregando el div inferior al elemento dialog
 }
 
 function showDialog() { //declarando función para mostrar elemento dialog
@@ -279,3 +297,173 @@ function closeDialog() { //declarando función para cerrar el elemento dialog
 }
 
 window.addEventListener("load", openPokeDialog()); //ejecutando función openPokeDialog al cargar la página
+
+//==================FUNCIONES PARA TRADUCIR TIPOS DE POKEMON=====================
+
+function translateType(typeArr) {
+  const translatedTypeArr = []
+  for (let i = 0; i<typeArr.length; i++)
+    if (typeArr[i] === "steel") {
+      translatedTypeArr.push("acero")
+    } else if (typeArr[i] === "water") {
+      translatedTypeArr.push("agua")
+    } else if (typeArr[i] === "bug") {
+      translatedTypeArr.push("bicho")
+    } else if (typeArr[i] === "dragon") {
+      translatedTypeArr.push("dragón")
+    } else if (typeArr[i] === "electric") {
+      translatedTypeArr.push("eléctrico")
+    } else if (typeArr[i] === "ghost") {
+      translatedTypeArr.push("fantasma")
+    } else if (typeArr[i] === "fire") {
+      translatedTypeArr.push("fuego")
+    } else if (typeArr[i] === "fairy") {
+      translatedTypeArr.push("hada")
+    } else if (typeArr[i] === "poison") {
+      translatedTypeArr.push("veneno")
+    } else if (typeArr[i] === "grass") {
+      translatedTypeArr.push("hierba")
+    } else if (typeArr[i] === "psychic") {
+      translatedTypeArr.push("psíquico")
+    } else if (typeArr[i] === "flying") {
+      translatedTypeArr.push("volador")
+    } else if (typeArr[i] === "dark") {
+      translatedTypeArr.push("siniestro")
+    } else if (typeArr[i] === "rock") {
+      translatedTypeArr.push("roca")
+    } else if (typeArr[i] === "ground") {
+      translatedTypeArr.push("tierra")
+    } else if (typeArr[i] === "normal") {
+      translatedTypeArr.push("normal")
+    } else if (typeArr[i] === "ice") {
+      translatedTypeArr.push("hielo")
+    } else if (typeArr[i] === "fighting") {
+      translatedTypeArr.push("lucha")
+    } 
+  return translatedTypeArr;
+}
+
+//==================FUNCIONES PARA MOSTRAR IMAGEN DE TIPOS DE POKEMON=====================
+function createImgSrcArr(typeArr) {
+  const imgSrcArr = []
+  for (let i = 0; i < typeArr.length; i++) {
+    if (typeArr[i] === "steel") {
+      const imgSrcSteel = "./img/pokemon-types/tipo-acero.jpg"
+      imgSrcArr.push(imgSrcSteel)
+    } else if (typeArr[i] === "water") {
+      const imgSrcWater = "./img/pokemon-types/tipo-agua.jpg"
+      imgSrcArr.push(imgSrcWater)
+    } else if (typeArr[i] === "bug") {
+      const imgSrcBug = "./img/pokemon-types/tipo-bicho.jpg"
+      imgSrcArr.push(imgSrcBug)
+    } else if (typeArr[i] === "dragon") {
+      const imgSrcDragon = "./img/pokemon-types/tipo-dragon.jpg"
+      imgSrcArr.push(imgSrcDragon)
+    } else if (typeArr[i] === "electric") {
+      const imgSrcElectric = "./img/pokemon-types/tipo-electrico.jpg"
+      imgSrcArr.push(imgSrcElectric)
+    } else if (typeArr[i] === "ghost") {
+      const imgSrcGhost = "./img/pokemon-types/tipo-fantasma.jpg"
+      imgSrcArr.push(imgSrcGhost)
+    } else if (typeArr[i] === "fire") {
+      const imgSrcFire = "./img/pokemon-types/tipo-fuego.jpg"
+      imgSrcArr.push(imgSrcFire)
+    } else if (typeArr[i] === "fairy") {
+      const imgSrcFairy = "./img/pokemon-types/tipo-hada.jpg"
+      imgSrcArr.push(imgSrcFairy)
+    } else if (typeArr[i] === "poison") {
+      const imgSrcPoison = "./img/pokemon-types/tipo-veneno.jpg"
+      imgSrcArr.push(imgSrcPoison)
+    } else if (typeArr[i] === "grass") {
+      const imgSrcGrass = "./img/pokemon-types/tipo-planta.jpg"
+      imgSrcArr.push(imgSrcGrass)
+    } else if (typeArr[i] === "psychic") {
+      const imgSrcPsychic = "./img/pokemon-types/tipo-psiquico.jpg"
+      imgSrcArr.push(imgSrcPsychic)
+    } else if (typeArr[i] === "flying") {
+      const imgSrcFlying = "./img/pokemon-types/tipo-volador.jpg"
+      imgSrcArr.push(imgSrcFlying)
+    } else if (typeArr[i] === "dark") {
+      const imgSrcDark = "./img/pokemon-types/tipo-siniestro.jpg"
+      imgSrcArr.push(imgSrcDark)
+    } else if (typeArr[i] === "rock") {
+      const imgSrcRock = "./img/pokemon-types/tipo-roca.jpg"
+      imgSrcArr.push(imgSrcRock)
+    } else if (typeArr[i] === "ground") {
+      const imgSrcGround = "./img/pokemon-types/tipo-tierra.jpg"
+      imgSrcArr.push(imgSrcGround)
+    } else if (typeArr[i] === "normal") {
+      const imgSrcNormal = "./img/pokemon-types/tipo-normal.jpg"
+      imgSrcArr.push(imgSrcNormal)
+    } else if (typeArr[i] === "ice") {
+      const imgSrcIce = "./img/pokemon-types/tipo-hielo.jpg"
+      imgSrcArr.push(imgSrcIce)
+    } else if (typeArr[i] === "fighting") {
+      const imgSrcFighting = "./img/pokemon-types/tipo-lucha.jpg"
+      imgSrcArr.push(imgSrcFighting)
+    } 
+  } return imgSrcArr;
+}
+
+function createImg(imgSrcArr) {
+  if (imgSrcArr.length === 1) {
+    return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">';
+  } else {
+    return '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">' + '<img src="' + imgSrcArr[1] + '" alt= "tipo de pokemon" class="image">'
+  }
+}
+
+//==============FUNCIONES PARA MOSTRAR LOS ATAQUES RAPIDOS Y CARGADOS==============
+function showAttacks(attacksArr) {
+  if (attacksArr.length === 1) {
+    return attacksArr[0].name
+  } else if (attacksArr.length === 2) {
+    return attacksArr[0].name + ', ' + attacksArr[1].name
+  } else {
+    return attacksArr[0].name + ', ' + attacksArr[1].name + ', ' + attacksArr[2].name
+  }
+}
+
+//=======================FUNCIONES PARA MOSTRAR LAS EVOLUCIONES=====================
+function listPrevEvolutions (Obj) {
+  const prevEvo = []
+  if (Obj.evolution['prev-evolution'] !== undefined) {
+    if (Obj.evolution['prev-evolution'][0]['prev-evolution'] !== undefined) {
+      prevEvo.push(Obj.evolution['prev-evolution'][0]['prev-evolution'][0].name);
+      prevEvo.push(Obj.evolution['prev-evolution'][0].name);
+      return prevEvo
+    } else {
+      prevEvo.push(Obj.evolution['prev-evolution'][0].name);
+      return prevEvo
+    }
+  } 
+}
+ 
+function listNextEvolutions (Obj) {
+  const nextEvo = []
+  if (Obj.evolution['next-evolution'] !== undefined) {
+    if (Obj.evolution['next-evolution'][0]['next-evolution'] !== undefined) {
+      nextEvo.push(Obj.evolution['next-evolution'][0].name);
+      nextEvo.push(Obj.evolution['next-evolution'][0]['next-evolution'][0].name);
+      return nextEvo
+    } else {
+      nextEvo.push(Obj.evolution['next-evolution'][0].name);
+      return nextEvo
+    }
+  }
+}
+
+function joinEvolutions (pokemon) {
+  const result = []
+  const prevEvolutions = listPrevEvolutions(pokemon)
+  const nextEvolutions = listNextEvolutions(pokemon)
+  const currentEvolution = pokemon.name
+  if (prevEvolutions === undefined) {
+    result.push(currentEvolution, nextEvolutions)
+  } else if ( nextEvolutions === undefined) {
+    result.push(prevEvolutions, currentEvolution)
+  } else {
+    result.push(prevEvolutions, currentEvolution, nextEvolutions)
+  }
+  return result.flat(1).join(' -> ');  
+}
