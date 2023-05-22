@@ -27,6 +27,11 @@ div#homebanner {
   justify-content: space-evenly;
 }
 
+div#count-div {
+  display: flex;
+  justify-content: space-around;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
@@ -98,10 +103,6 @@ dialog::backdrop {
   background: rgba(36, 36, 36, 0.3);
 }
 
-dialog .close-button {
-  align-self: center;
-}
-
 div .dialog-div {
   display: flex;
   justify-content: space-around;
@@ -112,6 +113,12 @@ div .dialog-div {
   display: inline;
   text-align: left;
 }
+
+dialog button {
+  width: fit-content;
+  align-self: center;
+}
+
 
 section#bar {
   margin: 10px;

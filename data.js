@@ -213,5 +213,16 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
     return result.flat().join(' -> ');  
   },
 
+  evaluateCaptureRate: function (data) {
+    if (data === null) {
+      return "Sin información"
+    } else if (data === "not in capture") {
+      return "No se puede capturar"
+    } else if (data === "0") {
+      return "No se puede capturar"
+    } else {
+      return data
+    }
+  }
 };
 export default dataFunctions; //exportando objeto dataFunctions
