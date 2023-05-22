@@ -39,10 +39,9 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
     return data.pokemon.filter((poke) => { //tomando los tipos retornados por la línea siguiente, filtrándolos en la data y retornándolos como objeto
       return poke.type.includes(input);//retornando los tipos de pokemones que incluyen el input
     });
-
-function checkFilter (value) {
+  },
+checkFilter: function (value) {
       return data.pokemon.filter(poke => poke.type === value);
-      if 
   }
 }
 

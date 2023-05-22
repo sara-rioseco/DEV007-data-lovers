@@ -1,6 +1,7 @@
 import dataFunctions from "./data.js"; //importando objeto que contiene funciones desde data.js
 import data from "./data/pokemon/pokemon.js"; //importando data
 
+
 dataFunctions.showPokemon(); //ejecutando función para mostrar pokemones
 
 const pokeContainer = document.querySelector(".flex-container"); //seleccionando contenedor flex para pokemones
@@ -184,6 +185,19 @@ function orderList90() {
   }
   return sortedList.sort().reverse();
 }
+
+const checkboxes = document.querySelectorAll('.dropdown-option');
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', (event) => {
+    if (event.target.checked) {
+      const value = event.target.value;
+      const checkedType = dataFunctions.checkFilter(value);
+      console.log(checkedType)
+      return checkedType
+    }
+  });
+});
 
 /*function createPokeDialog (e) {
   e.preventDefault();
