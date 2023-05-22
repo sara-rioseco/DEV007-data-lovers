@@ -7,11 +7,17 @@ const pokeContainer = document.querySelector(".flex-container"); //seleccionando
 const pokeInput = document.getElementById("searchbar"); //seleccionando barra búsqueda
 const searchBttn = document.getElementById("searchbutton"); //seleccionando botón búqueda
 const selectMenu = document.getElementById("selectmenu"); //seleccionando menú para ordenar
-const pokeDialog = document.getElementById("dialog-modal");
-const closeBttn = document.createElement("button");
-closeBttn.id = "close-button";
-closeBttn.className = "close-button";
-closeBttn.innerHTML = "Cerrar";
+const pokeDialog = document.getElementById("dialog-modal"); //seleccionando elemento dialog
+const countPokeDialog = document.getElementById("count-dialog")
+const countPokeDialogBttn = document.getElementById("count-button")
+const closeBttn = document.createElement("button"); //creando botón cerrar
+closeBttn.id = "close-button"; //asignando id al botón cerrar
+closeBttn.className = "close-button"; //asignando clase al botón cerrar
+closeBttn.innerHTML = "Cerrar"; //asignando contenido del botón
+const closeCountBttn = document.createElement("button"); //creando botón cerrar para mensaje de contador
+closeCountBttn.id = "count-close-button"; //asignando id al botón cerrar
+closeCountBttn.className = "count-close-button"; //asignando clase al botón cerrar
+closeCountBttn.innerHTML = "Cerrar"; //asignando contenido del botón
 
 //====================FUNCIÓN PARA MOSTRAR DATA=============================
 dataFunctions.showPokemon(); //ejecutando función para mostrar pokemones
@@ -20,6 +26,7 @@ dataFunctions.showPokemon(); //ejecutando función para mostrar pokemones
 searchBttn.addEventListener("click", (e) => {
   //agregando event listener al botón búsqueda
   e.preventDefault(); //evitando que se cargue de nuevo automáticamente
+
   const searchNameResult = dataFunctions.searchName(
     pokeInput.value.toLowerCase()
   ); //declarando variable que guarda nombre ya filtrado según el input ingresado
@@ -235,11 +242,11 @@ window.addEventListener("load", select); //ejecutando función select al cargar 
 //====================FUNCIONES PARA MOSTRAR DIALOG======================
 function openPokeDialog() { //declarando función para abrir elemento dialog
   const pokeLiOnScreen = document.querySelectorAll("li"); //seleccionando cada elemento li en pantalla
+  pokeDialog.style.display = 'flex' //cambiando estilo de display de none a flex para mostrar dialog
   pokeLiOnScreen.forEach((pokemon) => { //recorriendo por cada pokemon dentro de la lista de li
     pokemon.addEventListener("click", () => { //agregando event listener para que al hacer click ejecute lo siguiente
       showDialog(); //ejecutando función showDialog para mostrar elemento dialog
       printPokeDetails((pokemon.innerText.slice(5).toLowerCase())); //mostrando dentro del elemento dialog información del pokemon al que se le hizo click
-
     });
   });
 }
@@ -251,18 +258,18 @@ function printPokeDetails(pokemon) { //declarando función para agregarr detalle
   const pokeDialogLowerDiv = document.createElement("div"); //creando div inferior que irá dentro del dialog 
   const pokeDialogLowestDiv = document.createElement("div"); //creando div adicional que irá dentro del dialog
   const pokeDetails = pokeData.find((poke) => pokemon === poke.name); //buscando dentro de la data el nombre del pokemon que coincide con el ingresado
-  const pokeTypes = pokeDetails.type
-  const pokeImgSrcArr = dataFunctions.createImgSrcArr(pokeTypes)
-  const createTypeImg = dataFunctions.createImg(pokeImgSrcArr)
-  const pokeResistant = pokeDetails.resistant
-  const pokeWeakness = pokeDetails.weaknesses
-  const pokeResistantTranslated = dataFunctions.translateType(pokeResistant)
-  const pokeWeaknessTranslated = dataFunctions.translateType(pokeWeakness)
-  const pokeAttackQuick = pokeDetails["quick-move"]
-  const pokeAttackSpecial = pokeDetails["special-attack"]
-  const pokeAttackQuickList = dataFunctions.showAttacks(pokeAttackQuick)
-  const pokeAttackSpecialList = dataFunctions.showAttacks(pokeAttackSpecial)
-  const pokeEvolutionsResult = dataFunctions.joinEvolutions(pokeDetails)
+  const pokeTypes = pokeDetails.type //declarando variable que almacena los tipos de pokemon
+  const pokeImgSrcArr = dataFunctions.createImgSrcArr(pokeTypes) //declarando variable que almacena función createImgSrcArr
+  const createTypeImg = dataFunctions.createImg(pokeImgSrcArr) //declarando variable que almacena función createImg
+  const pokeResistant = pokeDetails.resistant //declarando variable que almacena resistencias de pokemon
+  const pokeWeakness = pokeDetails.weaknesses //declarando variable que almacena debilidades de pokemon
+  const pokeResistantTranslated = dataFunctions.translateType(pokeResistant) //declarando variable que almacena resistencias de pokemon traducidas
+  const pokeWeaknessTranslated = dataFunctions.translateType(pokeWeakness) //declarando variable que almacena debilidades de pokemon traducidas
+  const pokeAttackQuick = pokeDetails["quick-move"] //declarando variable que almacena ataques rápidos de pokemon
+  const pokeAttackSpecial = pokeDetails["special-attack"] //declarando variable que almacena ataques cargados de pokemon
+  const pokeAttackQuickList = dataFunctions.showAttacks(pokeAttackQuick) //declarando variable que almacena función showAttacks para ataques rápidos
+  const pokeAttackSpecialList = dataFunctions.showAttacks(pokeAttackSpecial) //declarando variable que almacena función showAttacks para ataques cargados
+  const pokeEvolutionsResult = dataFunctions.joinEvolutions(pokeDetails) //declarando variable que almacena función joinEvolutions
   pokeDialogUpperDiv.className = "dialog-div" //agregando el atributo clase al div superior
   pokeDialogUpperDiv.id = "dialog-upper-div" //agregando el atributo id al div superior
   pokeDialogMiddleDiv.className = "dialog-div" //agregando el atributo clase al div intermedio
@@ -272,8 +279,8 @@ function printPokeDetails(pokemon) { //declarando función para agregarr detalle
   pokeDialogLowestDiv.id = "dialog-lowest-div" //agregando el atributo id al div adicional
   pokeDialogUpperDiv.innerHTML += `<h2>${pokeDetails.num}</h2><h2>${pokeDetails.name.toUpperCase()}</h2><h2 id="img-container">${createTypeImg}</h2>`; //agregando el número, nombre y tipo de pokemon al div superior
   pokeDialogMiddleDiv.innerHTML += `<img src= "${pokeDetails.img}" alt= "pokeImg${pokeDetails.name}" class="image">`; //agregando imagen al div intermedio
-  pokeDialogLowerDiv.innerHTML += `<h3> Resistente a: ${pokeResistantTranslated.join(", ")}<h3><h3>Débil frente a: ${pokeWeaknessTranslated.join(", ")}</h3><h3>Ataque(s) rápido(s): ${pokeAttackQuickList}</h3><h3>Ataque(s) cargado(s): ${pokeAttackSpecialList}</h3>`; //agregando otros detalles al div inferior
-  pokeDialogLowestDiv.innerHTML += `<h3>Evoluciones: ${pokeEvolutionsResult}</h3>`
+  pokeDialogLowerDiv.innerHTML += `<h3> Resistente a: ${pokeResistantTranslated.join(", ")}<h3><h3>Débil frente a: ${pokeWeaknessTranslated.join(", ")}</h3><h3>Ataque(s) rápido(s): ${pokeAttackQuickList}</h3><h3>Ataque(s) cargado(s): ${pokeAttackSpecialList}</h3><h3>Tasa de Aparación: ${dataFunctions.evaluateCaptureRate(pokeDetails["spawn-chance"])}<br>Tasa de Captura: ${dataFunctions.evaluateCaptureRate(pokeDetails.encounter["base-capture-rate"])}<br>Tasa de Huída: ${dataFunctions.evaluateCaptureRate(pokeDetails.encounter["base-flee-rate"])}</h3>`; //agregando otros detalles al div inferior
+  pokeDialogLowestDiv.innerHTML += `<h3>Evoluciones: ${pokeEvolutionsResult}</h3>` //agregando evoluciones al div intermedio
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogUpperDiv);//agregando el div superior al elemento dialog
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogMiddleDiv);//agregando el div intermedio al elemento dialog
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowerDiv);//agregando el div inferior al elemento dialog
@@ -294,6 +301,37 @@ function closePokeDialog () { //declarando función para dar acción al botón c
 function closeDialog() { //declarando función para cerrar el elemento dialog
   pokeDialog.close();//cerrando elemento dialog
   pokeDialog.innerHTML = "" //vaciando contenedor para que cuando se vuelva a abrir solo muestre la nueva data
+}
+//==============FUNCIONES PARA CONTAR POKEMONES EN PANTALLA================
+countPokeDialogBttn.addEventListener("click", () => { //agregando event listener para que al hacer click ejecute lo siguiente
+  showCountDialog(); //ejecutando función showCountDialog para mostrar elemento dialog
+});
+
+function countPokeOnScreen() {
+  const pokeLiOnScreen = document.getElementsByTagName("li"); //seleccionando cada elemento li en pantalla
+  return pokeLiOnScreen.length;
+}
+
+function showCountDialog() { //declarando función para mostrar elemento dialog
+  const pokeLiOnScreen = countPokeOnScreen() //declarando variable que almacena función countPokeOnScreen
+  const messageContainer = document.createElement("h2")
+  messageContainer.id = "message-container"
+  messageContainer.className = "message-container"
+  messageContainer.innerHTML = `En este momento hay ${pokeLiOnScreen} pokemon(es) en pantalla.`
+  countPokeDialog.insertAdjacentElement("beforeend", messageContainer);
+  countPokeDialog.insertAdjacentElement("beforeend", closeCountBttn);//agregando botón de cerrar al elemento dialog
+  countPokeDialog.showModal();//abre elemento dialog como ventana modal
+  closeCountPokeDialog();//ejecuta función para cerrar dialog al presionar el botón cerrar
+}
+
+function closeCountPokeDialog () { //declarando función para dar acción al botón cerrar
+  const pokeDialogCloseBttn = document.getElementById("count-close-button") //almacenando botón cerrar en una variable
+  pokeDialogCloseBttn.addEventListener("click", () => closeCountDialog());//agregando event listener para que ejecute función closeDialog al hacer click en botón cerrar
+}
+
+function closeCountDialog() { //declarando función para cerrar el elemento dialog
+  countPokeDialog.close();//cerrando elemento dialog
+  countPokeDialog.innerHTML = "" //vaciando contenedor para que cuando se vuelva a abrir solo muestre la nueva data
 }
 
 window.addEventListener("load", openPokeDialog()); //ejecutando función openPokeDialog al cargar la página
