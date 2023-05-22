@@ -18,9 +18,6 @@ body {
   background-size: 500px;
   background-position: center;
 }
-.checkbox {
-  
-}
 div#homebanner {
   display: flex;
   align-items: center;

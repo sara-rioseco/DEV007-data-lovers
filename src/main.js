@@ -193,7 +193,6 @@ checkboxes.forEach(checkbox => {
     if (event.target.checked) {
       const value = event.target.value;
       const checkedType = dataFunctions.checkFilter(value);
-      console.log(checkedType)
       return checkedType
     }
   });
