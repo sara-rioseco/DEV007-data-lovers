@@ -40,8 +40,15 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       return poke.type.includes(input);//retornando los tipos de pokemones que incluyen el input
     });
   },
-  checkFilter: function (value) {
-    return data.pokemon.filter(poke => poke.type === value);
+  checkFilter: function (value) { //Declarando función que tomará valor de parámetro de checkbox
+    //return data.pokemon.filter(poke => poke.type === value);//Retornando el tipo de pokemon que coincide con la data de lo marcado
+    const pokemonesTypes = [];
+    data.pokemon.forEach(poke => {
+      if (poke.type.includes(value)) {
+        pokemonesTypes.push(poke)
+      }
+    })
+    return pokemonesTypes;
   }
 }
 
