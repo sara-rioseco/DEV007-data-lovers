@@ -46,7 +46,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
   //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
   translateType: function (typeArr) {
     const translatedTypeArr = []
-    for (let i = 0; i<typeArr.length; i++)
+    for (let i = 0; i<typeArr.length; i++) {
       if (typeArr[i] === "steel") {
         translatedTypeArr.push("acero")
       } else if (typeArr[i] === "water") {
@@ -84,7 +84,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       } else if (typeArr[i] === "fighting") {
         translatedTypeArr.push("lucha")
       } 
-    return translatedTypeArr;
+    } return translatedTypeArr;
   },
   //=============FUNCIONES PARA MOSTRAR IMAGEN DE TIPOS DE POKEMON==============
   createImgSrcArr: function (typeArr) {
@@ -217,9 +217,9 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
     if (data === null) {
       return "Sin información"
     } else if (data === "not in capture") {
-      return "No se puede capturar"
+      return "No disponible para captura"
     } else if (data === "0") {
-      return "No se puede capturar"
+      return "Sin información"
     } else {
       return data
     }
