@@ -62,21 +62,23 @@ ul {
 
 h1 {
   font-family: Oswald, serif;
-  color: rgb(0, 0, 0);
+  color: rgb(80, 80, 80);
   opacity: 1;
   font-size: 40px;
   font-style: bold;
-  text-shadow: 3px 3px 6px #6b6b6b;
+  text-shadow: 3px 3px 10px #ffffff,
+               -3px -3px 10px #ffffff;
   text-align: center;
 }
 
 h2 {
   font-family: Eczar, serif;
-  color: rgb(0, 0, 0);
+  color: rgb(80, 80, 80);
   opacity: 1;
   font-size: 20px;
   font-style: bold;
-  text-shadow: 3px 3px 6px #6b6b6b;
+  text-shadow: 3px 3px 8px #ffffff,
+               -3px -3px 8px #ffffff;
   text-align: center;
 }
 
