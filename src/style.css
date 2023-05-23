@@ -4,7 +4,7 @@ html {
   font-family: serif;
 }
 body {
-  cursor: url(/img/pngegg.png), auto;
+  display:flex;
   height: 90%;
   width: 95%;
   max-width: 1200px;
@@ -13,15 +13,21 @@ body {
   margin-top: 0%;
   margin-bottom: auto;
   padding: 50px;
-  text-align: center;
   background-image: url(img/poke-background-full.png);
   background-size: 500px;
   background-position: center;
+  justify-content: center;
 }
 div#homebanner {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: space-evenly;
+}
+
+div#count-div {
+  display: flex;
+  justify-content: space-around;
 }
 
 nav {
@@ -38,16 +44,18 @@ a {
   color: #379937;
 }
 
-body {
-  margin: 40px;
-}
-
 footer {
   font-size: smaller;
+  text-align: center;
 }
 
 ul {
   list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
 }
 
 h1 {
@@ -57,6 +65,7 @@ h1 {
   font-size: 40px;
   font-style: bold;
   text-shadow: 3px 3px 6px #6b6b6b;
+  text-align: center;
 }
 
 h2 {
@@ -66,7 +75,48 @@ h2 {
   font-size: 20px;
   font-style: bold;
   text-shadow: 3px 3px 6px #6b6b6b;
+  text-align: center;
 }
+
+h3 {
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  font-size: 16px;
+
+}
+
+dialog {
+  max-width: 500px;
+  border-style: none;
+  border-radius: 40px;
+  font-family: Quicksand, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+dialog::backdrop {
+  position: fixed;
+  inset: 0px;
+  background: rgba(36, 36, 36, 0.3);
+}
+
+div .dialog-div {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.dialog-div#dialog-lower-div{
+  display: inline;
+  text-align: left;
+}
+
+dialog button {
+  width: fit-content;
+  align-self: center;
+}
+
 
 section#bar {
   margin: 10px;
@@ -78,10 +128,6 @@ section#bar {
   margin: auto;
   align-self: center;
   max-width: 300px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 form.searchbar {
@@ -151,13 +197,14 @@ form.searchbar:after {
   font-family: Eczar, serif;
   color: rgb(0, 0, 0);
   width: 100%;
-  margin: 20px;
-  padding: 20px;
+  margin: auto;
+  padding: auto;
   font-size: 20px;
   font-style: bold;
   text-shadow: 3px 3px 10px #000000;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .pokeLi {
@@ -168,6 +215,7 @@ form.searchbar:after {
   padding: 20px;
   font-family: Quicksand, serif;
   border-radius: 40px;
+  text-align: center;
   cursor: pointer;
 }
 
