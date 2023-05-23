@@ -192,9 +192,7 @@ checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', (event) => {
     if (event.target.checked) {
       const value = event.target.value;
-      console.log (value)
       const checkedType = dataFunctions.checkFilter(value);
-      console.log (checkedType)
       return checkedType
     }
   });
