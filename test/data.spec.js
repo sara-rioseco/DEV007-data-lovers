@@ -1,4 +1,5 @@
 import dataFunctions from "../src/data.js";
+import data from "../src/data/pokemon/pokemon.js";
 
 describe("dataFunctions", () => {
   it("should be an object", () => {
@@ -54,6 +55,9 @@ describe("dataFunctions", () => {
     it('should return ["fuego", "agua"] for ["fire", "water"]', () => {
       expect(dataFunctions.translateType(typeArr2)).toEqual(translatedTypeArr2);
     });
+    it('should return an array containing all types translated into spanish', () => {
+      expect(dataFunctions.translateType(typeArrAll)).toEqual(translatedTypeArrAll);
+    });
   });
 
   describe("dataFunctions.createImgSrcArr", () => {
@@ -66,6 +70,9 @@ describe("dataFunctions", () => {
     it('should return ["./img/pokemon-types/tipo-fuego.jpg", "./img/pokemon-types/tipo-agua.jpg"] for ["fire", "water"]', () => {
       expect(dataFunctions.createImgSrcArr(typeArr2)).toEqual(imgSrcArr2);
     });
+    it("should return an array containing all type images src", () => {
+      expect(dataFunctions.createImgSrcArr(typeArrAll)).toEqual(imgSrcArrAll);
+    });
   });
 
   describe("dataFunctions.createImg", () => {
@@ -74,6 +81,9 @@ describe("dataFunctions", () => {
     });
     it("should return a string", () => {
       expect(typeof dataFunctions.createImg(imgSrcArr)).toBe("string");
+    });
+    it("should return a string", () => {
+      expect(typeof dataFunctions.createImg(imgSrcArr2)).toBe("string");
     });
   });
 
@@ -101,61 +111,141 @@ describe("dataFunctions", () => {
         ])
       ).toBe("string");
     });
+    it("should return one value for a one element array", () => {
+      expect(dataFunctions.showAttacks(attacksArr)).toEqual("water gun");
+    });
+    it("should return all values for a three or more element array", () => {
+      expect(dataFunctions.showAttacks(attacksArr2)).toBe("confusion, struggle bug, bug bite");
+    });
   });
 
   describe("dataFunctions.listPrevEvolutions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.listPrevEvolutions).toBe("function");
     });
-    /*    it('should return an array', () => {
-      expect(typeof dataFunctions.listPrevEvolutions()).toBe('array');
-    });*/
+    it("should return an object", () => {
+      expect(typeof dataFunctions.listPrevEvolutions(pokeDetails1)).toEqual(
+        "object"
+      );
+    });
   });
 
   describe("dataFunctions.listNextEvolutions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.listNextEvolutions).toBe("function");
     });
-    /*   it('should return an array', () => {
-      expect(typeof dataFunctions.listNextEvolutions()).toBe('array');
+    it("should return an object", () => {
+      expect(typeof dataFunctions.listNextEvolutions(pokeDetails1)).toEqual(
+        "object"
+      );
     });
-  */
   });
 
   describe("dataFunctions.joinEvolutions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.joinEvolutions).toBe("function");
     });
-    /*   it('should return a string', () => {
-      expect(typeof dataFunctions.joinEvolutions()).toBe('string');
+    it("should return a string", () => {
+      expect(typeof dataFunctions.joinEvolutions(pokeDetails1)).toBe("string");
     });
-  });
-*/
-    describe("dataFunctions.evaluateCaptureRate", () => {
-      it("should be a function", () => {
-        expect(typeof dataFunctions.evaluateCaptureRate).toBe("function");
-      });
-      it('should return "Sin información" for null', () => {
-        expect(dataFunctions.evaluateCaptureRate(null)).toBe("Sin información");
-      });
-      it('should return "No disponible para captura" for "not in capture"', () => {
-        expect(dataFunctions.evaluateCaptureRate("not in capture")).toBe(
-          "No disponible para captura"
-        );
-      });
-      it('should return "Sin información" for 0', () => {
-        expect(dataFunctions.evaluateCaptureRate(null)).toBe("Sin información");
-      });
+    it("should return 'celebi' for 'celebi'" , () => {
+      expect(dataFunctions.joinEvolutions(pokeCelebi)).toBe("celebi");
+    });
+    it("should return 'bulbasaur -> ivysaur -> venusaur' for 'pokeDetails'" , () => {
+      expect(dataFunctions.joinEvolutions(pokeDetails0)).toBe("bulbasaur -> ivysaur -> venusaur");
+    });
+    it("should return 'bulbasaur -> ivysaur -> venusaur' for 'pokeDetails'" , () => {
+      expect(dataFunctions.joinEvolutions(pokeDetails1)).toBe("bulbasaur -> ivysaur -> venusaur");
+    });
+    it("should return 'bulbasaur -> ivysaur -> venusaur' for 'pokeDetails'" , () => {
+      expect(dataFunctions.joinEvolutions(pokeDetails2)).toBe("bulbasaur -> ivysaur -> venusaur");
     });
   });
 
-  const typeArr = ["fire"];
-  const typeArr2 = ["fire", "water"];
-  const translatedTypeArr = ["fuego"];
-  const translatedTypeArr2 = ["fuego", "agua"];
-  const imgSrcArr = ["./img/pokemon-types/tipo-fuego.jpg"];
-  const imgSrcArr2 = [
-    "./img/pokemon-types/tipo-fuego.jpg",
-    "./img/pokemon-types/tipo-agua.jpg",
-  ];
+  describe("dataFunctions.evaluateCaptureRate", () => {
+    it("should be a function", () => {
+      expect(typeof dataFunctions.evaluateCaptureRate).toBe("function");
+    });
+    it('should return "Sin información" for null', () => {
+      expect(dataFunctions.evaluateCaptureRate(null)).toBe("Sin información");
+    });
+    it('should return "Sin información" for 0', () => {
+      expect(dataFunctions.evaluateCaptureRate("0")).toBe("Sin información");
+    });
+    it('should return "5" for "5"', () => {
+      expect(dataFunctions.evaluateCaptureRate("5")).toBe("5");
+    });
+    it('should return "No disponible para captura" for "not in capture"', () => {
+      expect(dataFunctions.evaluateCaptureRate("not in capture")).toBe(
+        "No disponible para captura"
+      );
+    });
+  });
 });
+
+const typeArr = ["fire"];
+const typeArr2 = ["fire", "water"];
+const typeArrAll = ["steel", "water", "bug", "dragon", "electric", "ghost", "fire", "fairy", "poison", "grass", "psychic", "flying", "dark", "rock", "ground", "normal", "ice", "fighting"];
+const translatedTypeArr = ["fuego"];
+const translatedTypeArr2 = ["fuego", "agua"];
+const translatedTypeArrAll = ["acero", "agua", "bicho", "dragón", "eléctrico", "fantasma", "fuego", "hada", "veneno", "hierba", "psíquico", "volador", "siniestro", "roca", "tierra", "normal", "hielo", "lucha"];
+const imgSrcArr = ["./img/pokemon-types/tipo-fuego.jpg"];
+const imgSrcArr2 = [
+  "./img/pokemon-types/tipo-fuego.jpg",
+  "./img/pokemon-types/tipo-agua.jpg",
+];
+const imgSrcArrAll = [
+  "./img/pokemon-types/tipo-acero.jpg",
+  "./img/pokemon-types/tipo-agua.jpg",
+  "./img/pokemon-types/tipo-bicho.jpg",
+  "./img/pokemon-types/tipo-dragon.jpg",
+  "./img/pokemon-types/tipo-electrico.jpg",
+  "./img/pokemon-types/tipo-fantasma.jpg",
+  "./img/pokemon-types/tipo-fuego.jpg",
+  "./img/pokemon-types/tipo-hada.jpg",
+  "./img/pokemon-types/tipo-veneno.jpg",
+  "./img/pokemon-types/tipo-planta.jpg",
+  "./img/pokemon-types/tipo-psiquico.jpg",
+  "./img/pokemon-types/tipo-volador.jpg",
+  "./img/pokemon-types/tipo-siniestro.jpg",
+  "./img/pokemon-types/tipo-roca.jpg",
+  "./img/pokemon-types/tipo-tierra.jpg",
+  "./img/pokemon-types/tipo-normal.jpg",
+  "./img/pokemon-types/tipo-hielo.jpg",
+  "./img/pokemon-types/tipo-lucha.jpg",
+];
+const pokeDetails0 = data.pokemon[0];
+const pokeDetails1 = data.pokemon[1];
+const pokeDetails2 = data.pokemon[2];
+const pokeCelebi = data.pokemon[250];
+const attacksArr = [
+  {
+    "name": "water gun",
+    "type": "water",
+    "base-damage": "5",
+    "energy": "5",
+    "move-duration-seg": "0.5"
+  }];
+const attacksArr2 = [
+  {
+    "name": "confusion",
+    "type": "psychic",
+    "base-damage": "20",
+    "energy": "15",
+    "move-duration-seg": "1.6"
+  },
+  {
+    "name": "struggle bug",
+    "type": "bug",
+    "base-damage": "15",
+    "energy": "15",
+    "move-duration-seg": "1.5"
+  },
+  {
+    "name": "bug bite",
+    "type": "bug",
+    "base-damage": "5",
+    "energy": "6",
+    "move-duration-seg": "0.5"
+  }
+]
