@@ -20,6 +20,7 @@ body {
   justify-content: center;
 }
 
+
 div#homebanner {
   display: flex;
   align-items: center;
@@ -235,11 +236,18 @@ form.searchbar:after {
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   height: fit-content;
-  margin: 30px;
+  margin: auto;
   padding: 20px;
   font-family: Eczar, serif;
   border-radius: 40px;
-  display: inline-block;
+}
+
+#notfoundmessage {
+  text-align: center;
+}
+
+#noinput {
+  text-align:center;
 }
 
 .multipleSelection {
