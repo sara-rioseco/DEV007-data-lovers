@@ -10,12 +10,18 @@ describe("dataFunctions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.showPokemon).toBe("function");
     });
+    it("should be called", () => {
+      expect(dataFunctions.showPokemon).toBeDefined();
+    });  
   });
 
   describe("dataFunctions.createPokebox", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.createPokebox).toBe("function");
     });
+    it("should be called", () => {
+      expect(dataFunctions.createPokebox).toBeDefined();
+    });  
   });
 
   describe("dataFunctions.searchName", () => {
