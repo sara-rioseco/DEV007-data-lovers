@@ -198,6 +198,24 @@ form.searchbar:after {
   position: inherit;
 }
 
+#filtermenu {
+  padding: 10px;
+  margin: 10px;
+  font-size: 12px;
+  border: 1px solid grey;
+  width: 200px;
+  background: #f1f1f1;
+  position: inherit;
+}
+#filtermenu option {
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid grey;
+  width: 200px;
+  background: #f1f1f1;
+  position: inherit;
+}
+
 #data-output {
   font-family: Eczar, serif;
   color: rgb(0, 0, 0);

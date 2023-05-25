@@ -22,7 +22,7 @@
         <a href="./index.html"><img class="togeright" src="./img/togepi.gif" alt="togepi"/></a>
       </div>
       <nav>
-        <section class="section" id="filterlist">
+        <!--<section class="section" id="filterlist">
           <form id="filterform">
             <div class="multipleSelection">
               <div class="selectBox" onclick="showCheckboxes()">
@@ -53,6 +53,29 @@
               </div>
             </div>
           </form>
+        </section>-->
+        <section>
+          <select id="filtermenu" class="section" name="filtermenu" required>
+            <option value="placeholder" id="filterplaceholder" disabled selected hidden> Tipo de Pokemon </option>
+            <option value="steel" id="steel"> Acero </option>
+            <option value="water" id="water"> Agua </option>
+            <option value="bug" id="bug"> Bicho </option>
+            <option value="dragon" id="dragon"> Dragón </option>
+            <option value="electric" id="electric"> Eléctrico </option>
+            <option value="ghost" id="ghost"> Fantasma </option>
+            <option value="fire" id="fire"> Fuego </option>
+            <option value="fairy" id="fairy"> Hada </option>
+            <option value="poison" id="poison"> Veneno </option>
+            <option value="grass" id="grass"> Hierba </option>
+            <option value="psychic" id="psychic"> Psíquico </option>
+            <option value="flying" id="flying"> Volador </option>
+            <option value="dark" id="dark"> Siniestro </option>
+            <option value="rock" id="rock"> Roca </option>
+            <option value="ground" id="ground"> Tierra </option>
+            <option value="normal" id="normal"> Normal </option>
+            <option value="ice" id="ice"> Hielo </option>
+            <option value="fighting" id="fighting"> Lucha </option>
+          </select>
         </section>
         <section class="section" id="bar">
           <form class="searchbar" id="searchform">
