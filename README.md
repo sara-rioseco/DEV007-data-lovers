@@ -43,9 +43,13 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 La interfaz es simple y en tonos claros, el fondo intenta asemejar una hoja de papel y el logo es una especie de timbre, que tiene apariencia de ser parte de un documento confidencial, haciendo énfasis en lo secreto del mensaje que se codificará. Por lo mismo, se utilizó una fuente de tipo handwriting, simulando un mensaje que está siendo escrito por el usuario sobre el papel.
 
-Diseño final home:
+Diseño final home (pantalla grande):
 
-![Diseño Final](https://github.com/sara-rioseco/DEV007-cipher/blob/main/src/img/Proyecto1.png?raw=true)
+![Diseño Final Dispositivo Pantalla Grande]()
+
+Diseño final home (pantalla celular o tablet):
+
+![Diseño Final Dispositivo Pantalla Pequeña]()
 
 
 Vista de dialog con información detallada:
