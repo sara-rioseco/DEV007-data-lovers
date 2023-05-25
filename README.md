@@ -1,5 +1,71 @@
-# Data Lovers
+![homebanner](https://github.com/sara-rioseco/DEV007-data-lovers/assets/128411016/a4138e3c-6e74-4f9f-b357-e8c6c1049712)
 
+# Pokedex Database
+
+## Índice
+
+* [1. Definición](#1-definición)
+* [2. Historias de usuario](#2-historias-de-usuarios)
+* [3. Interfaz](#3-interfaz)
+* [4. Test](#4-test)
+
+***
+
+## 1. Definición
+
+Pokedex Database es una aplicación web para visualizar, ordenar, filtrar y buscar información acerca de los 251 Pokemones de la primera y segunda generación de Pokemon. La información y estadísticas están basadas en la data recopilada desde el juego PokemonGo. 
+PokemonGo es un videojuego de realidad aumentada basado en la localización desarrollado por la empresa Niantic para dispositivos iOS y Android. El juego consiste en buscar y capturar personajes de la saga Pokemon escondidos en ubicaciones del mundo real y luchar con ellos, lo que implica desplazarse físicamente por las calles de la ciudad para progresar.
+
+Los personajes que son llamados pokemones pueden pertenecer a uno o dos tipos de categorías, dependiendo del tipo de ataques que poseen. Por ejemplo, pueden pertenecer a tipos como fuego y roca, o solo fuego, agua, tierra, fantasma, psíquco, entre otros. Los pokemones como mencionamos antes, tienen ciertos ataques rápidos y otros ataques cargados. Además, cada pokemon tiene sus propias estadísticas, fortalezas, debilidades y evoluciones. Basándose en esta información, los jugadores pueden crear estrategias para jugar y lograr mejores resultados.
+
+La idea de la aplicación es que los usuarios puedan buscar esa información y encontrar las estadísticas que necesitan, filtrando, ordenando y viendo los detalles de cada pokemon, de manera clara, sencilla y rápida.
+
+Para esto, creamos distintos prototipos, que podemos ver a continuación.
+
+Prototipo de baja fidelidad:
+
+![Prototipo Baja Fidelidad](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Prototipo%20baja%20fidelidad.jpg?raw=true)
+
+Primer Prototipo de alta fidelidad:
+
+![Primer prototipo de alta fidelidad](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Prototipo%20alta%20fidelidad.png?raw=true)
+
+Prototipo final:
+
+&&&&&&&&&&&&  INCLUIR PROTOTIPO  &&&&&&&&&&&
+
+## 2. Historias de usuario
+
+Los principales usuarios del producto son jóvenes con acceso a internet/smartphone que quieran buscar información acerca de Pokemon. Está pensado tanto para usuarios casuales que pueden jugar alguno de los videojuegos de Pokemon, o para usuarios más avanzados que quieran ver información más detallada.
+
+## 3. Interfaz
+
+La interfaz es simple y en tonos claros, el fondo intenta asemejar una hoja de papel y el logo es una especie de timbre, que tiene apariencia de ser parte de un documento confidencial, haciendo énfasis en lo secreto del mensaje que se codificará. Por lo mismo, se utilizó una fuente de tipo handwriting, simulando un mensaje que está siendo escrito por el usuario sobre el papel.
+
+Diseño final home:
+
+![Diseño Final](https://github.com/sara-rioseco/DEV007-cipher/blob/main/src/img/Proyecto1.png?raw=true)
+
+
+Vista de dialog con información detallada:
+
+Vista de mensaje sin input en la búsqueda:
+
+Vista de mensaje para búsqueda sin resultados:
+
+Vista de menú dropdown con filtro por tipos de pokemon:
+
+Vista de menú select para ordenar alfabéticamente/numéricamente:
+
+Vista de mensaje para contar pokemones en pantalla:
+
+## 4. Test
+
+Se ejecutaron test con 89% de coverage. Los resultados son los siguientes:
+
+![Tests](https://github.com/sara-rioseco/DEV007-cipher/blob/main/src/img/Tests.JPG?raw=true)
+
+====================
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
