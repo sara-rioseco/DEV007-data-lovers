@@ -8,6 +8,7 @@
 * [2. Historias de usuario](#2-historias-de-usuarios)
 * [3. Interfaz](#3-interfaz)
 * [4. Test](#4-test)
+* [5. Organización, planificación y trabajo en equipo] (#5-organización)
 
 ***
 
@@ -63,7 +64,11 @@ Vista de mensaje para contar pokemones en pantalla:
 
 Se ejecutaron test con 89% de coverage. Los resultados son los siguientes:
 
-![Tests](https://github.com/sara-rioseco/DEV007-cipher/blob/main/src/img/Tests.JPG?raw=true)
+![Tests]()
+
+## 5.  Organización, planificación y trabajo en equipo
+
+
 
 ====================
 ## Índice
