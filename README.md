@@ -32,7 +32,7 @@ Primer Prototipo de alta fidelidad:
 
 ![Primer prototipo de alta fidelidad](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Prototipo%20alta%20fidelidad.png?raw=true)
 
-Prototipo final:
+Diseño/prototipo final:
 
 ![Prototipo final](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/home.png?raw=true)
 
@@ -149,7 +149,7 @@ Diseño final home (pantalla grande):
 
 Diseño final home (pantalla celular o tablet):
 
-![Diseño Final Dispositivo Pantalla Pequeña]()
+![Diseño Final Dispositivo Pantalla Pequeña](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Home(small).jpg?raw=true)
 
 Vista de dialog con información detallada:
 ![Vista de detalles de pokemon](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/detailsview.JPG?raw=true)
