@@ -41,24 +41,21 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       return poke.type.includes(input);//retornando los tipos de pokemones que incluyen el input
     });
   },
-
+  //================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
   checkFilter: function (value) { //Declarando función que tomará valor de parámetro de checkbox
     const pokemonesTypes = []; //Array vacío para recibir la data obtenida de la siguiente función
     data.pokemon.forEach(poke => { //forEach para comparar cada índice de array con el valor de value
       if (poke.type.includes(value)) { //método includes para incluir la data filtrada
-        pokemonesTypes.push(poke); //poniendo data en array vacío con método push
+        pokemonesTypes.push(poke); //poniendo data en el array con método push
       }
     });
     return pokemonesTypes; //retornando el resultado de arrays
-  }
-};
-
-//================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
+  },
 
 //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
 /*translateType: function (typeArr) {
     const translatedTypeArr = []
-    for (let i = 0; i<typeArr.length; i++)
+    for (let i = 0; i<typeArr.length; i++) {
       if (typeArr[i] === "steel") {
         translatedTypeArr.push("acero")
       } else if (typeArr[i] === "water") {
@@ -96,7 +93,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       } else if (typeArr[i] === "fighting") {
         translatedTypeArr.push("lucha")
       } 
-    return translatedTypeArr;
+    } return translatedTypeArr;
   },
   //=============FUNCIONES PARA MOSTRAR IMAGEN DE TIPOS DE POKEMON==============
   createImgSrcArr: function (typeArr) {
@@ -229,9 +226,9 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
     if (data === null) {
       return "Sin información"
     } else if (data === "not in capture") {
-      return "No se puede capturar"
+      return "No disponible para captura"
     } else if (data === "0") {
-      return "No se puede capturar"
+      return "Sin información"
     } else {
       return data
     }
