@@ -268,7 +268,7 @@ form.searchbar:after {
   text-align:center;
 }
 
-.multipleSelection {
+/*.multipleSelection {
   width: 200px;
   margin: 10px;
   background-color: #f1f1f1;
@@ -312,4 +312,4 @@ form.searchbar:after {
 label.dropdown-option {
   font-size: 12px;
   font-weight: normal;
-}
+}*/
