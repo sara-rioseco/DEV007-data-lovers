@@ -34,7 +34,7 @@ Primer Prototipo de alta fidelidad:
 
 Prototipo final:
 
-&&&&&&&&&&&&  INCLUIR PROTOTIPO  &&&&&&&&&&&
+![Prototipo final](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/home.png?raw=true)
 
 ## 2. Historias de usuario
 
@@ -161,7 +161,7 @@ Vista de mensaje para búsqueda sin resultados:
 ![Vista de búsqueda sin resultados](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/notfound.JPG?raw=true)
 
 Vista de menú dropdown con filtro por tipos de pokemon:
-$$$$$$$$$$$$$$AGREGAR IMAGEN$$$$$$$$$$$$$$$
+![Vista de dropdown con filtro]()
 
 Vista de menú select para ordenar alfabéticamente/numéricamente:
 ![Vista de menú select para ordenar](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/selectview.jpg?raw=true)
@@ -197,9 +197,4 @@ Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos l
 A continuación dejamos una imagen de nuestro tablero.
 
 ![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/trello.JPG?raw=true)
-
-=====================================
-
-FALTA PROTOTIPO INTERACTIVO DE ALTA FIDELIDAD
-FAlTA FUNCIÓN FILTER
 
