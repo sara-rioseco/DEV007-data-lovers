@@ -18,7 +18,7 @@
 **Pokedex Database** es una aplicación web para visualizar, ordenar, filtrar y buscar información acerca de los 251 Pokemones de la primera y segunda generación de Pokemon. La información y estadísticas están basadas en la data recopilada desde el juego PokemonGo. 
 PokemonGo es un videojuego de realidad aumentada basado en la localización desarrollado por la empresa Niantic para dispositivos iOS y Android. El juego consiste en buscar y capturar personajes de la saga Pokemon escondidos en ubicaciones del mundo real y luchar con ellos, lo que implica desplazarse físicamente por las calles de la ciudad para progresar.
 
-Los personajes que son llamados pokemones pueden pertenecer a uno o dos tipos de categorías, dependiendo del tipo de ataques que poseen. Por ejemplo, pueden pertenecer a tipos como fuego y roca, o solo fuego, agua, tierra, fantasma, psíquco, entre otros. Los pokemones como mencionamos antes, tienen ciertos ataques rápidos y otros ataques cargados. Además, cada pokemon tiene sus propias estadísticas, fortalezas, debilidades y evoluciones. Basándose en esta información, los jugadores pueden crear estrategias para jugar y lograr mejores resultados.
+Los personajes, que son llamados pokemones, pueden pertenecer a uno o dos tipos, dependiendo de los ataques y características que poseen. Por ejemplo, pueden pertenecer a tipos como fuego y roca, o solo fuego, agua, tierra, fantasma, psíquico, entre otros. Cada pokemon tiene ciertos ataques rápidos y otros ataques cargados. Además, también tiene sus propias estadísticas, fortalezas, debilidades y evoluciones. Basándose en esta información, los jugadores pueden crear estrategias para jugar y lograr mejores resultados.
 
 La idea de la aplicación es que los usuarios puedan buscar esa información y encontrar las estadísticas que necesitan, filtrando, ordenando y viendo los detalles de cada pokemon, de manera clara, sencilla y rápida.
 
@@ -193,8 +193,10 @@ Estos son los siguientes:
 
 ## 6.  Organización, planificación y trabajo en equipo
 
-Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances en la columna "Sprint backlog". Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles facilitó mucho para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir.
+Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances de ese sprint en la columna "Sprint backlog" con el número correspondiente. Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles fue muy útil para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir. 
 A continuación dejamos una imagen de nuestro tablero.
 
 ![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/trello.JPG?raw=true)
+
+Además de Trello utilizamos Google calendar para agendar reuniones fuera del horario de bootcamp según nuestra disponibilidad.
 
