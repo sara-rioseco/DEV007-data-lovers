@@ -43,14 +43,13 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
   },
   //================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
   checkFilter: function (value) { //Declarando función que tomará valor de parámetro de checkbox
-    //return data.pokemon.filter(poke => poke.type === value);//Retornando el tipo de pokemon que coincide con la data de lo marcado
-    const pokemonesTypes = [];
-    data.pokemon.forEach(poke => {
-      if (poke.type.includes(value)) {
-        pokemonesTypes.push(poke)
+    const pokemonesTypes = []; //Array vacío para recibir la data obtenida de la siguiente función
+    data.pokemon.forEach(poke => { //forEach para comparar cada índice de array con el valor de value
+      if (poke.type.includes(value)) { //método includes para incluir la data filtrada
+        pokemonesTypes.push(poke); //poniendo data en el array con método push
       }
-    })
-    return pokemonesTypes;
+    });
+    return pokemonesTypes; //retornando el resultado de arrays
   },
 
   //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
