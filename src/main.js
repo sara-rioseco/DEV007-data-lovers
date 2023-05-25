@@ -195,15 +195,20 @@ function addActionToSelect() {
   }
 }
 
-function checkList() { // declarando función de selección de checkbox
-  const pokeCheck = document.querySelectorAll(".dropdown-option"); // seleccionando objetos de clase dropdown-option de html
-  pokeCheck.forEach(pokemon => { // forEach a cada element de pokemon
-    pokemon.addEventListener("change", event => { // event listener del evento change
-      const value = event.target.value; // evento de casilla checkbox marcada
-      const filteredPokemon = dataFunctions.checkFilter(value); // llamando función checkFilter
-      dataFunctions.createPokebox(filteredPokemon); // llamando a la función createPokebox
-      openPokeDialog(); // llamando función openPokeDialog
-    });
+const pokeCheck = document.querySelectorAll(".dropdown-option")
+
+function checkList() {
+  ((e) => {
+    e.preventDefault();
+  })
+  pokeCheck.addEventListener("change", dataFunctions.checkFilter);
+  pokeCheck.forEach ((pokemon) => {
+    if (pokemon.checked) {
+      dataFunctions.createPokebox(pokemon);
+      openPokeDialog();
+    }else{
+      false;
+    }
   });
 }
 checkList();
