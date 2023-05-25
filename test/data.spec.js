@@ -19,7 +19,7 @@ describe("dataFunctions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.createPokebox).toBe("function");
     });
-    it("should be called", () => {
+    it("should be defined", () => {
       expect(dataFunctions.createPokebox).toBeDefined();
     });  
   });
@@ -48,6 +48,15 @@ describe("dataFunctions", () => {
     });
     it('should return an object for "fire"', () => {
       expect(typeof dataFunctions.searchType("fire")).toBe("object");
+    });
+  });
+
+  describe("dataFunctions.checkFilter", () => {
+    it("should be a function", () => {
+      expect(typeof dataFunctions.checkFilter).toBe("function");
+    });
+    it('should return an object', () => {
+      expect(typeof dataFunctions.checkFilter("fire")).toEqual("object");
     });
   });
 
