@@ -8,7 +8,8 @@
 * [2. Historias de usuario](#2-historias-de-usuarios)
 * [3. Interfaz](#3-interfaz)
 * [4. Test](#4-test)
-* [5. Organización, planificación y trabajo en equipo] (#5-organización)
+* [5. Problemas de usabilidad](#5-problemas)
+* [6. Organización, planificación y trabajo en equipo](#6-organización)
 
 ***
 
@@ -41,6 +42,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 1:**
 *Yo como usuario que no sabe mucho de pokemon quiero ver una imagen, el nombre y el número de todos los pokemones para conocerlos.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -53,6 +55,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 2:**
 *Yo, como jugador casual de juegos de Pokemon, quiero poder ver el tipo de Pokemon para saber a qué categoría pertenece.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -66,6 +69,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 3:**
 *Yo, como jugador de juegos de Pokemon, quiero poder ver el detalle de fortalezas y debilidades de cada pokemon, así como la tasa de captura, para utilizar esa información al jugar.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -80,6 +84,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 4:**
 *Yo como jugador avanzado de juegos Pokemon quiero poder buscar un Pokemon determinado para encontrar información específica de él.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -93,6 +98,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 5:**
 *Yo como jugador avanzado de juegos Pokemon quiero poder ordenar la información por distintos criterios (como alfabético, por orden numérico, etc.) para ver los datos de manera organizada.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -106,6 +112,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 
 **Historia de Usuario 6:**
 *Yo como jugador avanzado de juegos Pokemon quiero poder filtrar la lista de pokemon por tipo de Pokemon para ver solo los resultados que me interesan.*
+
 **Criterios de aceptación:**
 - Quiero una vista de grilla.
 - Quiero que sea responsive.
@@ -137,32 +144,48 @@ Diseño final home (pantalla celular o tablet):
 ![Diseño Final Dispositivo Pantalla Pequeña](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Home(small).jpg?raw=true)
 
 Vista de dialog con información detallada:
+![Vista de detalles de pokemon](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/detailsview.JPG?raw=true)
 
 Vista de mensaje sin input en la búsqueda:
+![Vista de mensaje sin input](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/noinput.JPG?raw=true)
 
 Vista de mensaje para búsqueda sin resultados:
+![Vista de búsqueda sin resultados](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/notfound.JPG?raw=true)
 
 Vista de menú dropdown con filtro por tipos de pokemon:
+$$$$$$$$$$$$$$AGREGAR IMAGEN$$$$$$$$$$$$$$$
 
 Vista de menú select para ordenar alfabéticamente/numéricamente:
+![Vista de menú select para ordenar](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/selectview.jpg?raw=true)
 
 Vista de mensaje para contar pokemones en pantalla:
+
+![Mensaje para contar pokemones en pantalla](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/countview.JPG?raw=true)
 
 ## 4. Test
 
 Se ejecutaron test con 89% de coverage. Los resultados son los siguientes:
 
-![Tests]()
+![Tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Tests.JPG?raw=true)
 
 Detectamos los siguientes errores al hacer nuestros tests:
 
--
-- Nuestras funciones
-- 
-## 5.  Organización, planificación y trabajo en equipo
+- Algunas de nuestras funciones, sobretodo las que no retornan nada, no supimos como testear.
+- Algunas funciones tenían una redacción rebuscada y repetitiva, lo que nos dificultó buscar dónde estaba la razón de que fallaran algunos tests.
 
+## 5.  Problemas de usabilidad
 
+Al pedir pruebas de usabilidad con distintos usuarios, detectamos algunos errores y detalles de los que no nos habíamos percatado con anterioridad. 
+Estos son los siguientes:
 
+- Al entrar en la web, abajo a final al centro, se pueden ver ds puntos blancos que corresponden a los dialogs vacíos.
+- Al ver la web en celular, a veces los nombres de los pokemones se salen de las tarjetas.
+- Luego de buscar un pokemon por su nombre, cambia la posición del botón cerrar en el dialog con detalles del pokemon.
+
+## 6.  Organización, planificación y trabajo en equipo
+
+Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances en la columna "Sprint backlog". Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles facilitó mucho para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir.
+A continuación dejamos una imagen de nuestro tablero.
 =====================================
 
 ## 9. Checklist
@@ -172,6 +195,4 @@ Detectamos los siguientes errores al hacer nuestros tests:
 * [ ] Incluye _Diseño de la Interfaz de Usuario_ (prototipo de alta fidelidad)
   en `README.md`.
 * [ ] Incluye link a Zeplin en `README.md`. (O figma ? )
-* [ ] Incluye el listado de problemas que detectaste a través de tests de
-  usabilidad en el `README.md`.
 
