@@ -316,10 +316,8 @@ function addActionToFilter() {
   case "ghost":
     {
       const result = dataFunctions.checkFilter("ghost");
-      result.forEach((pokemon) => {
-        dataFunctions.createPokebox(pokemon);
-        openPokeDialog();
-      });
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
     }
     break;
   case "flying":
