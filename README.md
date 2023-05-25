@@ -48,6 +48,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero que sea responsive.
 - Quiero ver la imagen del Pokemon, su nombre y número.
 - No hay ningún tipo de interacción.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -62,6 +63,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero ver la imagen del Pokemon, su nombre y número.
 - Quiero hacer click en la imagen y que me muestre el tipo de Pokemon y otros detalles en un pop-up.
 - Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -77,6 +79,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero hacer click en la imagen y que me muestre las fortalezas y debilidades de cada Pokemon.
 - Quiero que además se incluya información acerca de la tasa de captura del pokemon.
 - Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -91,6 +94,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero ver la imagen del Pokemon, su nombre y número.
 - Quiero que exista una barra de búsqueda para escribir el nombre del Pokemon que quiero buscar.
 - Quiero que me muestre el resultado de esa búsqueda.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -105,6 +109,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero ver la imagen del Pokemon, su nombre y número.
 - Quiero que exista una opción para ordenar por orden alfabético o numérico, de manera ascendente y descendente.
 - Quiero ver los resultados ordenados de acuerdo a la opción seleccionada.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -119,6 +124,7 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 - Quiero ver la imagen del Pokemon, su nombre y número.
 - Quiero que exista una opción para filtrar la lista de Pokemon por tipo.
 - Quiero ver únicamente los resultados de acuerdo al filtro seleccionado.
+
 **Definición de terminado:**
 - Pruebas de usabilidad realizadas con al menos 2 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
@@ -127,7 +133,9 @@ Los principales usuarios del producto son jóvenes con acceso a internet/smartph
 ## 3. Interfaz
 
 La interfaz es simple y en tonos claros, el fondo tiene ilustraciones de distintos pokemones en colores variados, pero todos cercanos a tonalidades pasteles, además se presentan dos imágenes en el banner inicial de personajes de la serie. Los títulos son de color gris oscuro y los elementos de la barra de navegación, como el menú para ordenar, filtrar y barra de búsqueda están en tonos blancos con letras negras para facilitar la lectura. 
+
 Dentro de la barra de navegación, tenemos primero el menú para filtrar. Con este podemos escoger qué pokemon queremos ver por tipo. Luego, con la barra de búsqueda podemos ingresar como texto el nombre o número de pokemon y buscar todas las coincidencias que existan dentro de la data. Además hay mensajes personalizados en caso de no encontrar resultados y de no recibir ningún criterio de búsqueda. Finalmente está el menú para ordenar la data de manera alfabética o numérica, en orden ascendente o descendente.
+
 Ya en la parte principal de nuestra aplicación, los pokemones se muestran en un diseño de grilla, que como máximo mostrará 4 columnas y como mínimo 2, dependiendo del tamaño de la pantalla. Cada pokemon aparece dentro de una tarjeta con su número, imagen y nombre. Al presionar cada una de las tarjetas se abre una ventana que muestra primero un botón cerrar para volver a la pantalla anterior, y luego, lla misma información mencionada antes (número, nombre e imegen) pero también el tipo de pokemon, sus fortalezas, debilidades, ataques rápidos, ataques cargados, tasas de aparición, captura y huída, además de todas las evoluciones dentro de la línea de ese pokemon.
 Se optó por un diseño minimalista y sencillo, que fuese lo suficientemente claro y que tenga la información más buscada por los jugadores.
 
@@ -164,7 +172,8 @@ Vista de mensaje para contar pokemones en pantalla:
 
 ## 4. Test
 
-Se ejecutaron test con 89% de coverage. Los resultados son los siguientes:
+Se ejecutaron test con coverage de 89% de statements, 98% de branch, 88% de funciones, 89% de lines. 
+Los resultados son los siguientes:
 
 ![Tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Tests.JPG?raw=true)
 
@@ -186,13 +195,11 @@ Estos son los siguientes:
 
 Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances en la columna "Sprint backlog". Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles facilitó mucho para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir.
 A continuación dejamos una imagen de nuestro tablero.
+
+![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/trello.JPG?raw=true)
+
 =====================================
 
-## 9. Checklist
-
-
-
-* [ ] Incluye _Diseño de la Interfaz de Usuario_ (prototipo de alta fidelidad)
-  en `README.md`.
-* [ ] Incluye link a Zeplin en `README.md`. (O figma ? )
+FALTA PROTOTIPO INTERACTIVO DE ALTA FIDELIDAD
+FAlTA FUNCIÓN FILTER
 
