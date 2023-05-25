@@ -46,13 +46,14 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
     const pokemonesTypes = []; //Array vacío para recibir la data obtenida de la siguiente función
     data.pokemon.forEach(poke => { //forEach para comparar cada índice de array con el valor de value
       if (poke.type.includes(value)) { //método includes para incluir la data filtrada
-        pokemonesTypes.push(poke); //poniendo data en el array con método push
+        pokemonesTypes.push(poke); //poniendo data en array vacío con método push
       }
     });
     return pokemonesTypes; //retornando el resultado de arrays
   }
 };
-  //================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
+
+//================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
 
 //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
 /*translateType: function (typeArr) {
