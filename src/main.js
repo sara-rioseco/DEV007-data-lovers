@@ -1,5 +1,6 @@
 //=========IMPORTANDO DATA Y FUNCIONES DESDE DATA.JS Y POKEMON.JS===========
 import dataFunctions from "./data.js"; //importando objeto que contiene funciones desde data.js
+import pokemon from "./data/pokemon/pokemon.js";
 import data from "./data/pokemon/pokemon.js"; //importando data
 
 //========================VARIABLES DE USO GENERAL==========================
@@ -192,6 +193,24 @@ function addActionToSelect() {
   default: //declarando caso default vacío, aunque no es mandatorio
   }
 }
+
+const pokeCheck = document.querySelectorAll(".dropdown-option")
+
+function checkList() {
+  ((e) => {
+    e.preventDefault();
+  })
+  pokeCheck.addEventListener("change", dataFunctions.checkFilter);
+  pokeCheck.forEach ((pokemon) => {
+    if (pokemon.checked) {
+      dataFunctions.createPokebox(pokemon);
+      openPokeDialog();
+    }else{
+      false;
+    }
+  });
+}
+checkList();
 
 function orderListAZ() {
   //declarando función para ordenar de la A a la Z
