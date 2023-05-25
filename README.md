@@ -149,7 +149,7 @@ Diseño final home (pantalla grande):
 
 Diseño final home (pantalla celular o tablet):
 
-![Diseño Final Dispositivo Pantalla Pequeña](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/Home(small).jpg?raw=true)
+![Diseño Final Dispositivo Pantalla Pequeña]()
 
 Vista de dialog con información detallada:
 ![Vista de detalles de pokemon](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/detailsview.JPG?raw=true)
@@ -161,7 +161,7 @@ Vista de mensaje para búsqueda sin resultados:
 ![Vista de búsqueda sin resultados](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/notfound.JPG?raw=true)
 
 Vista de menú dropdown con filtro por tipos de pokemon:
-![Vista de dropdown con filtro]()
+![Vista de dropdown con filtro](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/filterview.png?raw=true)
 
 Vista de menú select para ordenar alfabéticamente/numéricamente:
 ![Vista de menú select para ordenar](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/img/selectview.jpg?raw=true)
