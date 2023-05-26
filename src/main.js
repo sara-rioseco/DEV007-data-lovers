@@ -312,10 +312,8 @@ function addActionToFilter() {
   case "psychic":
     {
       const result = dataFunctions.checkFilter("psychic");
-      result.forEach((pokemon) => {
-        dataFunctions.createPokebox(pokemon);
-        openPokeDialog();
-      });
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
     }
     break;
   case "grass":
@@ -397,7 +395,7 @@ function orderList90() {
 window.addEventListener("load", select); //ejecutando función select al cargar la página
 
 //===================FUNCIONES PARA FILTRAR CON CHECKBOX======================
-function filterSelect(e) {  //creando función select
+/*function filterSelect(e) {  //creando función select
   filterMenu.addEventListener("change", addActionToFilter, false); //agregando event listener a menú select, cuando cambia ejecuta addActionToSelect
   e.preventDefault(); //evitando que se cargue de nuevo automáticamente
 }
@@ -534,7 +532,7 @@ function addActionToFilter() {
     break;
   default:
   }
-}
+}*/
 
 window.addEventListener("load", filterSelect); //ejecutando función filterSelect al cargar la página
 //====================FUNCIONES PARA MOSTRAR DIALOG======================
