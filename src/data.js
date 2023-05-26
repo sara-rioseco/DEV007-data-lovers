@@ -50,10 +50,10 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       }
     });
     return pokemonesTypes; //retornando el resultado de arrays
-  }
-}
-//====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
-/*translateType: function (typeArr) {
+  },
+
+  //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
+  translateType: function (typeArr) {
     const translatedTypeArr = []
     for (let i = 0; i<typeArr.length; i++) {
       if (typeArr[i] === "steel") {
@@ -190,7 +190,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       }
     } 
   },
-
+ 
   listNextEvolutions: function (Obj) {
     const nextEvo = []
     if (Obj.evolution['next-evolution'] !== undefined) {
@@ -233,5 +233,5 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       return data
     }
   }
-};*/
+};
 export default dataFunctions; //exportando objeto dataFunctions
