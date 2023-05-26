@@ -41,17 +41,6 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       return poke.type.includes(input);//retornando los tipos de pokemones que incluyen el input
     });
   },
-
-  checkFilter: function (value) { //Declarando función que tomará valor de parámetro de checkbox
-    const pokemonesTypes = []; //Array vacío para recibir la data obtenida de la siguiente función
-    data.pokemon.forEach(poke => { //forEach para comparar cada índice de array con el valor de value
-      if (poke.type.includes(value)) { //método includes para incluir la data filtrada
-        pokemonesTypes.push(poke); //poniendo data en el array con método push
-      }
-    });
-    return pokemonesTypes; //retornando el resultado de arrays
-  }
-};
   //================FUNCIONES PARA MANIPULAR DATOS DENTRO DE DIALOG==============
   checkFilter: function (value) { //Declarando función que tomará valor de parámetro de checkbox
     const pokemonesTypes = []; //Array vacío para recibir la data obtenida de la siguiente función
@@ -61,8 +50,8 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       }
     });
     return pokemonesTypes; //retornando el resultado de arrays
-  },
-
+  }
+}
 //====================FUNCIÓN PARA TRADUCIR TIPOS DE POKEMON===================
 /*translateType: function (typeArr) {
     const translatedTypeArr = []
@@ -201,7 +190,7 @@ const dataFunctions = { //creando objeto dataFunctions para almacenar métodos
       }
     } 
   },
- 
+
   listNextEvolutions: function (Obj) {
     const nextEvo = []
     if (Obj.evolution['next-evolution'] !== undefined) {

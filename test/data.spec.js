@@ -28,7 +28,7 @@ describe("dataFunctions", () => {
     it("should be a function", () => {
       expect(typeof dataFunctions.searchName).toBe("function");
     });
-    it('should return a string for "pikachu"', () => {
+    it('should return an object for "pikachu"', () => {
       expect(typeof dataFunctions.searchName("pikachu")).toBe("object");
     });
   });

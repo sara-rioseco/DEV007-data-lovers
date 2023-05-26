@@ -195,20 +195,157 @@ function addActionToSelect() {
   }
 }
 
-const pokeCheck = document.querySelectorAll(".dropdown-option")
+function filterSelect(e) {  //creando función select
+  filterMenu.addEventListener("change", addActionToFilter, false); //agregando event listener a menú select, cuando cambia ejecuta addActionToSelect
+  e.preventDefault(); //evitando que se cargue de nuevo automáticamente
+}
+function addActionToFilter() {
+  //creando función addActionToSelect
+  switch (
+    filterMenu.value //creando switch case, para cada valor del menú select
+  ) {
+  case "fire":
+    {
+      const result = dataFunctions.checkFilter("fire");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "water":
+    {
+      const result = dataFunctions.checkFilter("water");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "poison":
+    {
+      const result = dataFunctions.checkFilter("poison");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "ice":
+    {
+      const result = dataFunctions.checkFilter("ice");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "fairy":
+    {
+      const result = dataFunctions.checkFilter("fairy");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "rock":
+    {
+      const result = dataFunctions.checkFilter("rock");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "normal":
+    {
+      const result = dataFunctions.checkFilter("normal");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "ground":
+    {
+      const result = dataFunctions.checkFilter("ground");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "dark":
+    {
+      const result = dataFunctions.checkFilter("dark");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "ghost":
+    {
+      const result = dataFunctions.checkFilter("ghost");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "flying":
+    {
+      const result = dataFunctions.checkFilter("flying");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "dragon":
+    {
+      const result = dataFunctions.checkFilter("dragon");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "steel":
+    {
+      const result = dataFunctions.checkFilter("steel");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "bug":
+    {
+      const result = dataFunctions.checkFilter("bug");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "electric":
+    {
+      const result = dataFunctions.checkFilter("electric");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "psychic":
+    {
+      const result = dataFunctions.checkFilter("psychic");
+      result.forEach((pokemon) => {
+        dataFunctions.createPokebox(pokemon);
+        openPokeDialog();
+      });
+    }
+    break;
+  case "grass":
+    {
+      const result = dataFunctions.checkFilter("grass");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  case "fighting":
+    {
+      const result = dataFunctions.checkFilter("fighting");
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
+    }
+    break;
+  default:
+  }
+}
+window.addEventListener("load", filterSelect);
 
 function checkList() {
-  ((e) => {
-    e.preventDefault();
-  })
-  pokeCheck.addEventListener("change", dataFunctions.checkFilter);
-  pokeCheck.forEach ((pokemon) => {
-    if (pokemon.checked) {
-      dataFunctions.createPokebox(pokemon);
-      openPokeDialog();
-    }else{
-      false;
-    }
+  const pokeCheck = document.getElementsById("filtermenu");
+  pokeCheck.forEach(pokemon => {
+    pokemon.addEventListener("change", event => {
+      const value = event.target.value;
+      const filteredPokemon = dataFunctions.checkFilter(value); // 
+      dataFunctions.createPokebox(filteredPokemon); // llamando a la función createPokebox
+      openPokeDialog(); 
+    });
   });
 }
 checkList();
