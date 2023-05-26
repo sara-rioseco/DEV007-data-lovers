@@ -1,6 +1,5 @@
 //=========IMPORTANDO DATA Y FUNCIONES DESDE DATA.JS Y POKEMON.JS===========
 import dataFunctions from "./data.js"; //importando objeto que contiene funciones desde data.js
-import pokemon from "./data/pokemon/pokemon.js";
 import data from "./data/pokemon/pokemon.js"; //importando data
 
 //========================VARIABLES DE USO GENERAL==========================
