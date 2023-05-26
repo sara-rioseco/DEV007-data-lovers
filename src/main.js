@@ -514,10 +514,8 @@ function addActionToFilter() {
   case "psychic":
     {
       const result = dataFunctions.checkFilter("psychic");
-      result.forEach((pokemon) => {
-        dataFunctions.createPokebox(pokemon);
-        openPokeDialog();
-      });
+      dataFunctions.createPokebox(result);
+      openPokeDialog();
     }
     break;
   case "grass":
