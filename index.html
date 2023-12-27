@@ -1,138 +1,148 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Data Lovers</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Arimo|Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Data Lovers</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-  <div id="root">
-    <header>
-      <div id="homebanner">
-        <a href="./index.html"><img src="./img/NurseJoyReallyVerySmall.png" alt="Nurse Joy and Chansey"/></a>
-        <section>
-          <a href="./index.html"><h1 class="title">Pokedex Database</h1></a>
-            <a href="./index.html"><h2>¡Bienvenid@ a la base de pokedatos de la enfermera Joy!</h2></a>
-        </section>
-        <a href="./index.html"><img class="togeright" src="./img/togepi.gif" alt="togepi"/></a>
-      </div>
-      <nav>
-        <!--<section class="section" id="filterlist">
-          <form id="filterform">
-            <div class="multipleSelection">
-              <div class="selectBox" onclick="showCheckboxes()">
-                <select class="select">
-                  <option> Tipo de Pokemon</option>
-                </select>
-                <div class="overSelect"></div>
-              </div>
-              <div class="dropdown-list" id="checkboxes">
-                <label class="dropdown-option" for="steel"><input type="checkbox" name="poketype" id="steel" value="steel"> Acero </label>
-                <label class="dropdown-option" for="water"><input type="checkbox" name="poketype" id="water" value="water"> Agua </label>
-                <label class="dropdown-option" for="bug"><input type="checkbox" name="poketype" id="bug" value="bug"> Bicho </label>
-                <label class="dropdown-option" for="dragon"><input type="checkbox" name="poketype" id="dragon" value="dragon"> Dragón </label>
-                <label class="dropdown-option" for="electric"><input type="checkbox" name="poketype" id="electric" value="electric"> Eléctrico </label>
-                <label class="dropdown-option" for="ghost"><input type="checkbox" name="poketype" id="ghost" value="ghost"> Fantasma </label>
-                <label class="dropdown-option" for="fire"><input type="checkbox" name="poketype" id="fire" value="fire"> Fuego </label>
-                <label class="dropdown-option" for="fairy"><input type="checkbox" name="poketype" id="fairy" value="fairy"> Hada </label>
-                <label class="dropdown-option" for="poison"><input type="checkbox" name="poketype" id="poison" value="poison"> Veneno </label>
-                <label class="dropdown-option" for="grass"><input type="checkbox" name="poketype" id="grass" value="grass"> Hierba </label>
-                <label class="dropdown-option" for="psychic"><input type="checkbox" name="poketype" id="psychic" value="psychic"> Psíquico </label>
-                <label class="dropdown-option" for="flying"><input type="checkbox" name="poketype" id="flying" value="flying"> Volador </label>
-                <label class="dropdown-option" for="dark"><input type="checkbox" name="poketype" id="dark" value="dark"> Siniestro </label>
-                <label class="dropdown-option" for="rock"><input type="checkbox" name="poketype" id="rock" value="rock"> Roca </label>
-                <label class="dropdown-option" for="ground"><input type="checkbox" name="poketype" id="ground" value="ground"> Tierra </label>
-                <label class="dropdown-option" for="normal"><input type="checkbox" name="poketype" id="normal" value="normal"> Normal </label>
-                <label class="dropdown-option" for="ice"><input type="checkbox" name="poketype" id="ice" value="ice"> Hielo </label>
-                <label class="dropdown-option" for="fighting"><input type="checkbox" name="poketype" id="fighting" value="fighting"> Lucha </label>
-              </div>
-            </div>
-          </form>
-        </section>-->
-        <section>
-          <select id="filtermenu" class="section" name="filtermenu" required>
-            <option value="placeholder" id="filterplaceholder" disabled selected hidden> Tipo de Pokemon </option>
-            <option value="steel" id="steel"> Acero </option>
-            <option value="water" id="water"> Agua </option>
-            <option value="bug" id="bug"> Bicho </option>
-            <option value="dragon" id="dragon"> Dragón </option>
-            <option value="electric" id="electric"> Eléctrico </option>
-            <option value="ghost" id="ghost"> Fantasma </option>
-            <option value="fire" id="fire"> Fuego </option>
-            <option value="fairy" id="fairy"> Hada </option>
-            <option value="poison" id="poison"> Veneno </option>
-            <option value="grass" id="grass"> Hierba </option>
-            <option value="psychic" id="psychic"> Psíquico </option>
-            <option value="flying" id="flying"> Volador </option>
-            <option value="dark" id="dark"> Siniestro </option>
-            <option value="rock" id="rock"> Roca </option>
-            <option value="ground" id="ground"> Tierra </option>
-            <option value="normal" id="normal"> Normal </option>
-            <option value="ice" id="ice"> Hielo </option>
-            <option value="fighting" id="fighting"> Lucha </option>
-          </select>
-        </section>
-        <section class="section" id="bar">
-          <form class="searchbar" id="searchform">
-            <input id="searchbar" type="text" placeholder="Busca a tu Pokemon" name="search" spellcheck="false"
-              autocomplete="off" minlength="1" pattern="[A-Za-z0-9]{1,}" oninput="validity.valid||(value='');">
-            <button id="searchbutton" type="submit"><i class="fa fa-search"></i></button>
-          </form><br>
-        </section>
-        <section>
-          <select id="selectmenu" class="section" name="selectmenu" required>
-            <option value="placeholder" id="selectplaceholder" disabled selected hidden> Ordenar </option>
-            <option value="az" id="az"> Alfabéticamente (ascendente) </option>
-            <option value="za" id="za"> Alfabéticamente (descendente) </option>
-            <option value="09" id="09"> Por número (ascendente)</option>
-            <option value="90" id="90"> Por número (descendente)</option>
-          </select>
-        </section>
-      </nav>
-    </header>
+  <body>
+    <div id="root">
+      <header>
+        <div id="homebanner">
+          <a href="./index.html"
+            ><img
+              src="./assets/img/NurseJoyReallyVerySmall.png"
+              alt="Nurse Joy and Chansey"
+          /></a>
+          <section>
+            <a href="./index.html"><h1 class="title">Pokedex Database</h1></a>
+            <a href="./index.html"
+              ><h2>
+                ¡Bienvenid@ a la base de pokedatos de la enfermera Joy!
+              </h2></a
+            >
+          </section>
+          <a href="./index.html"
+            ><img class="togeright" src="./assets/img/togepi.gif" alt="togepi"
+          /></a>
+        </div>
+        <nav>
+          <section>
+            <select id="filtermenu" class="section" name="filtermenu" required>
+              <option
+                value="placeholder"
+                id="filterplaceholder"
+                disabled
+                selected
+                hidden
+              >
+                Tipo de Pokemon
+              </option>
+              <option value="steel" id="steel">Acero</option>
+              <option value="water" id="water">Agua</option>
+              <option value="bug" id="bug">Bicho</option>
+              <option value="dragon" id="dragon">Dragón</option>
+              <option value="electric" id="electric">Eléctrico</option>
+              <option value="ghost" id="ghost">Fantasma</option>
+              <option value="fire" id="fire">Fuego</option>
+              <option value="fairy" id="fairy">Hada</option>
+              <option value="poison" id="poison">Veneno</option>
+              <option value="grass" id="grass">Hierba</option>
+              <option value="psychic" id="psychic">Psíquico</option>
+              <option value="flying" id="flying">Volador</option>
+              <option value="dark" id="dark">Siniestro</option>
+              <option value="rock" id="rock">Roca</option>
+              <option value="ground" id="ground">Tierra</option>
+              <option value="normal" id="normal">Normal</option>
+              <option value="ice" id="ice">Hielo</option>
+              <option value="fighting" id="fighting">Lucha</option>
+            </select>
+          </section>
+          <section class="section" id="bar">
+            <form class="searchbar" id="searchform">
+              <input
+                id="searchbar"
+                type="text"
+                placeholder="Busca a tu Pokemon"
+                name="search"
+                spellcheck="false"
+                autocomplete="off"
+                minlength="1"
+                pattern="[A-Za-z0-9]{1,}"
+                oninput="validity.valid||(value='');"
+              />
+              <button id="searchbutton" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+            <br />
+          </section>
+          <section>
+            <select id="selectmenu" class="section" name="selectmenu" required>
+              <option
+                value="placeholder"
+                id="selectplaceholder"
+                disabled
+                selected
+                hidden
+              >
+                Ordenar
+              </option>
+              <option value="az" id="az">Alfabéticamente (ascendente)</option>
+              <option value="za" id="za">Alfabéticamente (descendente)</option>
+              <option value="09" id="09">Por número (ascendente)</option>
+              <option value="90" id="90">Por número (descendente)</option>
+            </select>
+          </section>
+        </nav>
+      </header>
       <main>
-      <ul class="flex-container" id="data-output">
-        <!--showing pokemon from js data file here--><br>
-      </ul>
-      <dialog id="dialog-modal" class="dialog" type="dialog-modal" close> 
-        <!--showing modal-dialog window here-->
-      </dialog>
-      <br><br>
-      <div id="count-div">
-        <br> 
-        <button id="count-button" type="submit">¿Quieres saber cuántos pokemones hay en pantalla?</button>
-        <br>
-      </div>
-      <dialog id="count-dialog" class="dialog" type="dialog-modal" close> 
-        <!--showing modal-dialog window here-->
-      </dialog>
+        <ul class="flex-container" id="data-output">
+          <br />
+        </ul>
+        <dialog
+          id="dialog-modal"
+          class="dialog"
+          type="dialog-modal"
+          close
+        ></dialog>
+        <br /><br />
+<!--         <div id="count-div">
+          <br />
+          <button id="count-button" type="submit">
+            ¿Quieres saber cuántos pokemones hay en pantalla?
+          </button>
+          <br />
+        </div>
+        <dialog
+          id="count-dialog"
+          class="dialog"
+          type="dialog-modal"
+          close
+        ></dialog> -->
       </main>
-    <footer>
-      <p><b>¿Tienes algún comentario, duda o sugerencia? Ayúdanos a mejorar <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKq9TTRmNKVXN2uUde9hu1BuPyNVWGgfYJXsWC-nd1W-IwJg/viewform?usp=sf_link">aquí.</a></b></p>
-      <p> &copy; Elena Norambuena y Sara Rioseco. 2023.</p>
-    </footer>
-  </div>
-  <script>
-    let show = true;
-
-    function showCheckboxes() {
-        const checkboxes = 
-            document.getElementById("checkboxes");
-
-        if (show) {
-            checkboxes.style.display = "block";
-            show = false;
-        } else {
-            checkboxes.style.display = "none";
-            show = true;
-        }
-    }
-</script>
-  <script src="main.js" type="module"></script>
-</body>
+      <footer>
+        <p>
+          <b
+            >¿Tienes algún comentario, duda o sugerencia? Ayúdanos a mejorar
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdKq9TTRmNKVXN2uUde9hu1BuPyNVWGgfYJXsWC-nd1W-IwJg/viewform?usp=sf_link"
+              >aquí.</a
+            ></b
+          >
+        </p>
+        <p>&copy; Elena Norambuena y Sara Rioseco. 2023.</p>
+      </footer>
+    </div>
+    <script src="main.js" type="module"></script>
+  </body>
 </html>
