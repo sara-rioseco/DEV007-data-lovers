@@ -7,8 +7,8 @@ const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
 const filterMenu = document.getElementById("filtermenu");
 const pokeDialog = document.getElementById("dialog-modal");
-const countPokeDialog = document.getElementById("count-dialog");
-const countPokeDialogBttn = document.getElementById("count-button");
+/* const countPokeDialog = document.getElementById("count-dialog");
+const countPokeDialogBttn = document.getElementById("count-button"); */
 const closeBttn = document.createElement("button");
 closeBttn.id = "close-button";
 closeBttn.className = "close-button";
@@ -418,7 +418,7 @@ function closeDialog() {
   pokeDialog.innerHTML = "";
 }
 
-countPokeDialogBttn.addEventListener("click", () => {
+/* countPokeDialogBttn.addEventListener("click", () => {
   showCountDialog();
 });
 
@@ -447,6 +447,6 @@ function closeCountPokeDialog() {
 function closeCountDialog() {
   countPokeDialog.close();
   countPokeDialog.innerHTML = "";
-}
+} */
 
 window.addEventListener("load", openPokeDialog());
