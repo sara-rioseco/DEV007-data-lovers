@@ -1,5 +1,4 @@
 import dataFunctions from "./data.js";
-import data from "./data/pokemon/pokemon.js";
 
 const pokeContainer = document.querySelector(".flex-container");
 const pokeInput = document.getElementById("searchbar");
@@ -20,16 +19,17 @@ closeCountBttn.innerHTML = "Cerrar";
 
 dataFunctions.showPokemon();
 
-searchBttn.addEventListener("click", (e) => {
+searchBttn.addEventListener("click", async (e) => {
   e.preventDefault();
 
-  const searchNameResult = dataFunctions.searchName(
+  const searchNameResult = await dataFunctions.searchName(
     pokeInput.value.toLowerCase()
   );
-  const searchNumberResult = dataFunctions.searchNumber(pokeInput.value);
-  const searchTypeResult = dataFunctions.searchType(
+  const searchNumberResult = await dataFunctions.searchNumber(pokeInput.value);
+  const searchTypeResult = await dataFunctions.searchType(
     pokeInput.value.toLowerCase()
   );
+
   pokeContainer.innerHTML = "";
   if (pokeInput.value === "") {
     const createMessage1 = document.createElement("div");
@@ -101,7 +101,8 @@ function select(e) {
   selectMenu.addEventListener("change", addActionToSelect, false);
   e.preventDefault();
 }
-function addActionToSelect() {
+async function addActionToSelect() {
+  const data = await dataFunctions.getData();
   switch (selectMenu.value) {
   case "az":
     {
@@ -109,9 +110,7 @@ function addActionToSelect() {
       const pokeResult = [];
       sorted.forEach((pokemon) => {
         pokeResult.push(
-          data.pokemon.find(
-            (pokemonArrData) => pokemon === pokemonArrData.name
-          )
+          data.find((pokemonArrData) => pokemon === pokemonArrData.name)
         );
       });
       dataFunctions.createPokebox(pokeResult);
@@ -124,9 +123,7 @@ function addActionToSelect() {
       const pokeResult = [];
       sortedRev.forEach((pokemon) => {
         pokeResult.push(
-          data.pokemon.find(
-            (pokemonArrData) => pokemon === pokemonArrData.name
-          )
+          data.find((pokemonArrData) => pokemon === pokemonArrData.name)
         );
       });
       dataFunctions.createPokebox(pokeResult);
@@ -139,9 +136,7 @@ function addActionToSelect() {
       const pokeResult = [];
       sortedNum.forEach((pokemon) => {
         pokeResult.push(
-          data.pokemon.find(
-            (pokemonArrData) => pokemon === pokemonArrData.num
-          )
+          data.find((pokemonArrData) => pokemon === pokemonArrData.num)
         );
       });
       dataFunctions.createPokebox(pokeResult);
@@ -154,9 +149,7 @@ function addActionToSelect() {
       const pokeResult = [];
       sortedNumRev.forEach((pokemon) => {
         pokeResult.push(
-          data.pokemon.find(
-            (pokemonArrData) => pokemon === pokemonArrData.num
-          )
+          data.find((pokemonArrData) => pokemon === pokemonArrData.num)
         );
       });
       dataFunctions.createPokebox(pokeResult);
@@ -209,130 +202,130 @@ function filterSelect(e) {
   filterMenu.addEventListener("change", addActionToFilter, false);
   e.preventDefault();
 }
-function addActionToFilter() {
+async function addActionToFilter() {
   switch (filterMenu.value) {
   case "fire":
     {
-      const result = dataFunctions.checkFilter("fire");
+      const result = await dataFunctions.checkFilter("fire");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "water":
     {
-      const result = dataFunctions.checkFilter("water");
+      const result = await dataFunctions.checkFilter("water");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "poison":
     {
-      const result = dataFunctions.checkFilter("poison");
+      const result = await dataFunctions.checkFilter("poison");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "ice":
     {
-      const result = dataFunctions.checkFilter("ice");
+      const result = await dataFunctions.checkFilter("ice");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "fairy":
     {
-      const result = dataFunctions.checkFilter("fairy");
+      const result = await dataFunctions.checkFilter("fairy");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "rock":
     {
-      const result = dataFunctions.checkFilter("rock");
+      const result = await dataFunctions.checkFilter("rock");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "normal":
     {
-      const result = dataFunctions.checkFilter("normal");
+      const result = await dataFunctions.checkFilter("normal");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "ground":
     {
-      const result = dataFunctions.checkFilter("ground");
+      const result = await dataFunctions.checkFilter("ground");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "dark":
     {
-      const result = dataFunctions.checkFilter("dark");
+      const result = await dataFunctions.checkFilter("dark");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "ghost":
     {
-      const result = dataFunctions.checkFilter("ghost");
+      const result = await dataFunctions.checkFilter("ghost");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "flying":
     {
-      const result = dataFunctions.checkFilter("flying");
+      const result = await dataFunctions.checkFilter("flying");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "dragon":
     {
-      const result = dataFunctions.checkFilter("dragon");
+      const result = await dataFunctions.checkFilter("dragon");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "steel":
     {
-      const result = dataFunctions.checkFilter("steel");
+      const result = await dataFunctions.checkFilter("steel");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "bug":
     {
-      const result = dataFunctions.checkFilter("bug");
+      const result = await dataFunctions.checkFilter("bug");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "electric":
     {
-      const result = dataFunctions.checkFilter("electric");
+      const result = await dataFunctions.checkFilter("electric");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "psychic":
     {
-      const result = dataFunctions.checkFilter("psychic");
+      const result = await dataFunctions.checkFilter("psychic");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "grass":
     {
-      const result = dataFunctions.checkFilter("grass");
+      const result = await dataFunctions.checkFilter("grass");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
     break;
   case "fighting":
     {
-      const result = dataFunctions.checkFilter("fighting");
+      const result = await dataFunctions.checkFilter("fighting");
       dataFunctions.createPokebox(result);
       openPokeDialog();
     }
@@ -354,8 +347,8 @@ function openPokeDialog() {
   });
 }
 
-function printPokeDetails(pokemon) {
-  const pokeData = data.pokemon;
+async function printPokeDetails(pokemon) {
+  const pokeData = dataFunctions.getData();
   const pokeDialogUpperDiv = document.createElement("div");
   const pokeDialogMiddleDiv = document.createElement("div");
   const pokeDialogLowerDiv = document.createElement("div");

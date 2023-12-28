@@ -1,48 +1,52 @@
-import data from "./data/pokemon/pokemon.js";
-
 const dataFunctions = {
-  showPokemon: function () {
-    const pokeData = data.pokemon;
-    this.createPokebox(pokeData);
+  getData: async function () {
+    try {
+      const response = await fetch("./data/pokemon.json");
+      const data = await response.json();
+      return data.pokemon;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  showPokemon: async function () {
+    const data = await this.getData();
+    this.createPokebox(data);
   },
   createPokebox: function (data) {
     const pokeContainer = document.querySelector(".flex-container");
-    const pokeData = data;
     pokeContainer.innerHTML = "";
-    for (let i = 0; i < pokeData.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const createPokebox = document.createElement("li");
-      const pokeName = pokeData[i].name;
-      const pokeNum = pokeData[i].num;
+      const pokeName = data[i].name;
+      const pokeNum = data[i].num;
       createPokebox.className = "pokeLi";
-      createPokebox.id = pokeData[i].name;
+      createPokebox.id = data[i].name;
       createPokebox.innerHTML += pokeNum.toString();
       createPokebox.innerHTML += "<br>";
-      createPokebox.innerHTML += `<img src= "${pokeData[i].img}" alt= "pokeImg${pokeData[i].name}" class="image" id="${pokeData[i].id}">`;
+      createPokebox.innerHTML += `<img src= "${data[i].img}" alt= "pokeImg${data[i].name}" class="image" id="${data[i].id}">`;
       createPokebox.innerHTML += "<br>";
       createPokebox.innerHTML += pokeName.toUpperCase();
       pokeContainer.insertAdjacentElement("beforeend", createPokebox);
     }
   },
 
-  searchName: function (input) {
-    return data.pokemon.filter((poke) => {
-      return poke.name.includes(input.toLowerCase());
-    });
+  searchName: async function (input) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.name.includes(input.toLowerCase()));
   },
-  searchNumber: function (input) {
-    return data.pokemon.filter((poke) => {
-      return poke.num.includes(input);
-    });
+  searchNumber: async function (input) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.num.includes(input));
   },
-  searchType: function (input) {
-    return data.pokemon.filter((poke) => {
-      return poke.type.includes(input);
-    });
+  searchType: async function (input) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.type.includes(input));
   },
 
-  checkFilter: function (value) {
+  checkFilter: async function (value) {
+    const data = await this.getData();
     const pokemonesTypes = [];
-    data.pokemon.forEach((poke) => {
+    data.forEach((poke) => {
       if (poke.type.includes(value)) {
         pokemonesTypes.push(poke);
       }
