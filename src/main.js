@@ -34,7 +34,7 @@ searchBttn.addEventListener("click", async (e) => {
     createMessage1.id = "noinput";
     createMessage1.className = "messages";
     createMessage1.innerHTML +=
-      "<h2> Por favor, ingresa el nombre, número o tipo de Pokemon para buscar.</h2>";
+      "<h2>Please enter the name, number or type of your pokemon.</h2>";
     createMessage1.innerHTML += "<img src=./assets/img/HappyPikachu.png>";
     pokeContainer.insertAdjacentElement("beforeend", createMessage1);
   } else if (
@@ -46,7 +46,7 @@ searchBttn.addEventListener("click", async (e) => {
     createMessage2.id = "notfoundmessage";
     createMessage2.className = "messages";
     createMessage2.innerHTML +=
-      "<h2> Lo sentimos, tu búsqueda no ha dado resultados.</h2>";
+      "<h2>We are sorry, we didn't find your pokemon.</h2>";
     createMessage2.innerHTML += "<img src=./assets/img/SadPikachu.png>";
     pokeContainer.insertAdjacentElement("beforeend", createMessage2);
   } else {
@@ -352,8 +352,6 @@ async function printPokeDetails(pokemon) {
   const createTypeImg = dataFunctions.createImg(pokeImgSrcArr);
   const pokeResistant = pokeDetails.resistant;
   const pokeWeakness = pokeDetails.weaknesses;
-  const pokeResistantTranslated = dataFunctions.translateType(pokeResistant);
-  const pokeWeaknessTranslated = dataFunctions.translateType(pokeWeakness);
   const pokeAttackQuick = pokeDetails["quick-move"];
   const pokeAttackSpecial = pokeDetails["special-attack"];
   const pokeAttackQuickList = dataFunctions.showAttacks(pokeAttackQuick);
@@ -370,18 +368,18 @@ async function printPokeDetails(pokemon) {
     pokeDetails.num
   }</h2><h2>${pokeDetails.name.toUpperCase()}</h2><h2 id="img-container">${createTypeImg}</h2>`;
   pokeDialogMiddleDiv.innerHTML += `<img src= "${pokeDetails.img}" alt= "pokeImg${pokeDetails.name}" class="image">`;
-  pokeDialogLowerDiv.innerHTML += `<h3> Resistente a: ${pokeResistantTranslated.join(
+  pokeDialogLowerDiv.innerHTML += `<h3>Resistant to: ${pokeResistant.join(
     ", "
-  )}<h3><h3>Débil frente a: ${pokeWeaknessTranslated.join(
+  )}<h3><h3>Weakness: ${pokeWeakness.join(
     ", "
-  )}</h3><h3>Ataque(s) rápido(s): ${pokeAttackQuickList}</h3><h3>Ataque(s) cargado(s): ${pokeAttackSpecialList}</h3><h3>Tasa de Aparación: ${dataFunctions.evaluateCaptureRate(
+  )}</h3><h3>Quick move: ${pokeAttackQuickList}</h3><h3>Special attack: ${pokeAttackSpecialList}</h3><h3>Spawn chance ${dataFunctions.evaluateCaptureRate(
     pokeDetails["spawn-chance"]
-  )}<br>Tasa de Captura: ${dataFunctions.evaluateCaptureRate(
+  )}<br>Capture rate: ${dataFunctions.evaluateCaptureRate(
     pokeDetails.encounter["base-capture-rate"]
-  )}<br>Tasa de Huída: ${dataFunctions.evaluateCaptureRate(
+  )}<br>Flee rate: ${dataFunctions.evaluateCaptureRate(
     pokeDetails.encounter["base-flee-rate"]
   )}</h3>`;
-  pokeDialogLowestDiv.innerHTML += `<h3>Evoluciones: ${pokeEvolutionsResult}</h3>`;
+  pokeDialogLowestDiv.innerHTML += `<h3>Evolutions: ${pokeEvolutionsResult}</h3>`;
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogUpperDiv);
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogMiddleDiv);
   pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowerDiv);

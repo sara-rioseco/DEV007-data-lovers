@@ -34,18 +34,9 @@ div#homebanner {
   justify-content: space-evenly;
 }
 
-div#count-div {
-  display: flex;
-  justify-content: space-around;
-}
-
 nav {
   display: flex;
   justify-content: space-around;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 a {
@@ -256,6 +247,16 @@ form.searchbar:after {
   background-repeat: no-repeat;
   background-size: 200% 100%;
   transition: background-size 1s, background-color 1s;
+}
+
+img .poke-img {
+  width: 120px;
+  height: 120px;
+}
+
+img .type-img {
+  width: 30px;
+  height: 30px;
 }
 
 .messages {

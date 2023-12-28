@@ -23,7 +23,7 @@ const dataFunctions = {
       createPokebox.id = data[i].name;
       createPokebox.innerHTML += pokeNum.toString();
       createPokebox.innerHTML += "<br>";
-      createPokebox.innerHTML += `<img src= "${data[i].img}" alt= "pokeImg${data[i].name}" class="image" id="${data[i].id}">`;
+      createPokebox.innerHTML += `<img src= "${data[i].img}" alt= "pokeImg${data[i].name}" class="image poke-img" id="${data[i].id}">`;
       createPokebox.innerHTML += "<br>";
       createPokebox.innerHTML += pokeName.toUpperCase();
       pokeContainer.insertAdjacentElement("beforeend", createPokebox);
@@ -54,108 +54,10 @@ const dataFunctions = {
     return pokemonesTypes;
   },
 
-  translateType: function (typeArr) {
-    const translatedTypeArr = [];
-    for (let i = 0; i < typeArr.length; i++) {
-      if (typeArr[i] === "steel") {
-        translatedTypeArr.push("acero");
-      } else if (typeArr[i] === "water") {
-        translatedTypeArr.push("agua");
-      } else if (typeArr[i] === "bug") {
-        translatedTypeArr.push("bicho");
-      } else if (typeArr[i] === "dragon") {
-        translatedTypeArr.push("dragón");
-      } else if (typeArr[i] === "electric") {
-        translatedTypeArr.push("eléctrico");
-      } else if (typeArr[i] === "ghost") {
-        translatedTypeArr.push("fantasma");
-      } else if (typeArr[i] === "fire") {
-        translatedTypeArr.push("fuego");
-      } else if (typeArr[i] === "fairy") {
-        translatedTypeArr.push("hada");
-      } else if (typeArr[i] === "poison") {
-        translatedTypeArr.push("veneno");
-      } else if (typeArr[i] === "grass") {
-        translatedTypeArr.push("hierba");
-      } else if (typeArr[i] === "psychic") {
-        translatedTypeArr.push("psíquico");
-      } else if (typeArr[i] === "flying") {
-        translatedTypeArr.push("volador");
-      } else if (typeArr[i] === "dark") {
-        translatedTypeArr.push("siniestro");
-      } else if (typeArr[i] === "rock") {
-        translatedTypeArr.push("roca");
-      } else if (typeArr[i] === "ground") {
-        translatedTypeArr.push("tierra");
-      } else if (typeArr[i] === "normal") {
-        translatedTypeArr.push("normal");
-      } else if (typeArr[i] === "ice") {
-        translatedTypeArr.push("hielo");
-      } else if (typeArr[i] === "fighting") {
-        translatedTypeArr.push("lucha");
-      }
-    }
-    return translatedTypeArr;
-  },
-
   createImgSrcArr: function (typeArr) {
     const imgSrcArr = [];
     for (let i = 0; i < typeArr.length; i++) {
-      if (typeArr[i] === "steel") {
-        const imgSrcSteel = " ./assets/img/poke-types/tipo-acero.jpg";
-        imgSrcArr.push(imgSrcSteel);
-      } else if (typeArr[i] === "water") {
-        const imgSrcWater = " ./assets/img/poke-types/tipo-agua.jpg";
-        imgSrcArr.push(imgSrcWater);
-      } else if (typeArr[i] === "bug") {
-        const imgSrcBug = " ./assets/img/poke-types/tipo-bicho.jpg";
-        imgSrcArr.push(imgSrcBug);
-      } else if (typeArr[i] === "dragon") {
-        const imgSrcDragon = " ./assets/img/poke-types/tipo-dragon.jpg";
-        imgSrcArr.push(imgSrcDragon);
-      } else if (typeArr[i] === "electric") {
-        const imgSrcElectric = " ./assets/img/poke-types/tipo-electrico.jpg";
-        imgSrcArr.push(imgSrcElectric);
-      } else if (typeArr[i] === "ghost") {
-        const imgSrcGhost = " ./assets/img/poke-types/tipo-fantasma.jpg";
-        imgSrcArr.push(imgSrcGhost);
-      } else if (typeArr[i] === "fire") {
-        const imgSrcFire = " ./assets/img/poke-types/tipo-fuego.jpg";
-        imgSrcArr.push(imgSrcFire);
-      } else if (typeArr[i] === "fairy") {
-        const imgSrcFairy = " ./assets/img/poke-types/tipo-hada.jpg";
-        imgSrcArr.push(imgSrcFairy);
-      } else if (typeArr[i] === "poison") {
-        const imgSrcPoison = " ./assets/img/poke-types/tipo-veneno.jpg";
-        imgSrcArr.push(imgSrcPoison);
-      } else if (typeArr[i] === "grass") {
-        const imgSrcGrass = " ./assets/img/poke-types/tipo-planta.jpg";
-        imgSrcArr.push(imgSrcGrass);
-      } else if (typeArr[i] === "psychic") {
-        const imgSrcPsychic = " ./assets/img/poke-types/tipo-psiquico.jpg";
-        imgSrcArr.push(imgSrcPsychic);
-      } else if (typeArr[i] === "flying") {
-        const imgSrcFlying = " ./assets/img/poke-types/tipo-volador.jpg";
-        imgSrcArr.push(imgSrcFlying);
-      } else if (typeArr[i] === "dark") {
-        const imgSrcDark = " ./assets/img/poke-types/tipo-siniestro.jpg";
-        imgSrcArr.push(imgSrcDark);
-      } else if (typeArr[i] === "rock") {
-        const imgSrcRock = " ./assets/img/poke-types/tipo-roca.jpg";
-        imgSrcArr.push(imgSrcRock);
-      } else if (typeArr[i] === "ground") {
-        const imgSrcGround = " ./assets/img/poke-types/tipo-tierra.jpg";
-        imgSrcArr.push(imgSrcGround);
-      } else if (typeArr[i] === "normal") {
-        const imgSrcNormal = " ./assets/img/poke-types/tipo-normal.jpg";
-        imgSrcArr.push(imgSrcNormal);
-      } else if (typeArr[i] === "ice") {
-        const imgSrcIce = " ./assets/img/poke-types/tipo-hielo.jpg";
-        imgSrcArr.push(imgSrcIce);
-      } else if (typeArr[i] === "fighting") {
-        const imgSrcFighting = " ./assets/img/poke-types/tipo-lucha.jpg";
-        imgSrcArr.push(imgSrcFighting);
-      }
+      imgSrcArr.push(` ./assets/img/poke-types/${typeArr[i]}.jpg`)
     }
     return imgSrcArr;
   },
@@ -163,16 +65,16 @@ const dataFunctions = {
   createImg: function (imgSrcArr) {
     if (imgSrcArr.length === 1) {
       return (
-        '<img src="' + imgSrcArr[0] + '" alt= "tipo de pokemon" class="image">'
+        '<img src="' + imgSrcArr[0] + '" alt= "pokemon type'+ ` ${imgSrcArr[0]}`+'" class="image type-img">'
       );
     } else {
       return (
         '<img src="' +
         imgSrcArr[0] +
-        '" alt= "tipo de pokemon" class="image">' +
+        '" alt= "pokemon type'+ ` ${imgSrcArr[0]}`+'" class="image type-img">' +
         '<img src="' +
         imgSrcArr[1] +
-        '" alt= "tipo de pokemon" class="image">'
+        '" alt= "pokemon type'+ ` ${imgSrcArr[1]}`+'" class="image type-img">'
       );
     }
   },
@@ -230,6 +132,7 @@ const dataFunctions = {
     const prevEvolutions = this.listPrevEvolutions(pokemon);
     const nextEvolutions = this.listNextEvolutions(pokemon);
     const currentEvolution = pokemon.name;
+    // const arrow = "<i class='fa fa-arrow-right'></i>";
     if (nextEvolutions === undefined && prevEvolutions === undefined) {
       result.push(currentEvolution);
     } else if (prevEvolutions === undefined) {
@@ -239,16 +142,16 @@ const dataFunctions = {
     } else {
       result.push(prevEvolutions, currentEvolution, nextEvolutions);
     }
-    return result.flat().join(" -> ");
+    return result.flat().join(' -> ');
   },
 
   evaluateCaptureRate: function (data) {
     if (data === null) {
-      return "Sin información";
+      return "No data available";
     } else if (data === "not in capture") {
-      return "No disponible para captura";
+      return "Not available in capture";
     } else if (data === "0") {
-      return "Sin información";
+      return "No data available";
     } else {
       return data;
     }
