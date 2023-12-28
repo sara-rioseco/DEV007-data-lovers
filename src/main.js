@@ -6,8 +6,6 @@ const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
 const filterMenu = document.getElementById("filtermenu");
 const pokeDialog = document.getElementById("dialog-modal");
-/* const countPokeDialog = document.getElementById("count-dialog");
-const countPokeDialogBttn = document.getElementById("count-button"); */
 const closeBttn = document.createElement("button");
 closeBttn.id = "close-button";
 closeBttn.className = "close-button";
@@ -196,8 +194,6 @@ function orderList90() {
   return sortedList.sort().reverse();
 }
 
-window.addEventListener("load", select);
-
 function filterSelect(e) {
   filterMenu.addEventListener("change", addActionToFilter, false);
   e.preventDefault();
@@ -334,11 +330,8 @@ async function addActionToFilter() {
   }
 }
 
-window.addEventListener("load", filterSelect);
-
-function openPokeDialog() {
+export function openPokeDialog() {
   const pokeLiOnScreen = document.querySelectorAll("li");
-  pokeDialog.style.display = "flex";
   pokeLiOnScreen.forEach((pokemon) => {
     pokemon.addEventListener("click", () => {
       showDialog();
@@ -348,12 +341,12 @@ function openPokeDialog() {
 }
 
 async function printPokeDetails(pokemon) {
-  const pokeData = dataFunctions.getData();
+  const pokeData = await dataFunctions.getData();
   const pokeDialogUpperDiv = document.createElement("div");
   const pokeDialogMiddleDiv = document.createElement("div");
   const pokeDialogLowerDiv = document.createElement("div");
   const pokeDialogLowestDiv = document.createElement("div");
-  const pokeDetails = pokeData.find((poke) => pokemon === poke.name);
+  const pokeDetails = pokeData.find(poke => pokemon === poke.name);
   const pokeTypes = pokeDetails.type;
   const pokeImgSrcArr = dataFunctions.createImgSrcArr(pokeTypes);
   const createTypeImg = dataFunctions.createImg(pokeImgSrcArr);
@@ -397,11 +390,12 @@ async function printPokeDetails(pokemon) {
 
 function showDialog() {
   pokeDialog.insertAdjacentElement("beforeend", closeBttn);
+  pokeDialog.style.display = "flex";
   pokeDialog.showModal();
-  closePokeDialog();
+  closePokeDialogButton();
 }
 
-function closePokeDialog() {
+function closePokeDialogButton() {
   const pokeDialogCloseBttn = document.getElementById("close-button");
   pokeDialogCloseBttn.addEventListener("click", () => closeDialog());
 }
@@ -411,35 +405,9 @@ function closeDialog() {
   pokeDialog.innerHTML = "";
 }
 
-/* countPokeDialogBttn.addEventListener("click", () => {
-  showCountDialog();
+window.addEventListener("load", (e) => {
+  e.preventDefault()
+  openPokeDialog();
 });
-
-function countPokeOnScreen() {
-  const pokeLiOnScreen = document.getElementsByTagName("li");
-  return pokeLiOnScreen.length;
-}
-
-function showCountDialog() {
-  const pokeLiOnScreen = countPokeOnScreen();
-  const messageContainer = document.createElement("h2");
-  messageContainer.id = "message-container";
-  messageContainer.className = "message-container";
-  messageContainer.innerHTML = `En este momento hay ${pokeLiOnScreen} pokemon(es) en pantalla.`;
-  countPokeDialog.insertAdjacentElement("beforeend", messageContainer);
-  countPokeDialog.insertAdjacentElement("beforeend", closeCountBttn);
-  countPokeDialog.showModal();
-  closeCountPokeDialog();
-}
-
-function closeCountPokeDialog() {
-  const pokeDialogCloseBttn = document.getElementById("count-close-button");
-  pokeDialogCloseBttn.addEventListener("click", () => closeCountDialog());
-}
-
-function closeCountDialog() {
-  countPokeDialog.close();
-  countPokeDialog.innerHTML = "";
-} */
-
-window.addEventListener("load", openPokeDialog());
+window.addEventListener("load", select);
+window.addEventListener("load", filterSelect);
