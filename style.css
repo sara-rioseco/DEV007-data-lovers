@@ -19,6 +19,12 @@
   src: url('assets/fonts/poppins-regular.woff2') format('woff2'),
        url('assets/fonts/poppins-regular.woff') format('woff')
 }
+@font-face {
+  font-family: Font Awesome;
+  font-weight: normal;
+  font-display: swap;
+  src: url('assets/fonts/fontawesome.woff2');
+}
 
 
 *,

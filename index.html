@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" >
     <title>Pokedex Database</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="font-awesome.min.css" />
   </head>
 
   <body>
@@ -29,8 +27,7 @@
           class="header-right"
             ><img class="togeright" src="./assets/img/togepi.gif" alt="togepi"
           /></a>
-            <label hidden>Pokemon type</label>
-            <select id="filtermenu" class="section header-left" name="filtermenu" required>
+            <select id="filtermenu" class="section header-left" aria-label="Pokemon type select" name="filtermenu" required>
               <option value="placeholder" id="filterplaceholder" disabled selected hidden>
                 Pokemon type
               </option>
@@ -54,23 +51,23 @@
               <option value="fighting" id="fighting">Fighting</option>
             </select>
             <form class="searchbar" id="searchform">
-              <input
-                id="searchbar"
-                type="text"
-                placeholder="Search your Pokemon"
-                name="search"
-                spellcheck="false"
-                autocomplete="off"
-                minlength="1"
-                pattern="[A-Za-z0-9]{1,}"
-                oninput="validity.valid||(value='');"
-              />
+                <input
+                  id="searchbar"
+                  type="text"
+                  placeholder="Search your Pokemon"
+                  name="search"
+                  spellcheck="false"
+                  autocomplete="off"
+                  minlength="1"
+                  pattern="[A-Za-z0-9]{1,}"
+                  oninput="validity.valid||(value='');"
+                  aria-label="Search bar"
+                />
               <button id="searchbutton" aria-label="Search button" type="submit">
                 <i class="fa fa-search"></i>
               </button>
             </form>
-            <label hidden>Sort by</label>
-            <select id="selectmenu" class="section header-right" name="selectmenu" required>
+            <select id="selectmenu" aria-label="Sort by select" class="section header-right" name="selectmenu" required>
               <option value="placeholder" id="selectplaceholder" disabled selected hidden>
                 Sort by
               </option>
