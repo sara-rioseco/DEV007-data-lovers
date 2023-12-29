@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffede4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#505050" />
+    <meta name="description" content="Pokedex Data is a a web app to search, filter and order all of the 251 Pokemon from the 1rst and 2nd generation of Pokemon GO. You can also get the details, types, strengths, weaknesses, stats and evolutions for every Pokemon!. Developed by Sara Rioseco">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" >
     <title>Pokedex Database</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -25,6 +29,7 @@
           class="header-right"
             ><img class="togeright" src="./assets/img/togepi.gif" alt="togepi"
           /></a>
+            <label hidden>Pokemon type</label>
             <select id="filtermenu" class="section header-left" name="filtermenu" required>
               <option value="placeholder" id="filterplaceholder" disabled selected hidden>
                 Pokemon type
@@ -60,10 +65,11 @@
                 pattern="[A-Za-z0-9]{1,}"
                 oninput="validity.valid||(value='');"
               />
-              <button id="searchbutton" type="submit">
+              <button id="searchbutton" aria-label="Search button" type="submit">
                 <i class="fa fa-search"></i>
               </button>
             </form>
+            <label hidden>Sort by</label>
             <select id="selectmenu" class="section header-right" name="selectmenu" required>
               <option value="placeholder" id="selectplaceholder" disabled selected hidden>
                 Sort by
