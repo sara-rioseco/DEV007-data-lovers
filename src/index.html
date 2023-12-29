@@ -6,34 +6,26 @@
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Arimo|Eczar|Prompt|Oswald|Alegreya|Quicksand|Source Serif Pro"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
 
   <body>
-    <div id="root">
-      <header>
-        <div id="homebanner">
+      <header class="header">
           <a href="./index.html"
-            ><img
+              class="header-left"><img
               src="./assets/img/NurseJoyReallyVerySmall.png"
               alt="Nurse Joy and Chansey"
           /></a>
-          <section>
+          <section class="header-title">
             <a href="./index.html"><h1 class="title">Pokedex Database</h1></a>
             <a href="./index.html"><h2>Welcome to Nurse Joy's Poke Database!</h2></a>
           </section>
           <a href="./index.html"
+          class="header-right"
             ><img class="togeright" src="./assets/img/togepi.gif" alt="togepi"
           /></a>
-        </div>
-        <nav>
-          <section>
-            <select id="filtermenu" class="section" name="filtermenu" required>
+            <select id="filtermenu" class="section header-left" name="filtermenu" required>
               <option value="placeholder" id="filterplaceholder" disabled selected hidden>
                 Pokemon type
               </option>
@@ -56,8 +48,6 @@
               <option value="ice" id="ice">Ice</option>
               <option value="fighting" id="fighting">Fighting</option>
             </select>
-          </section>
-          <section class="section" id="bar">
             <form class="searchbar" id="searchform">
               <input
                 id="searchbar"
@@ -74,9 +64,7 @@
                 <i class="fa fa-search"></i>
               </button>
             </form>
-          </section>
-          <section>
-            <select id="selectmenu" class="section" name="selectmenu" required>
+            <select id="selectmenu" class="section header-right" name="selectmenu" required>
               <option value="placeholder" id="selectplaceholder" disabled selected hidden>
                 Sort by
               </option>
@@ -85,28 +73,18 @@
               <option value="09" id="09">0 to 9</option>
               <option value="90" id="90">9 to 0</option>
             </select>
-          </section>
-        </nav>
       </header>
       <main>
-        <ul class="flex-container" id="data-output">
-        </ul>
-        <dialog
-          id="dialog-modal"
-          class="dialog"
-          type="dialog-modal"
-        ></dialog>
-        <br /><br />
+        <ul class="flex-container" id="data-output"></ul>
+        <dialog id="dialog-modal" class="dialog" type="dialog-modal"></dialog>
       </main>
       <footer>
-        <p>
-          <b>Any comments or suggestions? Help us improve
+        <span><strong>Any comments or suggestions? Help us improve
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKq9TTRmNKVXN2uUde9hu1BuPyNVWGgfYJXsWC-nd1W-IwJg/viewform?usp=sf_link"
               >here!</a
-            >
-          </b>
-        </p>
-        <p>Developed by &copy;Sara Rioseco 2023</p>
+            ></strong>
+        </span><br>
+        <span>Developed by &copy;Sara Rioseco 2023</span>
       </footer>
     </div>
     <script src="main.js" type="module"></script>
