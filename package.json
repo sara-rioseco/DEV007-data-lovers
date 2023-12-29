@@ -6,7 +6,7 @@
   "main": "src/index.html",
   "license": "MIT",
   "icons": {
-    "16": "favicon.ico"
+    "16": "./src/favicon.ico"
   },
   "scripts": {
     "htmlhint": "htmlhint src/*.html test/*.html",
