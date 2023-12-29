@@ -1,8 +1,13 @@
 {
   "name": "data-lovers",
   "version": "1.0.0",
+  "description": "",
+  "author": {"name": "Sara Rioseco"},
   "main": "src/index.html",
   "license": "MIT",
+  "icons": {
+    "16": "favicon.ico"
+  },
   "scripts": {
     "htmlhint": "htmlhint src/*.html test/*.html",
     "eslint": "eslint --ext .js src/ test/",
