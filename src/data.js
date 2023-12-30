@@ -8,56 +8,69 @@ const dataFunctions = {
       throw new Error(e);
     }
   },
+  getPokeByName: async function (name) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.name.includes(name.toLowerCase()));
+  },
+  getPokeByNumber: async function (num) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.num.includes(num));
+  },
+  getPokeByType: async function (type) {
+    const data = await this.getData();
+    return data.filter((poke) => poke.type.includes(type));
+  },
+  sortPokeByName: async function (nameArr) {
+    const data = await this.getData();
+    const objArr = []
+    nameArr.forEach(poke => {
+      objArr.push(data.find(obj => obj.name === poke))
+    })
+    return objArr
+  },
+  sortPokeByNum: async function (numArr) {
+    const data = await this.getData();
+    const objArr = []
+    numArr.forEach(poke => {
+      objArr.push(data.find(obj => obj.num === poke))
+    })
+    return objArr
+  },
   showPokemon: async function () {
     const data = await this.getData();
     this.createPokebox(data);
   },
   createPokebox: function (data) {
     const pokeContainer = document.querySelector(".flex-container");
-    pokeContainer.innerHTML = "";
     for (let i = 0; i < data.length; i++) {
+      const pokeNumber = document.createElement("h2");
+      pokeNumber.innerText = `${(data[i].num).toString()}`;
+      pokeNumber.classList = "poke-card-text";
+
+      const pokeName = document.createElement("h2");
+      pokeName.innerText = `${(data[i].name).toUpperCase()}`;
+      pokeName.classList = "poke-card-text";
+
+      const pokeImg = document.createElement("img");
+      pokeImg.src = `${data[i].img}`;
+      pokeImg.alt = `${data[i].name} image`;
+      pokeImg.classList = "image poke-img";
+
       const createPokebox = document.createElement("li");
-      const pokeName = data[i].name;
-      const pokeNum = data[i].num;
-      createPokebox.className = "pokeLi";
-      createPokebox.id = data[i].name;
-      createPokebox.innerHTML += pokeNum.toString();
-      createPokebox.innerHTML += "<br>";
-      createPokebox.innerHTML += `<img src= "${data[i].img}" alt= "pokeImg${data[i].name}" class="image poke-img" id="${data[i].id}">`;
-      createPokebox.innerHTML += "<br>";
-      createPokebox.innerHTML += pokeName.toUpperCase();
-      pokeContainer.insertAdjacentElement("beforeend", createPokebox);
+      createPokebox.className = "poke-card";
+      createPokebox.id = `${data[i].name}`;
+
+      createPokebox.appendChild(pokeNumber);
+      createPokebox.appendChild(pokeImg);
+      createPokebox.appendChild(pokeName);
+      pokeContainer.appendChild(createPokebox);
     }
-  },
-
-  searchName: async function (input) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.name.includes(input.toLowerCase()));
-  },
-  searchNumber: async function (input) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.num.includes(input));
-  },
-  searchType: async function (input) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.type.includes(input));
-  },
-
-  checkFilter: async function (value) {
-    const data = await this.getData();
-    const pokemonesTypes = [];
-    data.forEach((poke) => {
-      if (poke.type.includes(value)) {
-        pokemonesTypes.push(poke);
-      }
-    });
-    return pokemonesTypes;
   },
 
   createImgSrcArr: function (typeArr) {
     const imgSrcArr = [];
     for (let i = 0; i < typeArr.length; i++) {
-      imgSrcArr.push(` ./assets/img/poke-types/${typeArr[i]}.jpg`)
+      imgSrcArr.push(` ./assets/img/poke-types/${typeArr[i]}.jpg`);
     }
     return imgSrcArr;
   },
@@ -65,16 +78,24 @@ const dataFunctions = {
   createImg: function (imgSrcArr) {
     if (imgSrcArr.length === 1) {
       return (
-        '<img src="' + imgSrcArr[0] + '" alt= "pokemon type'+ ` ${imgSrcArr[0]}`+'" class="image type-img">'
+        '<img src="' +
+        imgSrcArr[0] +
+        '" alt= "pokemon type' +
+        ` ${imgSrcArr[0]}` +
+        '" class="image type-img">'
       );
     } else {
       return (
         '<img src="' +
         imgSrcArr[0] +
-        '" alt= "pokemon type'+ ` ${imgSrcArr[0]}`+'" class="image type-img">' +
+        '" alt= "pokemon type' +
+        ` ${imgSrcArr[0]}` +
+        '" class="image type-img">' +
         '<img src="' +
         imgSrcArr[1] +
-        '" alt= "pokemon type'+ ` ${imgSrcArr[1]}`+'" class="image type-img">'
+        '" alt= "pokemon type' +
+        ` ${imgSrcArr[1]}` +
+        '" class="image type-img">'
       );
     }
   },
@@ -142,19 +163,15 @@ const dataFunctions = {
     } else {
       result.push(prevEvolutions, currentEvolution, nextEvolutions);
     }
-    return result.flat().join(' -> ');
+    return result.flat().join(" -> ");
   },
 
   evaluateCaptureRate: function (data) {
-    if (data === null) {
-      return "No data available";
-    } else if (data === "not in capture") {
-      return "Not available in capture";
-    } else if (data === "0") {
-      return "No data available";
-    } else {
-      return data;
-    }
+    return !data || data === "0"
+      ? "No data available"
+      : data === "not in capture"
+        ? "Not available in capture"
+        : data;
   },
 };
 export default dataFunctions;
