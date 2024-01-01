@@ -75,6 +75,7 @@ const dataFunctions = {
       pokeImg.src = `${data[i].img}`;
       pokeImg.alt = `${data[i].name} image`;
       pokeImg.classList = "image poke-img";
+      pokeImg.loading = "lazy"
 
       const pokeName = document.createElement("h2");
       pokeName.innerText = `${data[i].name.toUpperCase()}`;
