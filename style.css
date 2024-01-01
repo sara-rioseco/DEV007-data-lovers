@@ -167,6 +167,7 @@ dialog i {
   width: fit-content;
   height: fit-content;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 #searchform {
@@ -292,7 +293,7 @@ form.searchbar:after {
   background-repeat: no-repeat;
   background-size: 200% 100%;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-  transition: background-size 1s, background-color 1s;
+  transition: background-size ease, background-color ease, background-image 1s;
 }
 
 .poke-card-text {
@@ -302,6 +303,7 @@ form.searchbar:after {
 .poke-img {
   width: 120px;
   height: 120px;
+  text-shadow:  0 5px 25px rgba(255, 255, 255, 0.6);
 }
 
 .type-img {
