@@ -26,6 +26,18 @@
   src: url('assets/fonts/fontawesome.woff2');
 }
 
+:root {
+  --clr-bg: #F0EFDD;
+  --clr-brown: #C8876A;
+  --clr-green: #7AAEA9;
+  --clr-green-transp: rgb(122, 174, 169, 0.15);
+  --clr-pink: #DE7E88;
+  --clr-dark-grey: #505050;
+
+  --ff-heading: Oswald, serif;;
+  --ff-body: Eczar, serif;;
+  --ff-footer: Poppins, serif;
+}
 
 *,
 *::before,
@@ -36,7 +48,7 @@
 html {
   height: 100%;
   width: 100%;
-  background-color: #ffede4;
+  background-color: var(--clr-bg);
 }
 
 body {
@@ -81,7 +93,7 @@ footer {
   padding: 1rem 0;
   font-size: 0.8rem;
   text-align: center;
-  font-family: Poppins, serif;
+  font-family: var(--ff-footer);
   line-height: 1.2rem;
 }
 
@@ -95,8 +107,8 @@ ul {
 }
 
 h1 {
-  font-family: Oswald, serif;
-  color: #505050;
+  font-family: var(--ff-heading);
+  color: var(--clr-dark-grey);
   opacity: 1;
   font-size: 40px;
   text-shadow: 3px 3px 10px #ffffff,
@@ -105,7 +117,7 @@ h1 {
 }
 
 h2 {
-  font-family: Eczar, serif;
+  font-family: var(--ff-body);
   color: rgba(80, 80, 80, 1);
   opacity: 1;
   font-size: 20px;
@@ -125,7 +137,7 @@ h3 {
   max-width: 500px;
   border-style: none;
   border-radius: 40px;
-  font-family: Poppins, serif;
+  font-family: var(--ff-footer);
   flex-direction: column;
   justify-content: center;
 }
@@ -146,14 +158,15 @@ h3 {
   text-align: center;
 }
 
-.dialog-div#dialog-lower-div{
+.dialog-div .dialog-lower-div{
   display: inline;
   text-align: left;
 }
 
-dialog button {
+dialog i {
   width: fit-content;
-  align-self: center;
+  height: fit-content;
+  align-self: flex-end;
 }
 
 #searchform {
@@ -244,8 +257,8 @@ form.searchbar:after {
 }
 
 #data-output {
-  font-family: Eczar, serif;
-  color: rgb(0, 0, 0);
+  font-family: var(--ff-body);
+  color: var(--clr-dark-grey);
   width: 100%;
   margin: auto;
   padding: auto;
@@ -264,7 +277,7 @@ form.searchbar:after {
   border-radius: 15px;
   color: rgba(80, 80, 80, 1);
   text-shadow:  0 5px 25px rgba(255, 255, 255, 0.6);
-  font-family: Eczar, serif;
+  font-family: var(--ff-body);
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -274,10 +287,11 @@ form.searchbar:after {
 }
 
 .poke-card:hover {
-  background-color: rgba(137, 216, 130, 0.9);
-  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .7) 100%);
+  background-color: var(--clr-green-transp);
+  background-image: linear-gradient(to top, var(--clr-green) 0%, var(--clr-green-transp) 60%, rgba(255, 255, 255, .5) 100%);
   background-repeat: no-repeat;
   background-size: 200% 100%;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   transition: background-size 1s, background-color 1s;
 }
 
@@ -301,7 +315,7 @@ form.searchbar:after {
   height: fit-content;
   margin: auto;
   padding: 20px;
-  font-family: Eczar, serif;
+  font-family: var(--ff-body);
   border-radius: 40px;
 }
 

@@ -9,109 +9,125 @@ const dataFunctions = {
     }
   },
   getPokeByName: async function (name) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.name.includes(name.toLowerCase()));
+    try {
+      const data = await this.getData();
+      return data.filter((poke) => poke.name.includes(name.toLowerCase()));
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   getPokeByNumber: async function (num) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.num.includes(num));
+    try {
+      const data = await this.getData();
+      return data.filter((poke) => poke.num.includes(num));
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   getPokeByType: async function (type) {
-    const data = await this.getData();
-    return data.filter((poke) => poke.type.includes(type));
+    try {
+      const data = await this.getData();
+      return data.filter((poke) => poke.type.includes(type));
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   sortPokeByName: async function (nameArr) {
-    const data = await this.getData();
-    const objArr = []
-    nameArr.forEach(poke => {
-      objArr.push(data.find(obj => obj.name === poke))
-    })
-    return objArr
+    try {
+      const data = await this.getData();
+      const objArr = [];
+      nameArr.forEach((poke) => {
+        objArr.push(data.find((obj) => obj.name === poke));
+      });
+      return objArr;
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   sortPokeByNum: async function (numArr) {
-    const data = await this.getData();
-    const objArr = []
-    numArr.forEach(poke => {
-      objArr.push(data.find(obj => obj.num === poke))
-    })
-    return objArr
+    try {
+      const data = await this.getData();
+      const objArr = [];
+      numArr.forEach((poke) => {
+        objArr.push(data.find((obj) => obj.num === poke));
+      });
+      return objArr;
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   showPokemon: async function () {
-    const data = await this.getData();
-    this.createPokebox(data);
+    try {
+      const data = await this.getData();
+      this.createPokebox(data);
+    } catch (e) {
+      throw new Error(e);
+    }
   },
   createPokebox: function (data) {
-    const pokeContainer = document.querySelector(".flex-container");
+    const container = document.querySelector(".flex-container");
     for (let i = 0; i < data.length; i++) {
       const pokeNumber = document.createElement("h2");
-      pokeNumber.innerText = `${(data[i].num).toString()}`;
+      pokeNumber.innerText = `${data[i].num.toString()}`;
       pokeNumber.classList = "poke-card-text";
-
-      const pokeName = document.createElement("h2");
-      pokeName.innerText = `${(data[i].name).toUpperCase()}`;
-      pokeName.classList = "poke-card-text";
 
       const pokeImg = document.createElement("img");
       pokeImg.src = `${data[i].img}`;
       pokeImg.alt = `${data[i].name} image`;
       pokeImg.classList = "image poke-img";
 
-      const createPokebox = document.createElement("li");
-      createPokebox.className = "poke-card";
-      createPokebox.id = `${data[i].name}`;
+      const pokeName = document.createElement("h2");
+      pokeName.innerText = `${data[i].name.toUpperCase()}`;
+      pokeName.classList = "poke-card-text";
 
-      createPokebox.appendChild(pokeNumber);
-      createPokebox.appendChild(pokeImg);
-      createPokebox.appendChild(pokeName);
-      pokeContainer.appendChild(createPokebox);
+      const card = document.createElement("li");
+      card.className = "poke-card";
+      card.id = `${data[i].name}`;
+
+      card.appendChild(pokeNumber);
+      card.appendChild(pokeImg);
+      card.appendChild(pokeName);
+      container.appendChild(card);
     }
   },
 
   createImgSrcArr: function (typeArr) {
     const imgSrcArr = [];
     for (let i = 0; i < typeArr.length; i++) {
-      imgSrcArr.push(` ./assets/img/poke-types/${typeArr[i]}.jpg`);
+      imgSrcArr.push(`./assets/img/poke-types/${typeArr[i]}.jpg`);
     }
     return imgSrcArr;
   },
 
-  createImg: function (imgSrcArr) {
-    if (imgSrcArr.length === 1) {
-      return (
-        '<img src="' +
-        imgSrcArr[0] +
-        '" alt= "pokemon type' +
-        ` ${imgSrcArr[0]}` +
-        '" class="image type-img">'
-      );
-    } else {
-      return (
-        '<img src="' +
-        imgSrcArr[0] +
-        '" alt= "pokemon type' +
-        ` ${imgSrcArr[0]}` +
-        '" class="image type-img">' +
-        '<img src="' +
-        imgSrcArr[1] +
-        '" alt= "pokemon type' +
-        ` ${imgSrcArr[1]}` +
-        '" class="image type-img">'
-      );
-    }
+  createImg: function (srcArr) {
+    return srcArr.map(
+      (src) =>
+        `<img src="${src}" alt="pokemon type ${src.slice(
+          24,
+          -4
+        )}" class="image type-img">`
+    );
   },
+
+  getTypeImgs: function (types) {
+    const arr = this.createImg(this.createImgSrcArr(types))
+    return arr.join("")
+  },
+
+  capFirstLetter: (str) => str[0].toUpperCase() + str.slice(1),
 
   showAttacks: function (attacksArr) {
     if (attacksArr.length === 1) {
-      return attacksArr[0].name;
+      return this.capFirstLetter(attacksArr[0].name);
     } else if (attacksArr.length === 2) {
-      return attacksArr[0].name + ", " + attacksArr[1].name;
+      return this.capFirstLetter(attacksArr[0].name) + ", " + this.capFirstLetter(attacksArr[1].name);
     } else {
       return (
-        attacksArr[0].name +
+        this.capFirstLetter(attacksArr[0].name) +
         ", " +
-        attacksArr[1].name +
+        this.capFirstLetter(attacksArr[1].name) +
         ", " +
-        attacksArr[2].name
+        this.capFirstLetter(attacksArr[2].name)
       );
     }
   },
@@ -150,20 +166,20 @@ const dataFunctions = {
 
   joinEvolutions: function (pokemon) {
     const result = [];
-    const prevEvolutions = this.listPrevEvolutions(pokemon);
-    const nextEvolutions = this.listNextEvolutions(pokemon);
-    const currentEvolution = pokemon.name;
+    const prev = this.listPrevEvolutions(pokemon);
+    const next = this.listNextEvolutions(pokemon);
+    const current = pokemon.name;
     // const arrow = "<i class='fa fa-arrow-right'></i>";
-    if (nextEvolutions === undefined && prevEvolutions === undefined) {
-      result.push(currentEvolution);
-    } else if (prevEvolutions === undefined) {
-      result.push(currentEvolution, nextEvolutions);
-    } else if (nextEvolutions === undefined) {
-      result.push(prevEvolutions, currentEvolution);
+    if (next === undefined && prev === undefined) {
+      result.push(current);
+    } else if (prev === undefined) {
+      result.push(current, next);
+    } else if (next === undefined) {
+      result.push(prev, current);
     } else {
-      result.push(prevEvolutions, currentEvolution, nextEvolutions);
+      result.push(prev, current, next);
     }
-    return result.flat().join(" -> ");
+    return result.flat().map(item => this.capFirstLetter(item)).join(" -> ");
   },
 
   evaluateCaptureRate: function (data) {
