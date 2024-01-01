@@ -195,10 +195,10 @@ async function printPokeDetails(pokemon) {
     types
   )}</h2>`;
   pokeDialogMiddleDiv.innerHTML += `<img src= "${stats.img}" alt= "pokeImg${stats.name}" class="image poke-img">`;
-  pokeDialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${resist.join(
+  pokeDialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${resist.map(type => dataFunctions.capFirstLetter(type)).join(
     ", "
   )}
-  <h3><strong>Weakness: </strong>${weak.join(", ")}</h3>
+  <h3><strong>Weakness: </strong>${weak.map(type => dataFunctions.capFirstLetter(type)).join(", ")}</h3>
   <h3><strong>Quick move: </strong>${quickList}</h3>
   <h3><strong>Special attack: </strong>${specialList}</h3>
   <h3><strong>Spawn chance </strong>${dataFunctions.evaluateCaptureRate(
