@@ -58,7 +58,7 @@ body {
   min-height: 100vh;
   margin: auto;
   padding: 0 50px;
-  background-image: url(assets/img/poke-background-full.png);
+  background-image: url(assets/img/bg.webp);
   background-size: 500px;
   background-position:top;
   justify-content: space-between;
@@ -302,6 +302,7 @@ form.searchbar:after {
 
 .poke-img {
   height: 120px;
+  width: auto;
   text-shadow:  0 5px 25px rgba(255, 255, 255, 0.6);
 }
 

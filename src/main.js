@@ -23,7 +23,7 @@ searchBttn.addEventListener("click", async (e) => {
     createMessage1.className = "messages";
     createMessage1.innerHTML +=
       "<h2>Please enter the name, number or type of your pokemon.</h2>";
-    createMessage1.innerHTML += "<img src=./assets/img/HappyPikachu.png>";
+    createMessage1.innerHTML += "<img src=./assets/img/happy-pikachu.webp>";
     container.insertAdjacentElement("beforeend", createMessage1);
     return;
   }
@@ -46,7 +46,7 @@ searchBttn.addEventListener("click", async (e) => {
     createMessage2.className = "messages";
     createMessage2.innerHTML +=
       "<h2>We are sorry, we didn't find your pokemon.</h2>";
-    createMessage2.innerHTML += "<img src=./assets/img/SadPikachu.png>";
+    createMessage2.innerHTML += "<img src=./assets/img/sad-pikachu.webp>";
     container.insertAdjacentElement("beforeend", createMessage2);
     return;
   }
