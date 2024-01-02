@@ -39,6 +39,7 @@
   --ff-footer: Poppins, serif;
 }
 
+ /* ----- DESKTOP ----- */
 *,
 *::before,
 *::after {
@@ -62,6 +63,7 @@ body {
   background-size: 500px;
   background-position:top;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header {
@@ -144,6 +146,10 @@ h3 {
 
 .dialog[open] {
   display:flex;
+}
+
+.dialog:focus-visible {
+  outline: none;
 }
 
 .dialog::backdrop {
@@ -327,4 +333,59 @@ form.searchbar:after {
 
 #noinput {
   text-align: center;
+}
+
+ /* ----- MOBILE ----- */
+ @media only screen and (max-width: 700px) {
+  body {
+    max-width: 100vw;
+    padding: 0 1rem;
+  }
+  h1 {
+    font-size: 32px;
+    margin-block: 2rem;
+  }
+  .header {
+    grid-template-columns: 1fr;
+  }
+  .header-left, .header-right {
+    justify-self: center;
+  }
+  header .header-img {
+    display:none;
+  }
+
+  form.searchbar {
+    margin-inline: 10px;
+  }
+  form.searchbar input[type=text] {
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid grey;
+    float: left;
+    width: 70%;
+    background: #f1f1f1;
+    position: inherit;
+  }
+
+  form.searchbar button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #757575;
+    color: white;
+    font-size: 13px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+
+  .poke-card {
+    width: 200px;
+    height: 200px;
+    padding-block: 0.8em;
+    margin: 10px;
+
+  }
+
 }
