@@ -1,71 +1,79 @@
 import dataFunctions from "./data.js";
 
 const container = document.querySelector(".flex-container");
-const pokeInput = document.getElementById("searchbar");
+const input = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
 const filterMenu = document.getElementById("filtermenu");
-const pokeDialog = document.getElementById("dialog-modal");
+const dialog = document.getElementById("dialog-modal");
 const closeBttn = document.createElement("i");
 closeBttn.id = "close-button";
 closeBttn.className = "fa fa-close close-button";
 
-dataFunctions.showPokemon();
+dataFunctions.showPokemon()
+  .then(() => openPokeDialog());
 
-// ==== SEARCH ====
+// ========= SEARCH BAR =========
+
 searchBttn.addEventListener("click", async (e) => {
   e.preventDefault();
   container.innerHTML = "";
 
-  if (pokeInput.value === "") {
-    const createMessage1 = document.createElement("div");
-    createMessage1.id = "noinput";
-    createMessage1.className = "messages";
-    createMessage1.innerHTML +=
-      "<h2>Please enter the name, number or type of your pokemon.</h2>";
-    createMessage1.innerHTML += "<img src=./assets/img/happy-pikachu.webp>";
-    container.insertAdjacentElement("beforeend", createMessage1);
+  if (input.value === "") {
+    const noInput = document.createElement("div");
+    noInput.id = "noinput";
+    noInput.className = "messages";
+
+    const text = document.createElement("h2");
+    text.innerText = "Please enter the name, number or type of your pokemon."
+
+    const img = document.createElement("img");
+    img.src = "./assets/img/happy-pikachu.webp"
+    img.alt = "happy pikachu"
+
+    noInput.appendChild(text);
+    noInput.appendChild(img);
+    container.insertAdjacentElement("beforeend", noInput);
     return;
   }
 
-  const nameSearch = await dataFunctions.getPokeByName(
-    pokeInput.value.toLowerCase()
-  );
-  const numberSearch = await dataFunctions.getPokeByNumber(pokeInput.value);
-  const typeSearch = await dataFunctions.getPokeByType(
-    pokeInput.value.toLowerCase()
-  );
+  const nameSearch = await dataFunctions.getPokeByName(input.value.toLowerCase());
+  const numberSearch = await dataFunctions.getPokeByNumber(input.value);
+  const typeSearch = await dataFunctions.getPokeByType(input.value.toLowerCase());
 
   if (
     nameSearch.length < 1 &&
     numberSearch.length < 1 &&
     typeSearch.length < 1
   ) {
-    const createMessage2 = document.createElement("div");
-    createMessage2.id = "notfoundmessage";
-    createMessage2.className = "messages";
-    createMessage2.innerHTML +=
-      "<h2>We are sorry, we didn't find your pokemon.</h2>";
-    createMessage2.innerHTML += "<img src=./assets/img/sad-pikachu.webp>";
-    container.insertAdjacentElement("beforeend", createMessage2);
+    const notFound = document.createElement("div");
+    notFound.id = "notfoundmessage";
+    notFound.className = "messages";
+
+    const text = document.createElement("h2");
+    text.innerText = "We are sorry, we didn't find your pokemon."
+
+    const img = document.createElement("img");
+    img.src = "./assets/img/sad-pikachu.webp"
+    img.alt = "sad pikachu"
+
+    notFound.appendChild(text);
+    notFound.appendChild(img);
+    container.insertAdjacentElement("beforeend", notFound);
     return;
   }
   if (nameSearch.length >= 1) {
     dataFunctions.createPokebox(nameSearch);
-    openPokeDialog();
-    return;
   }
   if (numberSearch.length >= 1) {
     dataFunctions.createPokebox(numberSearch);
-    openPokeDialog();
-    return;
   }
   dataFunctions.createPokebox(typeSearch);
   openPokeDialog();
   return;
 });
 
-// ==== SORT BY ====
+// ========= SORT BY =========
 
 function sortMenu(e) {
   selectMenu.addEventListener("change", addActionToSort);
@@ -107,42 +115,42 @@ async function addActionToSort() {
 }
 
 function orderListAZ() {
-  const liOnScreen = document.querySelectorAll("li");
-  const sortedList = [];
-  for (let i = 0; i < liOnScreen.length; i++) {
-    sortedList.push(liOnScreen[i].innerText.slice(4).toLowerCase());
+  const cards = document.querySelectorAll("li");
+  const res = [];
+  for (let i = 0; i < cards.length; i++) {
+    res.push(cards[i].innerText.slice(4).toLowerCase());
   }
-  return sortedList.sort();
+  return res.sort();
 }
 
 function orderListZA() {
-  const onScreenList = document.querySelectorAll("li");
-  const sortedList = [];
-  for (let i = 0; i < onScreenList.length; i++) {
-    sortedList.push(onScreenList[i].innerText.slice(4).toLowerCase());
+  const cards = document.querySelectorAll("li");
+  const res = [];
+  for (let i = 0; i < cards.length; i++) {
+    res.push(cards[i].innerText.slice(4).toLowerCase());
   }
-  return sortedList.sort().reverse();
+  return res.sort().reverse();
 }
 
 function orderList09() {
-  const onScreenList = document.querySelectorAll("li");
-  const sortedList = [];
-  for (let i = 0; i < onScreenList.length; i++) {
-    sortedList.push(onScreenList[i].innerText.slice(0, 3));
+  const cards = document.querySelectorAll("li");
+  const res = [];
+  for (let i = 0; i < cards.length; i++) {
+    res.push(cards[i].innerText.slice(0, 3));
   }
-  return sortedList.sort();
+  return res.sort();
 }
 
 function orderList90() {
-  const onScreenList = document.querySelectorAll("li");
-  const sortedList = [];
-  for (let i = 0; i < onScreenList.length; i++) {
-    sortedList.push(onScreenList[i].innerText.slice(0, 3));
+  const cards = document.querySelectorAll("li");
+  const res = [];
+  for (let i = 0; i < cards.length; i++) {
+    res.push(cards[i].innerText.slice(0, 3));
   }
-  return sortedList.sort().reverse();
+  return res.sort().reverse();
 }
 
-// ==== FILTER BY TYPE ====
+// ========= FILTER BY TYPE =========
 
 function filterSelect(e) {
   filterMenu.addEventListener("change", addActionToFilter);
@@ -157,14 +165,14 @@ async function addActionToFilter() {
   openPokeDialog();
 }
 
-// ==== DIALOG ====
+// ========= DIALOG =========
 
 function openPokeDialog() {
-  const onScreen = document.querySelectorAll("li");
-  onScreen.forEach((pokemon) => {
-    pokemon.addEventListener("click", () => {
+  const cards = document.querySelectorAll("li");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
       showDialog();
-      printPokeDetails(pokemon.innerText.slice(4).toLowerCase());
+      printPokeDetails(card.innerText.slice(4).toLowerCase());
     });
   });
 }
@@ -175,27 +183,24 @@ async function printPokeDetails(pokemon) {
   const types = stats.type;
   const resist = stats.resistant;
   const weak = stats.weaknesses;
-  const quick = stats["quick-move"];
-  const special = stats["special-attack"];
-  const quickList = dataFunctions.showAttacks(quick);
-  const specialList = dataFunctions.showAttacks(special);
+  const quickList = dataFunctions.showAttacks(stats["quick-move"]);
+  const specialList = dataFunctions.showAttacks(stats["special-attack"]);
   const evoResult = dataFunctions.joinEvolutions(stats);
-
-  const pokeDialogUpperDiv = document.createElement("div");
-  const pokeDialogMiddleDiv = document.createElement("div");
-  const pokeDialogLowerDiv = document.createElement("div");
-  const pokeDialogLowestDiv = document.createElement("div");
-  pokeDialogUpperDiv.className = "dialog-div dialog-upper-div";
-  pokeDialogMiddleDiv.className = "dialog-div";
-  pokeDialogLowerDiv.className = "dialog-lower-div dialog-lower-div";
-  pokeDialogLowestDiv.className = "dialog-div dialog-lowest-div";
-  pokeDialogUpperDiv.innerHTML += `<h2>${
-    stats.num
-  }</h2><h2>${stats.name.toUpperCase()}</h2><h2 id="img-container">${dataFunctions.getTypeImgs(
-    types
-  )}</h2>`;
-  pokeDialogMiddleDiv.innerHTML += `<img src= "${stats.img}" alt= "pokeImg${stats.name}" class="image poke-img">`;
-  pokeDialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${resist.map(type => dataFunctions.capFirstLetter(type)).join(
+  const dialogUpperDiv = document.createElement("div");
+  const dialogMiddleDiv = document.createElement("div");
+  const dialogLowerDiv = document.createElement("div");
+  const dialogLowestDiv = document.createElement("div");
+  dialogUpperDiv.className = "dialog-div dialog-upper-div";
+  dialogMiddleDiv.className = "dialog-div";
+  dialogLowerDiv.className = "dialog-lower-div dialog-lower-div";
+  dialogLowestDiv.className = "dialog-div dialog-lowest-div";
+  dialogUpperDiv.innerHTML += `
+    <h2>${stats.num}</h2>
+    <h2>${stats.name.toUpperCase()}</h2>
+    <h2 id="img-container">${dataFunctions.getTypeImgs(types)}</h2>
+  `;
+  dialogMiddleDiv.innerHTML += `<img src= "${stats.img}" alt= "pokeImg${stats.name}" class="image poke-img">`;
+  dialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${resist.map(type => dataFunctions.capFirstLetter(type)).join(
     ", "
   )}
   <h3><strong>Weakness: </strong>${weak.map(type => dataFunctions.capFirstLetter(type)).join(", ")}</h3>
@@ -208,29 +213,29 @@ async function printPokeDetails(pokemon) {
 )}<br><strong>Flee rate: </strong>${dataFunctions.evaluateCaptureRate(
   stats.encounter["base-flee-rate"]
 )}</h3>`;
-  pokeDialogLowestDiv.innerHTML += `<h3><strong>Evolutions: </strong>${evoResult}</h3>`;
-  pokeDialog.insertAdjacentElement("beforeend", pokeDialogUpperDiv);
-  pokeDialog.insertAdjacentElement("beforeend", pokeDialogMiddleDiv);
-  pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowerDiv);
-  pokeDialog.insertAdjacentElement("beforeend", pokeDialogLowestDiv);
+  dialogLowestDiv.innerHTML += `<h3><strong>Evolutions: </strong>${evoResult}</h3>`;
+  dialog.insertAdjacentElement("beforeend", dialogUpperDiv);
+  dialog.insertAdjacentElement("beforeend", dialogMiddleDiv);
+  dialog.insertAdjacentElement("beforeend", dialogLowerDiv);
+  dialog.insertAdjacentElement("beforeend", dialogLowestDiv);
 }
 
 function showDialog() {
-  pokeDialog.insertAdjacentElement("beforeend", closeBttn);
-  pokeDialog.showModal();
+  dialog.insertAdjacentElement("beforeend", closeBttn);
+  dialog.showModal();
   closePokeDialogButton();
 }
 
 function closePokeDialogButton() {
-  const pokeDialogCloseBttn = document.getElementById("close-button");
-  pokeDialogCloseBttn.addEventListener("click", () => closeDialog());
+  const closeBttn = document.getElementById("close-button");
+  closeBttn.addEventListener("click", () => closeDialog());
 }
 
 function closeDialog() {
-  pokeDialog.close();
-  pokeDialog.innerHTML = "";
+  dialog.close();
+  dialog.innerHTML = "";
 }
 
-window.addEventListener("load", openPokeDialog);
+// window.addEventListener("load", openPokeDialog);
 window.addEventListener("load", sortMenu);
 window.addEventListener("load", filterSelect);
