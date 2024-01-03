@@ -1,6 +1,7 @@
 import dataFunctions from "./data.js";
+// import Chart from 'chart.js/auto';
 
-const container = document.querySelector(".flex-container");
+const container = document.querySelector(".grid-container");
 const input = document.getElementById("searchbar");
 const searchBttn = document.getElementById("searchbutton");
 const selectMenu = document.getElementById("selectmenu");
@@ -10,8 +11,22 @@ const closeBttn = document.createElement("i");
 closeBttn.id = "close-button";
 closeBttn.className = "fa fa-close close-button";
 
-dataFunctions.showPokemon()
-  .then(() => openPokeDialog());
+showPokemon()
+  .then(() => addShowDialogEvent());
+
+
+function createPokebox (data) {
+  data.forEach(item => container.appendChild(dataFunctions.createCard(item)));
+}
+
+async function showPokemon() {
+  try {
+    const data = await dataFunctions.getData();
+    createPokebox(data);
+  } catch (e) {
+    throw new Error(e);
+  }
+}
 
 // ========= SEARCH BAR =========
 
@@ -21,8 +36,7 @@ searchBttn.addEventListener("click", async (e) => {
 
   if (input.value === "") {
     const noInput = document.createElement("div");
-    noInput.id = "noinput";
-    noInput.className = "messages";
+    noInput.classList = "messages no-result-msg";
 
     const text = document.createElement("h2");
     text.innerText = "Please enter the name, number or type of your pokemon."
@@ -47,8 +61,7 @@ searchBttn.addEventListener("click", async (e) => {
     typeSearch.length < 1
   ) {
     const notFound = document.createElement("div");
-    notFound.id = "notfoundmessage";
-    notFound.className = "messages";
+    notFound.classList = "messages no-result-msg";
 
     const text = document.createElement("h2");
     text.innerText = "We are sorry, we didn't find your pokemon."
@@ -63,13 +76,13 @@ searchBttn.addEventListener("click", async (e) => {
     return;
   }
   if (nameSearch.length >= 1) {
-    dataFunctions.createPokebox(nameSearch);
+    createPokebox(nameSearch);
   }
   if (numberSearch.length >= 1) {
-    dataFunctions.createPokebox(numberSearch);
+    createPokebox(numberSearch);
   }
-  dataFunctions.createPokebox(typeSearch);
-  openPokeDialog();
+  createPokebox(typeSearch);
+  addShowDialogEvent();
   return;
 });
 
@@ -110,8 +123,8 @@ async function addActionToSort() {
   default:
   }
   container.innerHTML = "";
-  dataFunctions.createPokebox(pokeResult);
-  openPokeDialog();
+  createPokebox(pokeResult);
+  addShowDialogEvent();
 }
 
 function orderListAZ() {
@@ -161,28 +174,15 @@ async function addActionToFilter() {
   const type = filterMenu.value;
   const result = await dataFunctions.getPokeByType(type);
   container.innerHTML = "";
-  dataFunctions.createPokebox(result);
-  openPokeDialog();
+  createPokebox(result);
+  addShowDialogEvent();
 }
 
 // ========= DIALOG =========
 
-function openPokeDialog() {
-  const cards = document.querySelectorAll("li");
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      showDialog();
-      printPokeDetails(card.innerText.slice(4).toLowerCase());
-    });
-  });
-}
-
 async function printPokeDetails(pokemon) {
   const data = await dataFunctions.getData();
   const stats = data.find((poke) => pokemon === poke.name);
-  const types = stats.type;
-  const resist = stats.resistant;
-  const weak = stats.weaknesses;
   const quickList = dataFunctions.showAttacks(stats["quick-move"]);
   const specialList = dataFunctions.showAttacks(stats["special-attack"]);
   const evoResult = dataFunctions.joinEvolutions(stats);
@@ -197,13 +197,13 @@ async function printPokeDetails(pokemon) {
   dialogUpperDiv.innerHTML += `
     <h2>${stats.num}</h2>
     <h2>${stats.name.toUpperCase()}</h2>
-    <h2 id="img-container">${dataFunctions.getTypeImgs(types)}</h2>
+    <h2 id="img-container">${dataFunctions.getTypeImgs(stats.type)}</h2>
   `;
   dialogMiddleDiv.innerHTML += `<img src= "${stats.img}" alt= "pokeImg${stats.name}" class="image poke-img">`;
-  dialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${resist.map(type => dataFunctions.capFirstLetter(type)).join(
+  dialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${stats.resistant.map(type => dataFunctions.capFirstLetter(type)).join(
     ", "
   )}
-  <h3><strong>Weakness: </strong>${weak.map(type => dataFunctions.capFirstLetter(type)).join(", ")}</h3>
+  <h3><strong>Weakness: </strong>${stats.weaknesses.map(type => dataFunctions.capFirstLetter(type)).join(", ")}</h3>
   <h3><strong>Quick move: </strong>${quickList}</h3>
   <h3><strong>Special attack: </strong>${specialList}</h3>
   <h3><strong>Spawn chance </strong>${dataFunctions.evaluateCaptureRate(
@@ -220,13 +220,23 @@ async function printPokeDetails(pokemon) {
   dialog.insertAdjacentElement("beforeend", dialogLowestDiv);
 }
 
+function addShowDialogEvent() {
+  const cards = document.querySelectorAll("li");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      showDialog();
+      printPokeDetails(card.innerText.slice(4).toLowerCase());
+    });
+  });
+}
+
 function showDialog() {
   dialog.insertAdjacentElement("beforeend", closeBttn);
   dialog.showModal();
-  closePokeDialogButton();
+  addCloseEvent();
 }
 
-function closePokeDialogButton() {
+function addCloseEvent() {
   const closeBttn = document.getElementById("close-button");
   closeBttn.addEventListener("click", () => closeDialog());
 }
@@ -236,6 +246,5 @@ function closeDialog() {
   dialog.innerHTML = "";
 }
 
-// window.addEventListener("load", openPokeDialog);
 window.addEventListener("load", sortMenu);
 window.addEventListener("load", filterSelect);
