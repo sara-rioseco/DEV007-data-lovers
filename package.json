@@ -2,7 +2,9 @@
   "name": "data-lovers",
   "version": "1.0.0",
   "description": "",
-  "author": {"name": "Sara Rioseco"},
+  "author": {
+    "name": "Sara Rioseco"
+  },
   "main": "src/index.html",
   "license": "MIT",
   "icons": {
@@ -26,7 +28,7 @@
     "htmlhint": "^1.0.0",
     "jest": "^27.0.1",
     "opener": "^1.5.1",
-    "serve": "^13.0.2"
+    "serve": "^14.2.1"
   },
   "engines": {
     "node": ">=16.x"
@@ -37,6 +39,7 @@
     "commit": "a5360f78b634be4f14eaea996ee4c7afc85a2f48"
   },
   "dependencies": {
+    "chart.js": "^4.4.1",
     "firebase": "^9.22.1"
   }
 }

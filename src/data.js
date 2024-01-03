@@ -56,40 +56,30 @@ const dataFunctions = {
       throw new Error(e);
     }
   },
-  showPokemon: async function () {
-    try {
-      const data = await this.getData();
-      this.createPokebox(data);
-    } catch (e) {
-      throw new Error(e);
-    }
-  },
-  createPokebox: function (data) {
-    const container = document.querySelector(".flex-container");
-    for (let i = 0; i < data.length; i++) {
-      const pokeNumber = document.createElement("h2");
-      pokeNumber.innerText = `${data[i].num.toString()}`;
-      pokeNumber.classList = "poke-card-text";
 
-      const pokeImg = document.createElement("img");
-      pokeImg.src = `${data[i].img}`;
-      pokeImg.alt = `${data[i].name} image`;
-      pokeImg.classList = "image poke-img";
-      pokeImg.loading = "lazy"
+  createCard: function (data) {
+    const pokeNumber = document.createElement("h2");
+    pokeNumber.innerText = `${data.num.toString()}`;
+    pokeNumber.classList = "poke-card-text";
 
-      const pokeName = document.createElement("h2");
-      pokeName.innerText = `${data[i].name.toUpperCase()}`;
-      pokeName.classList = "poke-card-text";
+    const pokeImg = document.createElement("img");
+    pokeImg.src = `${data.img}`;
+    pokeImg.alt = `${data.name} image`;
+    pokeImg.classList = "image poke-img";
+    pokeImg.loading = "lazy"
 
-      const card = document.createElement("li");
-      card.className = "poke-card";
-      card.id = `${data[i].name}`;
+    const pokeName = document.createElement("h2");
+    pokeName.innerText = `${data.name.toUpperCase()}`;
+    pokeName.classList = "poke-card-text";
 
-      card.appendChild(pokeNumber);
-      card.appendChild(pokeImg);
-      card.appendChild(pokeName);
-      container.appendChild(card);
-    }
+    const card = document.createElement("li");
+    card.className = "poke-card";
+    card.id = `${data.name}`;
+
+    card.appendChild(pokeNumber);
+    card.appendChild(pokeImg);
+    card.appendChild(pokeName);
+    return card
   },
 
   createImgSrcArr: function (typeArr) {
@@ -180,7 +170,7 @@ const dataFunctions = {
     } else {
       result.push(prev, current, next);
     }
-    return result.flat().map(item => this.capFirstLetter(item)).join(" -> ");
+    return result.flat().map(item => this.capFirstLetter(item)).join(" <strong>-></strong> ");
   },
 
   evaluateCaptureRate: function (data) {
