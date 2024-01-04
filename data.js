@@ -1,7 +1,9 @@
 const dataFunctions = {
   getData: async function () {
     try {
-      const response = await fetch("./data/pokemon.json");
+      const response = await fetch("./data/pokemon.json", {
+        credentials: "include"
+      });
       const data = await response.json();
       return data.pokemon;
     } catch (e) {
@@ -170,7 +172,7 @@ const dataFunctions = {
     } else {
       result.push(prev, current, next);
     }
-    return result.flat().map(item => this.capFirstLetter(item)).join(" <strong>-></strong> ");
+    return result.flat().map(item => this.capFirstLetter(item)).join(" -> ");
   },
 
   evaluateCaptureRate: function (data) {

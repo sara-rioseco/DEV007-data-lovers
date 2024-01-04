@@ -99,15 +99,6 @@ footer {
   line-height: 1.2rem;
 }
 
-ul {
-  list-style-type: none;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 0px;
-}
-
 h1 {
   font-family: var(--ff-heading);
   color: var(--clr-dark-grey);
@@ -135,17 +126,101 @@ h3 {
   font-weight: normal;
 }
 
+ul {
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.grid-container {
+  font-family: var(--ff-body);
+  color: var(--clr-dark-grey);
+  width: 100%;
+  margin: auto;
+  padding: auto;
+  font-size: 20px;
+  text-shadow: 3px 3px 10px #000000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .dialog {
-  max-width: 500px;
+  min-width: 20em;
   border-style: none;
-  border-radius: 40px;
+  border-radius: 32px;
   font-family: var(--ff-footer);
-  flex-direction: column;
   justify-content: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  background-color: var(--clr-green);
+  background-image: linear-gradient(to top, var(--clr-green) 0%, var(--clr-bg) 50%, rgb(255,255,255) 80%);
+  background-repeat: no-repeat;
 }
 
 .dialog[open] {
-  display:flex;
+  display: grid;
+  grid-template-columns: [full-start] 1fr [middle-start] 1fr [middle-end] 1fr [full-end];
+}
+
+dialog > h3 {
+  margin-block: 0.6em;
+}
+
+dialog > h2 {
+  font-size: 24px;
+  margin-block: 0;
+}
+
+dialog i {
+  grid-area: full;
+  grid-row-start: 1;
+  width: fit-content;
+  height: fit-content;
+  justify-self: flex-end;
+  cursor: pointer;
+}
+dialog > :nth-child(4) {
+  justify-self: center;
+  align-self: center;
+}
+
+dialog > :nth-child(5) {
+  grid-area: full;
+  justify-self: center;
+  grid-row: 3;
+}
+
+dialog > :nth-child(6) {
+  grid-area: full;
+  justify-self: flex-start;
+  grid-row: 4;
+}
+
+dialog > :nth-child(7) {
+  grid-area: full;
+  justify-self: flex-start;
+  grid-row: 5;
+}
+
+dialog > :nth-child(8) {
+  grid-area: full;
+  justify-self: flex-start;
+  grid-row: 6;
+}
+
+dialog > :nth-child(9) {
+  grid-area: full;
+  justify-self: flex-start;
+  grid-row: 7;
+}
+
+dialog > :nth-child(13) {
+  grid-area: full;
+  justify-self: center;
+  grid-row: 9;
 }
 
 .dialog:focus-visible {
@@ -169,24 +244,20 @@ h3 {
   text-align: left;
 }
 
-dialog i {
-  width: fit-content;
-  height: fit-content;
-  align-self: flex-end;
-  cursor: pointer;
-}
-
-.searchbar {
+.search-bar {
   margin: auto;
   align-self: center;
   max-width: 300px;
 }
-
-form.searchbar {
-  margin: 10px;
+.break {
+  white-space: pre-line;
+  line-height: 20px;
+}
+.centered {
+  text-align: center;
 }
 
-form.searchbar input[type=text] {
+form > input[type=text] {
   padding: 10px;
   font-size: 13px;
   border: 1px solid grey;
@@ -196,7 +267,7 @@ form.searchbar input[type=text] {
   position: inherit;
 }
 
-form.searchbar button {
+form > button {
   float: left;
   width: 20%;
   padding: 10px;
@@ -208,17 +279,17 @@ form.searchbar button {
   cursor: pointer;
 }
 
-form.searchbar button:hover {
+form > button:hover {
   background: #424242;
 }
 
-form.searchbar:after {
+form > input:after {
   content: "";
   clear: both;
   display: table;
 }
 
-.select {
+select {
   padding: 10px;
   font-size: 12px;
   border: 1px solid grey;
@@ -227,7 +298,7 @@ form.searchbar:after {
   position: inherit;
 }
 
-#selectmenu {
+.sort-select {
   padding: 10px;
   margin: 10px;
   font-size: 12px;
@@ -236,7 +307,7 @@ form.searchbar:after {
   background: #f1f1f1;
   position: inherit;
 }
-#selectmenu option {
+.sort-select option {
   padding: 10px;
   font-size: 12px;
   border: 1px solid grey;
@@ -245,7 +316,7 @@ form.searchbar:after {
   position: inherit;
 }
 
-#filtermenu {
+.type-select {
   padding: 10px;
   margin: 10px;
   font-size: 12px;
@@ -254,26 +325,13 @@ form.searchbar:after {
   background: #f1f1f1;
   position: inherit;
 }
-#filtermenu option {
+.type-select option {
   padding: 10px;
   font-size: 12px;
   border: 1px solid grey;
   width: 200px;
   background: #f1f1f1;
   position: inherit;
-}
-
-#data-output {
-  font-family: var(--ff-body);
-  color: var(--clr-dark-grey);
-  width: 100%;
-  margin: auto;
-  padding: auto;
-  font-size: 20px;
-  text-shadow: 3px 3px 10px #000000;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .poke-card {

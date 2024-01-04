@@ -2,10 +2,10 @@ import dataFunctions from "./data.js";
 // import Chart from 'chart.js/auto';
 
 const container = document.querySelector(".grid-container");
-const input = document.getElementById("searchbar");
-const searchBttn = document.getElementById("searchbutton");
-const selectMenu = document.getElementById("selectmenu");
-const filterMenu = document.getElementById("filtermenu");
+const input = document.getElementById("search-input");
+const searchBttn = document.getElementById("search-button");
+const sortSelect = document.getElementById("sort-select");
+const typeSelect = document.getElementById("type-select");
 const dialog = document.getElementById("dialog-modal");
 const closeBttn = document.createElement("i");
 closeBttn.id = "close-button";
@@ -89,13 +89,13 @@ searchBttn.addEventListener("click", async (e) => {
 // ========= SORT BY =========
 
 function sortMenu(e) {
-  selectMenu.addEventListener("change", addActionToSort);
+  sortSelect.addEventListener("change", addActionToSort);
   e.preventDefault();
 }
 
 async function addActionToSort() {
   let pokeResult = [];
-  switch (selectMenu.value) {
+  switch (sortSelect.value) {
   case "az":
     {
       const sorted = orderListAZ();
@@ -166,12 +166,12 @@ function orderList90() {
 // ========= FILTER BY TYPE =========
 
 function filterSelect(e) {
-  filterMenu.addEventListener("change", addActionToFilter);
+  typeSelect.addEventListener("change", addActionToFilter);
   e.preventDefault();
 }
 
 async function addActionToFilter() {
-  const type = filterMenu.value;
+  const type = typeSelect.value;
   const result = await dataFunctions.getPokeByType(type);
   container.innerHTML = "";
   createPokebox(result);
@@ -186,38 +186,86 @@ async function printPokeDetails(pokemon) {
   const quickList = dataFunctions.showAttacks(stats["quick-move"]);
   const specialList = dataFunctions.showAttacks(stats["special-attack"]);
   const evoResult = dataFunctions.joinEvolutions(stats);
-  const dialogUpperDiv = document.createElement("div");
-  const dialogMiddleDiv = document.createElement("div");
-  const dialogLowerDiv = document.createElement("div");
-  const dialogLowestDiv = document.createElement("div");
-  dialogUpperDiv.className = "dialog-div dialog-upper-div";
-  dialogMiddleDiv.className = "dialog-div";
-  dialogLowerDiv.className = "dialog-lower-div dialog-lower-div";
-  dialogLowestDiv.className = "dialog-div dialog-lowest-div";
-  dialogUpperDiv.innerHTML += `
-    <h2>${stats.num}</h2>
-    <h2>${stats.name.toUpperCase()}</h2>
-    <h2 id="img-container">${dataFunctions.getTypeImgs(stats.type)}</h2>
-  `;
-  dialogMiddleDiv.innerHTML += `<img src= "${stats.img}" alt= "pokeImg${stats.name}" class="image poke-img">`;
-  dialogLowerDiv.innerHTML += `<h3><strong>Resistant to: </strong>${stats.resistant.map(type => dataFunctions.capFirstLetter(type)).join(
-    ", "
-  )}
-  <h3><strong>Weakness: </strong>${stats.weaknesses.map(type => dataFunctions.capFirstLetter(type)).join(", ")}</h3>
-  <h3><strong>Quick move: </strong>${quickList}</h3>
-  <h3><strong>Special attack: </strong>${specialList}</h3>
-  <h3><strong>Spawn chance </strong>${dataFunctions.evaluateCaptureRate(
-    stats["spawn-chance"]
-  )}<br><strong>Capture rate: </strong>${dataFunctions.evaluateCaptureRate(
-  stats.encounter["base-capture-rate"]
-)}<br><strong>Flee rate: </strong>${dataFunctions.evaluateCaptureRate(
-  stats.encounter["base-flee-rate"]
-)}</h3>`;
-  dialogLowestDiv.innerHTML += `<h3><strong>Evolutions: </strong>${evoResult}</h3>`;
-  dialog.insertAdjacentElement("beforeend", dialogUpperDiv);
-  dialog.insertAdjacentElement("beforeend", dialogMiddleDiv);
-  dialog.insertAdjacentElement("beforeend", dialogLowerDiv);
-  dialog.insertAdjacentElement("beforeend", dialogLowestDiv);
+
+  const number = document.createElement('h2');
+  number.textContent = `${stats.num}`
+
+  const name = document.createElement('h2');
+  name.textContent = `${stats.name.toUpperCase()}`
+
+  const types = document.createElement('div');
+  types.id = 'img-container';
+  types.innerHTML = `${dataFunctions.getTypeImgs(stats.type)}`;
+
+  const image = document.createElement('img');
+  image.src = `${stats.img}`
+  image.alt = `Image of ${stats.name} pokemon`
+  image.classList = 'image poke-img'
+
+  const resist = document.createElement('h3');
+  const resistB = document.createElement('b');
+  resistB.textContent = 'Resistant to: '
+  resist.textContent = `${stats.resistant.map(type => dataFunctions.capFirstLetter(type)).join(", ")}`
+  resist.insertAdjacentElement('afterbegin', resistB)
+
+  const weak = document.createElement('h3');
+  const weakB = document.createElement('b');
+  weakB.textContent = 'Weakness: '
+  weak.textContent = `${stats.weaknesses.map(type => dataFunctions.capFirstLetter(type)).join(", ")}`
+  weak.insertAdjacentElement('afterbegin', weakB)
+
+  const quick = document.createElement('h3');
+  const quickB = document.createElement('b');
+  quickB.textContent = 'Quick move: '
+  quick.textContent = `${quickList}`
+  quick.insertAdjacentElement('afterbegin', quickB)
+
+  const special = document.createElement('h3');
+  const specialB = document.createElement('b')
+  specialB.textContent = 'Special attack: '
+  special.textContent = `${specialList}`
+  special.insertAdjacentElement('afterbegin', specialB)
+
+  const spawn = document.createElement('h3');
+  const spawnB = document.createElement('b')
+  spawnB.textContent = 'Spawn Chance'
+  spawn.classList = 'break centered'
+  spawn.textContent = `\r\n${dataFunctions.evaluateCaptureRate(stats["spawn-chance"])}`
+  spawn.insertAdjacentElement('afterbegin', spawnB)
+
+  const capture = document.createElement('h3');
+  const captureB = document.createElement('b')
+  captureB.textContent = 'Capture rate: '
+  capture.classList = 'break centered'
+  capture.textContent = `\r\n${dataFunctions.evaluateCaptureRate(stats.encounter["base-capture-rate"])}`
+  capture.insertAdjacentElement('afterbegin', captureB)
+
+  const flee = document.createElement('h3');
+  const fleeB = document.createElement('b')
+  fleeB.textContent = 'Flee rate: '
+  flee.classList = 'break centered'
+  flee.textContent = `\r\n${dataFunctions.evaluateCaptureRate(stats.encounter["base-flee-rate"])}`
+  flee.insertAdjacentElement('afterbegin', fleeB)
+
+  const evolutions = document.createElement('h3');
+  const evolutionsB = document.createElement('b');
+  evolutionsB.textContent = 'Evolutions: '
+  evolutions.classList = 'break centered'
+  evolutions.textContent = `\r\n${evoResult}`
+  evolutions.insertAdjacentElement('afterbegin', evolutionsB)
+
+  dialog.insertAdjacentElement('beforeend', number)
+  dialog.insertAdjacentElement('beforeend', name)
+  dialog.insertAdjacentElement('beforeend', types)
+  dialog.insertAdjacentElement('beforeend', image)
+  dialog.insertAdjacentElement('beforeend', resist)
+  dialog.insertAdjacentElement('beforeend', weak)
+  dialog.insertAdjacentElement('beforeend', quick)
+  dialog.insertAdjacentElement('beforeend', special)
+  dialog.insertAdjacentElement('beforeend', spawn)
+  dialog.insertAdjacentElement('beforeend', capture)
+  dialog.insertAdjacentElement('beforeend', flee)
+  dialog.insertAdjacentElement('beforeend', evolutions)
 }
 
 function addShowDialogEvent() {
@@ -231,7 +279,7 @@ function addShowDialogEvent() {
 }
 
 function showDialog() {
-  dialog.insertAdjacentElement("beforeend", closeBttn);
+  dialog.insertAdjacentElement("afterbegin", closeBttn);
   dialog.showModal();
   addCloseEvent();
 }
