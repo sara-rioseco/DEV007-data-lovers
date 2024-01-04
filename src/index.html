@@ -30,7 +30,7 @@
           class="header-right"
             ><img class="header-img" src="./assets/img/togepi.webp" alt="togepi" style="width: 140px; height: 140px;"
           /></a>
-            <select id="filtermenu" class="section header-left" aria-label="Pokemon type select" name="filtermenu" required>
+            <select id="type-select" class="section header-left" aria-label="Pokemon type select" name="type-select" required>
               <option value="placeholder" id="filterplaceholder" disabled selected hidden>
                 Pokemon type
               </option>
@@ -53,9 +53,9 @@
               <option value="ice" id="ice">Ice</option>
               <option value="fighting" id="fighting">Fighting</option>
             </select>
-            <form class="searchbar">
+            <form class="search-bar">
                 <input
-                  id="searchbar"
+                  id="search-input"
                   type="text"
                   placeholder="Search your Pokemon"
                   name="search"
@@ -64,13 +64,13 @@
                   minlength="1"
                   pattern="[A-Za-z0-9]{1,}"
                   oninput="validity.valid||(value='');"
-                  aria-label="Search bar"
+                  aria-label="Search input"
                 />
-              <button id="searchbutton" aria-label="Search button" type="submit">
+              <button id="search-button" aria-label="Search button" type="submit">
                 <i class="fa fa-search"></i>
               </button>
             </form>
-            <select id="selectmenu" aria-label="Sort by select" class="section header-right" name="selectmenu" required>
+            <select id="sort-select" aria-label="Sort by select" class="section header-right" name="sort-select" required>
               <option value="placeholder" id="selectplaceholder" disabled selected hidden>
                 Sort by
               </option>
@@ -81,7 +81,7 @@
             </select>
       </header>
       <main>
-        <ul class="grid-container" id="data-output"></ul>
+        <ul class="grid-container"></ul>
         <dialog id="dialog-modal" class="dialog" type="dialog-modal"></dialog>
       </main>
       <footer>
