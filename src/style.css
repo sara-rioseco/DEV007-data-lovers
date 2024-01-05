@@ -29,7 +29,7 @@
 :root {
   --clr-bg: #F0EFDD;
   --clr-brown: #C8876A;
-  --clr-green: #7AAEA9;
+  --clr-green: rgb(122, 174, 169);
   --clr-green-transp: rgb(122, 174, 169, 0.15);
   --clr-pink: #DE7E88;
   --clr-dark-grey: #505050;
@@ -230,7 +230,9 @@ dialog > :nth-child(13) {
 .dialog::backdrop {
   position: fixed;
   inset: 0px;
-  background: rgba(36, 36, 36, 0.3);
+  background: rgba(36, 36, 36, 0.1);
+  backdrop-filter: blur(4px);
+  transition:ease;
 }
 
 .dialog-div {
@@ -389,6 +391,16 @@ select {
   text-align: center;
 }
 
+div.chart-div {
+  width: 80px;
+  height: 80px;
+  margin-inline: 31px;
+}
+
+.chart {
+  width: 80px;
+  height: 80px;
+}
  /* ----- MOBILE ----- */
  @media only screen and (max-width: 700px) {
   body {
@@ -400,13 +412,28 @@ select {
     margin-block: 2rem;
   }
   .header {
-    grid-template-columns: 1fr;
+    grid-template-columns: [full-start] 1fr [] 1fr [full-end];
+    row-gap: 0.4em;
+    column-gap: 0.4em;
   }
   .header-left, .header-right {
     justify-self: center;
   }
   header .header-img {
     display:none;
+  }
+
+  header > * {
+    width: 100%;
+  }
+
+  header > :nth-child(2) {
+    grid-area: full;
+    grid-row: 1;
+  }
+  header > :nth-child(5) {
+    grid-area: full;
+    grid-row: 2;
   }
 
   form.searchbar {
@@ -417,7 +444,7 @@ select {
     font-size: 13px;
     border: 1px solid grey;
     float: left;
-    width: 163px;
+    max-width: 163px;
     background: #f1f1f1;
     position: inherit;
   }
