@@ -176,11 +176,9 @@ const dataFunctions = {
   },
 
   evaluateCaptureRate: function (data) {
-    return !data || data === "0"
-      ? "No data available"
-      : data === "not in capture"
-        ? "Not available in capture"
-        : data;
+    return !data || data === "0" || data === "not in capture"
+      ? "Not available"
+      : Number(data);
   },
 };
 export default dataFunctions;
