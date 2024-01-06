@@ -155,7 +155,7 @@ ul {
   justify-content: space-around;
 }
 .dialog {
-  min-width: 20em;
+  min-width: 30em;
   border-style: none;
   border-radius: 32px;
   font-family: var(--ff-footer);
@@ -173,7 +173,7 @@ ul {
 .dialog[open] {
   animation: slide-up 500ms forwards, fade-in 1000ms forwards;
   display: grid;
-  grid-template-columns: [full-start] 1fr [middle-start] 1fr [middle-end] 1fr [full-end];
+  grid-template-columns: [full-start] auto [middle-start] auto [middle-end] auto [full-end];
 }
 dialog > h3 {
   margin-block: 0.6em;
@@ -203,21 +203,25 @@ dialog > :nth-child(6) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 4;
+  padding-inline: 0.4em;
 }
 dialog > :nth-child(7) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 5;
+  padding-inline: 0.4em;
 }
 dialog > :nth-child(8) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 6;
+  padding-inline: 0.4em;
 }
 dialog > :nth-child(9) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 7;
+  padding-inline: 0.4em;
 }
 dialog > :nth-child(13) {
   grid-area: full;
@@ -410,7 +414,7 @@ div.chart-div {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 /* ----- MOBILE ----- */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 769px) {
   body {
     max-width: 100vw;
     padding: 0 1rem;
@@ -470,6 +474,91 @@ div.chart-div {
     height: 200px;
     padding-block: 0.8em;
     margin: 10px;
+  }
+  dialog > h3 {
+    margin-block: 0.4em;
+  }
+  dialog > h2 {
+    min-width: fit-content;
+    font-size: 20px;
+    margin-block: 0;
+    text-wrap:pretty;
+  }
+  div.chart-div {
+    width: 50px;
+    height: 50px;
+    margin-inline: 50px;
+  }
+  .chart {
+    width: 50px;
+    height: 50px;
+  }
+  dialog i {
+    grid-row-start: 1;
+    margin-block-end: 0.4em;
+    justify-self: flex-end;
+    cursor: pointer;
+  }
+}
+/* --------- SMALLER SCREENS --------- */
+
+@media only screen and (max-width: 480px) {
+  .dialog {
+    min-width: 14em;
+  }
+  dialog > :nth-child(2) {
+    justify-self: flex-end;
+    align-self: center;
+  }
+  dialog > :nth-child(3) {
+    grid-area: full;
+    justify-self: center;
+    grid-row: 3;
+  }
+  dialog > :nth-child(4) {
+    justify-self: center;
+    align-self: center;
+    grid-column: 2 span;
+  }
+  dialog > :nth-child(5) {
+    grid-area: full;
+    justify-self: center;
+    grid-row: 4;
+  }
+  dialog > :nth-child(6) {
+    grid-area: full;
+    justify-self: flex-start;
+    grid-row: 5;
+  }
+  dialog > :nth-child(7) {
+    grid-area: full;
+    justify-self: flex-start;
+    grid-row: 6;
+  }
+  dialog > :nth-child(8) {
+    grid-area: full;
+    justify-self: flex-start;
+    grid-row: 7;
+  }
+  dialog > :nth-child(9) {
+    grid-area: full;
+    justify-self: flex-start;
+    grid-row: 8;
+  }
+  dialog > :nth-child(13) {
+    grid-area: full;
+    justify-self: center;
+    grid-row: 10;
+  }
+
+  div.chart-div {
+    width: 30px;
+    height: 30px;
+    margin-inline: 31px;
+  }
+  .chart {
+    width: 30px;
+    height: 30px;
   }
 }
 /* --------- REDUCED MOTION --------- */
