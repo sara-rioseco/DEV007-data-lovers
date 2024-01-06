@@ -7,6 +7,7 @@ const searchBttn = document.getElementById("search-button");
 const sortSelect = document.getElementById("sort-select");
 const typeSelect = document.getElementById("type-select");
 const dialog = document.getElementById("dialog-modal");
+const topBttn = document.getElementById("top-button");
 const closeBttn = document.createElement("i");
 closeBttn.id = "close-button";
 closeBttn.className = "fa fa-close close-button";
@@ -186,6 +187,8 @@ function orderList90() {
   return res.sort().reverse();
 }
 
+window.addEventListener("load", sortMenu);
+
 // ========= FILTER BY TYPE =========
 
 function filterSelect(e) {
@@ -200,6 +203,8 @@ async function addActionToFilter() {
   createPokebox(result);
   addShowDialogEvent();
 }
+
+window.addEventListener("load", filterSelect);
 
 // ========= DIALOG =========
 
@@ -336,6 +341,7 @@ function addShowDialogEvent() {
 }
 
 function showDialog() {
+  dialog.innerHTML = "";
   dialog.insertAdjacentElement("afterbegin", closeBttn);
   dialog.showModal();
   addCloseEvent();
@@ -348,8 +354,23 @@ function addCloseEvent() {
 
 function closeDialog() {
   dialog.close();
-  dialog.innerHTML = "";
 }
 
-window.addEventListener("load", sortMenu);
-window.addEventListener("load", filterSelect);
+// ========= BACK TO TOP BUTTON =========
+
+function scroll() {
+  document.body.scrollTop > 20 || document.documentElement.scrollTop > 20
+    ? topBttn.style.display = "block"
+    : topBttn.style.display = "none"
+}
+
+function toTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+window.onscroll = () => scroll();
+topBttn.addEventListener('click', (e) => {
+  e.preventDefault();
+  toTop();
+})
