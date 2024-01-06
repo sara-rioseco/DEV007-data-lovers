@@ -1,59 +1,80 @@
 @font-face {
-  font-family: 'Eczar';
+  font-family: "Eczar";
   font-weight: normal;
   font-display: swap;
-  src: url('assets/fonts/eczar-regular.woff2') format('woff2'),
-       url('assets/fonts/eczar-regular.woff') format('woff')
+  src: url("assets/fonts/eczar-regular.woff2") format("woff2"),
+    url("assets/fonts/eczar-regular.woff") format("woff");
 }
 @font-face {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   font-weight: normal;
   font-display: swap;
-  src: url('assets/fonts/oswald-regular.woff2') format('woff2'),
-       url('assets/fonts/oswald-regular.woff') format('woff')
+  src: url("assets/fonts/oswald-regular.woff2") format("woff2"),
+    url("assets/fonts/oswald-regular.woff") format("woff");
 }
 @font-face {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: normal;
   font-display: swap;
-  src: url('assets/fonts/poppins-regular.woff2') format('woff2'),
-       url('assets/fonts/poppins-regular.woff') format('woff')
+  src: url("assets/fonts/poppins-regular.woff2") format("woff2"),
+    url("assets/fonts/poppins-regular.woff") format("woff");
 }
 @font-face {
-  font-family: Font Awesome;
+  font-family: "FontAwesome";
+  src: url("./assets/fonts/fontawesome.woff2") format("woff2"), format("svg");
   font-weight: normal;
+  font-style: normal;
   font-display: swap;
-  src: url('assets/fonts/fontawesome.woff2');
 }
-
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  1000% {
+    transform: translateY(0%);
+  }
+}
 :root {
-  --clr-bg: #F0EFDD;
-  --clr-brown: #C8876A;
+  --clr-bg: #f0efdd;
+  --clr-brown: #c8876a;
   --clr-green: rgb(122, 174, 169);
   --clr-green-transp: rgb(122, 174, 169, 0.15);
-  --clr-pink: #DE7E88;
+  --clr-pink: #de7e88;
   --clr-dark-grey: #505050;
-
-  --ff-heading: Oswald, serif;;
-  --ff-body: Eczar, serif;;
+  --ff-heading: Oswald, serif;
+  --ff-body: Eczar, serif;
   --ff-footer: Poppins, serif;
 }
-
- /* ----- DESKTOP ----- */
+/* ----- DESKTOP ----- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 html {
   height: 100%;
   width: 100%;
   background-color: var(--clr-bg);
+  scroll-behavior: smooth;
 }
-
 body {
-  display:flex;
+  display: flex;
   flex-direction: column;
   max-width: 70rem;
   min-height: 100vh;
@@ -61,36 +82,29 @@ body {
   padding: 0 50px;
   background-image: url(assets/img/bg.webp);
   background-size: 500px;
-  background-position:top;
+  background-position: top;
   justify-content: space-between;
   align-items: center;
 }
-
 .header {
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
 }
-
 .header > * {
   align-self: center;
 }
-
 .header-title {
   padding: 0 2.4rem;
 }
-
 .header-left {
   justify-self: right;
 }
-
 .header-right {
   justify-self: left;
 }
-
 a {
   text-decoration: none;
 }
-
 footer {
   padding: 1rem 0;
   font-size: 0.8rem;
@@ -98,34 +112,28 @@ footer {
   font-family: var(--ff-footer);
   line-height: 1.2rem;
 }
-
 h1 {
   font-family: var(--ff-heading);
   color: var(--clr-dark-grey);
   opacity: 1;
   font-size: 40px;
-  text-shadow: 3px 3px 10px #ffffff,
-               -3px -3px 10px #ffffff;
+  text-shadow: 3px 3px 10px #ffffff, -3px -3px 10px #ffffff;
   text-align: center;
 }
-
 h2 {
   font-family: var(--ff-body);
   color: rgba(80, 80, 80, 1);
   opacity: 1;
   font-size: 20px;
-  text-shadow: 3px 3px 8px #ffffff,
-               -3px -3px 8px #ffffff;
+  text-shadow: 3px 3px 8px #ffffff, -3px -3px 8px #ffffff;
   text-align: center;
 }
-
 h3 {
   color: rgb(0, 0, 0);
   opacity: 1;
   font-size: 16px;
   font-weight: normal;
 }
-
 ul {
   list-style-type: none;
   margin-block-start: 1em;
@@ -134,7 +142,6 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 0px;
 }
-
 .grid-container {
   font-family: var(--ff-body);
   color: var(--clr-dark-grey);
@@ -147,7 +154,6 @@ ul {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
 .dialog {
   min-width: 20em;
   border-style: none;
@@ -156,24 +162,26 @@ ul {
   justify-content: center;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   background-color: var(--clr-green);
-  background-image: linear-gradient(to top, var(--clr-green) 0%, var(--clr-bg) 50%, rgb(255,255,255) 80%);
+  background-image: linear-gradient(
+    to top,
+    var(--clr-green) 0%,
+    var(--clr-bg) 50%,
+    rgb(255, 255, 255) 80%
+  );
   background-repeat: no-repeat;
 }
-
 .dialog[open] {
+  animation: slide-up 500ms forwards, fade-in 1000ms forwards;
   display: grid;
   grid-template-columns: [full-start] 1fr [middle-start] 1fr [middle-end] 1fr [full-end];
 }
-
 dialog > h3 {
   margin-block: 0.6em;
 }
-
 dialog > h2 {
   font-size: 24px;
   margin-block: 0;
 }
-
 dialog i {
   grid-area: full;
   grid-row-start: 1;
@@ -186,66 +194,55 @@ dialog > :nth-child(4) {
   justify-self: center;
   align-self: center;
 }
-
 dialog > :nth-child(5) {
   grid-area: full;
   justify-self: center;
   grid-row: 3;
 }
-
 dialog > :nth-child(6) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 4;
 }
-
 dialog > :nth-child(7) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 5;
 }
-
 dialog > :nth-child(8) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 6;
 }
-
 dialog > :nth-child(9) {
   grid-area: full;
   justify-self: flex-start;
   grid-row: 7;
 }
-
 dialog > :nth-child(13) {
   grid-area: full;
   justify-self: center;
   grid-row: 9;
 }
-
 .dialog:focus-visible {
   outline: none;
 }
-
 .dialog::backdrop {
   position: fixed;
   inset: 0px;
   background: rgba(36, 36, 36, 0.1);
   backdrop-filter: blur(4px);
-  transition:ease;
+  transition: ease;
 }
-
 .dialog-div {
   display: flex;
   justify-content: space-around;
   text-align: center;
 }
-
-.dialog-div .dialog-lower-div{
+.dialog-div .dialog-lower-div {
   display: inline;
   text-align: left;
 }
-
 .search-bar {
   margin: auto;
   align-self: center;
@@ -258,8 +255,7 @@ dialog > :nth-child(13) {
 .centered {
   text-align: center;
 }
-
-form > input[type=text] {
+form > input[type="text"] {
   padding: 10px;
   font-size: 13px;
   border: 1px solid grey;
@@ -268,7 +264,6 @@ form > input[type=text] {
   background: #f1f1f1;
   position: inherit;
 }
-
 form > button {
   float: left;
   width: 20%;
@@ -280,26 +275,23 @@ form > button {
   border-left: none;
   cursor: pointer;
 }
-
 form > button:hover {
   background: #424242;
 }
-
 form > input:after {
   content: "";
   clear: both;
   display: table;
 }
-
 select {
   padding: 10px;
   font-size: 12px;
   border: 1px solid grey;
   width: 200px;
   background: #f1f1f1;
+  cursor: pointer;
   position: inherit;
 }
-
 .sort-select {
   padding: 10px;
   margin: 10px;
@@ -317,7 +309,6 @@ select {
   background: #f1f1f1;
   position: inherit;
 }
-
 .type-select {
   padding: 10px;
   margin: 10px;
@@ -335,7 +326,6 @@ select {
   background: #f1f1f1;
   position: inherit;
 }
-
 .poke-card {
   width: 200px;
   height: 240px;
@@ -343,7 +333,7 @@ select {
   padding-block: 1.6em;
   border-radius: 15px;
   color: rgba(80, 80, 80, 1);
-  text-shadow:  0 5px 25px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 5px 25px rgba(255, 255, 255, 0.6);
   font-family: var(--ff-body);
   font-weight: bold;
   text-align: center;
@@ -352,31 +342,31 @@ select {
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
-
 .poke-card:hover {
   background-color: var(--clr-green-transp);
-  background-image: linear-gradient(to top, var(--clr-green) 0%, var(--clr-green-transp) 60%, rgba(255, 255, 255, .5) 100%);
+  background-image: linear-gradient(
+    to top,
+    var(--clr-green) 0%,
+    var(--clr-green-transp) 60%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
   background-repeat: no-repeat;
   background-size: 200% 100%;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   transition: background-size ease, background-color ease, background-image 1s;
 }
-
 .poke-card-text {
   margin: 0;
 }
-
 .poke-img {
   height: 120px;
   width: auto;
-  text-shadow:  0 5px 25px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 5px 25px rgba(255, 255, 255, 0.6);
 }
-
 .type-img {
   width: 30px;
   height: 30px;
 }
-
 .messages {
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
@@ -386,23 +376,41 @@ select {
   font-family: var(--ff-body);
   border-radius: 40px;
 }
-
 .no-result-msg {
   text-align: center;
 }
-
 div.chart-div {
   width: 80px;
   height: 80px;
   margin-inline: 31px;
 }
-
 .chart {
   width: 80px;
   height: 80px;
 }
- /* ----- MOBILE ----- */
- @media only screen and (max-width: 700px) {
+.top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 2em;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--clr-bg);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+.top-button:hover {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+/* ----- MOBILE ----- */
+@media only screen and (max-width: 700px) {
   body {
     max-width: 100vw;
     padding: 0 1rem;
@@ -416,17 +424,16 @@ div.chart-div {
     row-gap: 0.4em;
     column-gap: 0.4em;
   }
-  .header-left, .header-right {
+  .header-left,
+  .header-right {
     justify-self: center;
   }
   header .header-img {
-    display:none;
+    display: none;
   }
-
   header > * {
     width: 100%;
   }
-
   header > :nth-child(2) {
     grid-area: full;
     grid-row: 1;
@@ -435,11 +442,10 @@ div.chart-div {
     grid-area: full;
     grid-row: 2;
   }
-
   form.searchbar {
     margin-inline: 10px;
   }
-  form.searchbar input[type=text] {
+  form.searchbar input[type="text"] {
     padding: 10px;
     font-size: 13px;
     border: 1px solid grey;
@@ -448,7 +454,6 @@ div.chart-div {
     background: #f1f1f1;
     position: inherit;
   }
-
   form.searchbar button {
     float: left;
     width: 37px;
@@ -460,13 +465,34 @@ div.chart-div {
     border-left: none;
     cursor: pointer;
   }
-
   .poke-card {
     width: 200px;
     height: 200px;
     padding-block: 0.8em;
     margin: 10px;
-
   }
-
+}
+/* --------- REDUCED MOTION --------- */
+@media (prefers-reduced-motion) {
+  .html {
+    scroll-behavior: auto;
+  }
+}
+/* --------- FONT AWESOME CLASSES --------- */
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-search:before {
+  content: "\f002";
+}
+.fa-close:before {
+  content: "\f00d";
+}
+.fa-chevron-up:before {
+  content: "\f077";
 }
