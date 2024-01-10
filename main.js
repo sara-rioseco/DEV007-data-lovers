@@ -1,6 +1,7 @@
 import dataFunctions from "./data.js";
 import { Chart, DoughnutController, ArcElement } from "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm";
 
+const url = dataFunctions.url;
 const container = document.querySelector(".grid-container");
 const input = document.getElementById("search-input");
 const searchBttn = document.getElementById("search-button");
@@ -20,7 +21,7 @@ function createPokebox(data) {
 
 async function showPokemon() {
   try {
-    const data = await dataFunctions.getData();
+    const data = await dataFunctions.getData(url);
     createPokebox(data);
   } catch (e) {
     throw new Error(e);
@@ -70,12 +71,12 @@ searchBttn.addEventListener("click", async (e) => {
     container.insertAdjacentElement("beforeend", noInput);
     return;
   }
-
-  const nameSearch = await dataFunctions.getPokeByName(
+  const data = await dataFunctions.getData(url);
+  const nameSearch = await dataFunctions.getPokeByName(data,
     input.value.toLowerCase()
   );
-  const numberSearch = await dataFunctions.getPokeByNumber(input.value);
-  const typeSearch = await dataFunctions.getPokeByType(
+  const numberSearch = await dataFunctions.getPokeByNumber(data, input.value);
+  const typeSearch = await dataFunctions.getPokeByType(data,
     input.value.toLowerCase()
   );
 
@@ -118,30 +119,31 @@ function sortMenu(e) {
 }
 
 async function addActionToSort() {
+  const data = await dataFunctions.getData(url);
   let pokeResult = [];
   switch (sortSelect.value) {
   case "az":
     {
       const sorted = orderListAZ();
-      pokeResult = await dataFunctions.sortPokeByName(sorted);
+      pokeResult = await dataFunctions.sortPokeByName(data, sorted);
     }
     break;
   case "za":
     {
       const sortedRev = orderListZA();
-      pokeResult = await dataFunctions.sortPokeByName(sortedRev);
+      pokeResult = await dataFunctions.sortPokeByName(data, sortedRev);
     }
     break;
   case "09":
     {
       const sortedNum = orderList09();
-      pokeResult = await dataFunctions.sortPokeByNum(sortedNum);
+      pokeResult = await dataFunctions.sortPokeByNum(data, sortedNum);
     }
     break;
   case "90":
     {
       const sortedNumRev = orderList90();
-      pokeResult = await dataFunctions.sortPokeByNum(sortedNumRev);
+      pokeResult = await dataFunctions.sortPokeByNum(data, sortedNumRev);
     }
     break;
   default:
@@ -197,8 +199,9 @@ function filterSelect(e) {
 }
 
 async function addActionToFilter() {
+  const data = await dataFunctions.getData(url);
   const type = typeSelect.value;
-  const result = await dataFunctions.getPokeByType(type);
+  const result = await dataFunctions.getPokeByType(data, type);
   container.innerHTML = "";
   createPokebox(result);
   addShowDialogEvent();
@@ -209,7 +212,7 @@ window.addEventListener("load", filterSelect);
 // ========= DIALOG =========
 
 async function printPokeDetails(pokemon) {
-  const data = await dataFunctions.getData();
+  const data = await dataFunctions.getData(url);
   const stats = data.find((poke) => pokemon === poke.name);
   const quickList = dataFunctions.showAttacks(stats["quick-move"]);
   const specialList = dataFunctions.showAttacks(stats["special-attack"]);
@@ -266,7 +269,7 @@ async function printPokeDetails(pokemon) {
   spawnChart.classList = "chart"
   spawnChartContainer.classList = "chart-div";
   createChart(spawnChart, stats["spawn-chance"])
-  spawnB.textContent = "Spawn Chance";
+  spawnB.textContent = "Spawn Chance:";
   spawn.classList = "break centered";
   spawn.textContent = `\r\n${dataFunctions.evaluateCaptureRate(
     stats["spawn-chance"]
