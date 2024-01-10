@@ -3,6 +3,9 @@
     "browser": true,
     "es6": true
   },
+  "globals": {
+    "global": true
+  },
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"

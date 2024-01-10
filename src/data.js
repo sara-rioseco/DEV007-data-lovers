@@ -1,8 +1,9 @@
 const dataFunctions = {
-  getData: async function () {
+  url: "./data/pokemon.json",
+  getData: async function (url) {
     try {
-      const response = await fetch("./data/pokemon.json", {
-        credentials: "include"
+      const response = await fetch(url, {
+        credentials: "include",
       });
       const data = await response.json();
       return data.pokemon;
@@ -10,53 +11,38 @@ const dataFunctions = {
       throw new Error(e);
     }
   },
-  getPokeByName: async function (name) {
-    try {
-      const data = await this.getData();
-      return data.filter((poke) => poke.name.includes(name.toLowerCase()));
-    } catch (e) {
-      throw new Error(e);
+  getPokeByName: function (data, name) {
+    if (!data || !name || typeof name !== "string"){
+      throw new Error("Wrong argument types")
     }
+    return data.filter((poke) => poke.name.includes(name.toLowerCase()));
   },
-  getPokeByNumber: async function (num) {
-    try {
-      const data = await this.getData();
-      return data.filter((poke) => poke.num.includes(num));
-    } catch (e) {
-      throw new Error(e);
+  getPokeByNumber:function (data, num) {
+    if (!data || !num || typeof num !== "string"){
+      throw new Error("Wrong argument types")
     }
+    return data.filter((poke) => poke.num.includes(num));
+
   },
-  getPokeByType: async function (type) {
-    try {
-      const data = await this.getData();
-      return data.filter((poke) => poke.type.includes(type));
-    } catch (e) {
-      throw new Error(e);
+  getPokeByType: function (data, type) {
+    if (!data || !type || typeof type !== "string"){
+      throw new Error("Wrong argument types")
     }
+    return data.filter((poke) => poke.type.includes(type));
   },
-  sortPokeByName: async function (nameArr) {
-    try {
-      const data = await this.getData();
-      const objArr = [];
-      nameArr.forEach((poke) => {
-        objArr.push(data.find((obj) => obj.name === poke));
-      });
-      return objArr;
-    } catch (e) {
-      throw new Error(e);
-    }
+  sortPokeByName: async function (data, nameArr) {
+    const objArr = [];
+    nameArr.forEach((poke) => {
+      objArr.push(data.find((obj) => obj.name === poke));
+    });
+    return objArr;
   },
-  sortPokeByNum: async function (numArr) {
-    try {
-      const data = await this.getData();
-      const objArr = [];
-      numArr.forEach((poke) => {
-        objArr.push(data.find((obj) => obj.num === poke));
-      });
-      return objArr;
-    } catch (e) {
-      throw new Error(e);
-    }
+  sortPokeByNum: async function (data, numArr) {
+    const objArr = [];
+    numArr.forEach((poke) => {
+      objArr.push(data.find((obj) => obj.num === poke));
+    });
+    return objArr;
   },
 
   createCard: function (data) {
@@ -68,7 +54,7 @@ const dataFunctions = {
     pokeImg.src = `${data.img}`;
     pokeImg.alt = `${data.name} image`;
     pokeImg.classList = "image poke-img";
-    pokeImg.loading = "lazy"
+    pokeImg.loading = "lazy";
 
     const pokeName = document.createElement("h2");
     pokeName.innerText = `${data.name.toUpperCase()}`;
@@ -81,7 +67,7 @@ const dataFunctions = {
     card.appendChild(pokeNumber);
     card.appendChild(pokeImg);
     card.appendChild(pokeName);
-    return card
+    return card;
   },
 
   createImgSrcArr: function (typeArr) {
@@ -103,17 +89,24 @@ const dataFunctions = {
   },
 
   getTypeImgs: function (types) {
-    const arr = this.createImg(this.createImgSrcArr(types))
-    return arr.join("")
+    const arr = this.createImg(this.createImgSrcArr(types));
+    return arr.join("");
   },
 
-  capFirstLetter: (str) => str[0].toUpperCase() + str.slice(1),
+  capFirstLetter: (str) => {
+    if (typeof str !== "string" ) throw new TypeError('Wrong argument type');
+    else return str[0].toUpperCase() + str.slice(1)
+  },
 
   showAttacks: function (attacksArr) {
     if (attacksArr.length === 1) {
       return this.capFirstLetter(attacksArr[0].name);
     } else if (attacksArr.length === 2) {
-      return this.capFirstLetter(attacksArr[0].name) + ", " + this.capFirstLetter(attacksArr[1].name);
+      return (
+        this.capFirstLetter(attacksArr[0].name) +
+        ", " +
+        this.capFirstLetter(attacksArr[1].name)
+      );
     } else {
       return (
         this.capFirstLetter(attacksArr[0].name) +
@@ -172,7 +165,10 @@ const dataFunctions = {
     } else {
       result.push(prev, current, next);
     }
-    return result.flat().map(item => this.capFirstLetter(item)).join(" -> ");
+    return result
+      .flat()
+      .map((item) => this.capFirstLetter(item))
+      .join(" -> ");
   },
 
   evaluateCaptureRate: function (data) {
