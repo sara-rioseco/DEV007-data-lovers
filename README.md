@@ -1,213 +1,202 @@
-# Pokedex Database
+# Pokedex Database :smiley_cat:
 
-![homebanner](https://github.com/sara-rioseco/DEV007-data-lovers/assets/128411016/a4138e3c-6e74-4f9f-b357-e8c6c1049712)
+## :bookmark_tabs: Índice
 
-## Índice
+:rocket: [1. Product Definition](#1-product-definition)
+:woman: [2. Users and User's Stories](#2-users-and-users-stories)
+:computer: [3. Interface](#3-interface)
+:pill: [4. Unit Testing](#4-unit-testing)
+:eyes: [5. Usability Tests](#5-usability-tests)
+:calendar: [6. Organization, Planning, and Teamwork](#6-organization-planning-and-teamwork)
 
-* [1. Definición de producto](#1-definición-de-producto)
-* [2. Historias de usuario](#2-historias-de-usuario)
-* [3. Interfaz](#3-interfaz)
-* [4. Test](#4-test)
-* [5. Problemas de usabilidad](#5-problemas-de-usabilidad)
-* [6. Organización, planificación y trabajo en equipo](#6-organización-planificación-y-trabajo-en-equipo)
+---
 
-***
+## 1. Product Definition
 
-## 1. Definición de producto
+**Pokedex Database** is a web app where you can search, filter and order all of the 251 Pokemon from the 1st and 2nd generation of Pokemon. All the information and stats are taken from the PokemonGo mobile game data.
 
-**Pokedex Database** es una aplicación web para visualizar, ordenar, filtrar y buscar información acerca de los 251 Pokemones de la primera y segunda generación de Pokemon. La información y estadísticas están basadas en la data recopilada desde el juego PokemonGo.
-PokemonGo es un videojuego de realidad aumentada basado en la localización desarrollado por la empresa Niantic para dispositivos iOS y Android. El juego consiste en buscar y capturar personajes de la saga Pokemon escondidos en ubicaciones del mundo real y luchar con ellos, lo que implica desplazarse físicamente por las calles de la ciudad para progresar.
+PokemonGo is an augmented reality location-based video game developed by the company Niantic for iOS and Android devices. The game involves searching for and capturing characters from the Pokemon series hidden in real-world locations and engaging in battles with them, requiring physical movement through the city streets to progress.
 
-Los personajes, que son llamados pokemones, pueden pertenecer a uno o dos tipos, dependiendo de los ataques y características que poseen. Por ejemplo, pueden pertenecer a tipos como fuego y roca, o solo fuego, agua, tierra, fantasma, psíquico, entre otros. Cada pokemon tiene ciertos ataques rápidos y otros ataques cargados. Además, también tiene sus propias estadísticas, fortalezas, debilidades y evoluciones. Basándose en esta información, los jugadores pueden crear estrategias para jugar y lograr mejores resultados.
+The characters, known as Pokemon, can belong to one or two types, depending on the attacks and characteristics they possess. For instance, they may belong to types such as fire and rock, or solely fire, water, ground, ghost, psychic, among others. Each Pokemon has specific quick moves and charged attacks. Additionally, they have their own statistics, strengths, weaknesses, and evolutions. Based on this information, players can formulate strategies to play and achieve better results.
 
-La idea de la aplicación es que los usuarios puedan buscar esa información y encontrar las estadísticas que necesitan, filtrando, ordenando y viendo los detalles de cada pokemon, de manera clara, sencilla y rápida.
+**Pokedex Database**'s goal is to allow users to search for this information, finding the necessary statistics, sorting, filtering, and viewing the details of each Pokemon in a clear, simple, and quick manner.
 
-Para esto, creamos distintos prototipos, que podemos ver a continuación.
+The data is obtained by consuming a **static JSON file** with the **Fetch API**. Our app also features a few graphs created with **Chart.js** displayed within the details modal window for each pokemon.
 
-Prototipo de baja fidelidad:
+_Final prototype and design:_
+![Final prototype and design](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/home.png?raw=true)
 
-![Prototipo Baja Fidelidad](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Prototipo%20baja%20fidelidad.jpg?raw=true)
+---
 
-Primer Prototipo de alta fidelidad:
+## 2. Users and User's Stories
 
-![Primer prototipo de alta fidelidad](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Prototipo%20alta%20fidelidad.png?raw=true)
+The main users of the product are young adult individuals with internet/smartphone access who want to find information about Pokemon. It is designed for both casual users, who may be players of any Pokemon video games, and more advanced users interested in detailed information. To identify our target audience and develop the various features, we used agile methodologies, specifically **Scrum**. This led us to create user stories for each feature that these users required. We worked with 6 specific user stories, which are detailed below:
 
-Diseño/prototipo final:
+**User Story 1:** _As a user who doesn't know much about Pokemon, I want to see an image, the name, and the number of all Pokemon so I can get acquainted with them._
 
-![Prototipo final](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/home.png?raw=true)
+**Acceptance Criteria:**
 
-## 2. Historias de usuario
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- No interactions are needed.
 
-Los principales usuarios del producto son jóvenes con acceso a internet/smartphone que quieran buscar información acerca de Pokemon. Está pensado tanto para usuarios casuales que pueden ser jugadores de alguno de los videojuegos de Pokemon, o para usuarios más avanzados que quieran ver información más detallada. Para poder identificar a nuestro público objetivo y desarrollar las distintas funcionalidades trabajamos con metodologías ágiles. Esto nos llevó a crear historias de usuario para cada funcionalidad que estos usuarios requerían. Trbajamos con 6 historias de usuario en particular, las que detallamos a continuación:
+**Definition of Done:**
 
-**Historia de Usuario 1:**
-*Yo como usuario que no sabe mucho de pokemon quiero ver una imagen, el nombre y el número de todos los pokemones para conocerlos.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+**User Story 2:** _As a casual Pokemon games player, I want to be able to see the type and evolutions of the Pokemon so I can know its information._
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* No hay ningún tipo de interacción.
+**Acceptance Criteria:**
 
-**Definición de terminado:**
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- I want to click on the image and have it show the Pokemon's type and other details in a pop-up.
+- I want to be able to close that pop-up and return to the main screen.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+**Definition of Done:**
 
-**Historia de Usuario 2:**
-*Yo, como jugador casual de juegos de Pokemon, quiero poder ver el tipo de Pokemon para saber a qué categoría pertenece.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+**User Story 3:** _As a Pokemon games player, I want to see the details, strengths and weaknesses of each Pokemon, as well as the capture rate with a graphic representation, so I can use that information when playing._
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* Quiero hacer click en la imagen y que me muestre el tipo de Pokemon y otros detalles en un pop-up.
-* Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+**Acceptance Criteria:**
 
-**Definición de terminado:**
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- I want to click on the image and have it show the strengths and weaknesses of each Pokemon.
+- I also want information about the capture rate of the Pokemon to be included with graphics.
+- I want to be able to close that pop-up and return to the main screen.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+**Definition of Done:**
 
-**Historia de Usuario 3:**
-*Yo, como jugador de juegos de Pokemon, quiero poder ver el detalle de fortalezas y debilidades de cada pokemon, así como la tasa de captura, para utilizar esa información al jugar.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+**User Story 4:** _As an advanced Pokemon games player, I want to be able to search for a specific Pokemon by its name, so I can find specific information about it._
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* Quiero hacer click en la imagen y que me muestre las fortalezas y debilidades de cada Pokemon.
-* Quiero que además se incluya información acerca de la tasa de captura del pokemon.
-* Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+**Acceptance Criteria:**
 
-**Definición de terminado:**
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- I want there to be a search bar to type the name of the Pokemon I want to search for.
+- I want it to show me the result of that search.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+**Definition of Done:**
 
-**Historia de Usuario 4:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder buscar un Pokemon determinado para encontrar información específica de él.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+**User Story 5:** _As an advanced Pokemon games player, I want to be able to sort pokemon by different criteria (such as alphabetical, numerical order, etc.) so I can view the data in an organized manner._
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* Quiero que exista una barra de búsqueda para escribir el nombre del Pokemon que quiero buscar.
-* Quiero que me muestre el resultado de esa búsqueda.
+**Acceptance Criteria:**
 
-**Definición de terminado:**
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- I want an option to sort by alphabetical or numerical order, both ascending and descending.
+- I want to see the results sorted according to the selected option.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+**Definition of Done:**
 
-**Historia de Usuario 5:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder ordenar la información por distintos criterios (como alfabético, por orden numérico, etc.) para ver los datos de manera organizada.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+**User Story 6:** _As an advanced Pokemon games player, I want to be able to filter the list of Pokemon by Pokemon type, so I can see only the results that interest me._
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* Quiero que exista una opción para ordenar por orden alfabético o numérico, de manera ascendente y descendente.
-* Quiero ver los resultados ordenados de acuerdo a la opción seleccionada.
+**Acceptance Criteria:**
 
-**Definición de terminado:**
+- I want a grid layout.
+- I want it to be responsive.
+- I want to see the image of the Pokemon, its name, and number.
+- I want an option to filter the list of Pokemon by type.
+- I want to see only the results according to the selected filter.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+**Definition of Done:**
 
-**Historia de Usuario 6:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder filtrar la lista de pokemon por tipo de Pokemon para ver solo los resultados que me interesan.*
+- [x] Usability tests conducted with at least 2 users.
+- [x] Fulfills all the acceptance criteria described.
+- [x] All code is in the main branch of our Github Repository.
+- [x] The project has been published on Github Pages.
 
-**Criterios de aceptación:**
+---
 
-* Quiero una vista de grilla.
-* Quiero que sea responsive.
-* Quiero ver la imagen del Pokemon, su nombre y número.
-* Quiero que exista una opción para filtrar la lista de Pokemon por tipo.
-* Quiero ver únicamente los resultados de acuerdo al filtro seleccionado.
+## 3. Interface
 
-**Definición de terminado:**
+The interface is simple and it features light tones, with illustrations of different Pokemon in different pastel colors as the background. The initial banner presents two images of characters from the series, that will dissapear on smaller screens in order to make space for the rest of the content. The titles are dark grey, and the elements of the navigation bar, such as the menu for sorting, filtering, and the search bar, are in white tones with black letters for easy readability.
 
-* Pruebas de usabilidad realizadas con al menos 2 usuarios.
-* Todo el código está en la rama principal de nuestro Repositorio en Github.
-* Se ha publicado el proyecto en Github Pages.
+Within the navigation bar, we first have the filtering menu. With this, users can choose which Pokemon type they want to see. Next in line, we have the search bar, where users can enter the name, number or type of a Pokemon as text and search for all matching entries. Additionally, there are customized messages in case no results are found or no search criteria are provided. Finally, there is the menu for sorting the data alphabetically or numerically, in ascending or descending order.
 
-## 3. Interfaz
+In the main part of our application, Pokemon are displayed in a grid layout, showing a maximum of 4 columns and a minimum of 1, depending on screen size. Each Pokemon appears within a card featuring its number, image, and name. Clicking on each card opens a modal window that first displays a close button to return to the previous screen. Following that, the same information mentioned earlier (number, name, and image) is presented, along with the Pokemon's type, strengths, weaknesses, quick moves and charged attacks. Spawn chances, capture rates and flee rates are displayed using **Chart.js** graphs. At the bottom of the window you can find all evolutions within that Pokemon's line.
 
-La interfaz es simple y en tonos claros, el fondo tiene ilustraciones de distintos pokemones en colores variados, pero todos cercanos a tonalidades pasteles, además se presentan dos imágenes en el banner inicial de personajes de la serie. Los títulos son de color gris oscuro y los elementos de la barra de navegación, como el menú para ordenar, filtrar y barra de búsqueda están en tonos blancos con letras negras para facilitar la lectura.
+Images illustrating everything described above are presented below.
 
-Dentro de la barra de navegación, tenemos primero el menú para filtrar. Con este podemos escoger qué pokemon queremos ver por tipo. Luego, con la barra de búsqueda podemos ingresar como texto el nombre o número de pokemon y buscar todas las coincidencias que existan dentro de la data. Además hay mensajes personalizados en caso de no encontrar resultados y de no recibir ningún criterio de búsqueda. Finalmente está el menú para ordenar la data de manera alfabética o numérica, en orden ascendente o descendente.
+_Final home design (desktop):_
+![Final home design (desktop)](<https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(big).JPG?raw=true>)
 
-Ya en la parte principal de nuestra aplicación, los pokemones se muestran en un diseño de grilla, que como máximo mostrará 4 columnas y como mínimo 2, dependiendo del tamaño de la pantalla. Cada pokemon aparece dentro de una tarjeta con su número, imagen y nombre. Al presionar cada una de las tarjetas se abre una ventana que muestra primero un botón cerrar para volver a la pantalla anterior, y luego, lla misma información mencionada antes (número, nombre e imegen) pero también el tipo de pokemon, sus fortalezas, debilidades, ataques rápidos, ataques cargados, tasas de aparición, captura y huída, además de todas las evoluciones dentro de la línea de ese pokemon.
-Se optó por un diseño minimalista y sencillo, que fuese lo suficientemente claro y que tenga la información más buscada por los jugadores.
+_Final home design (mobile):_
+![Final home design (mobile)](<https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(small).jpg?raw=true>)
 
-Finalmente en el pie de página se agregó una opción para contabilizar los pokemones que se muestran en pantalla.
+_Modal dialog with detailed information:_
+![Modal dialog with detailed information](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/detailsview.JPG?raw=true)
 
-A continuación se exponen imágenes de todo lo descrito anteriormente.
+_No input when searching message:_
+![No input when searching message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/noinput.JPG?raw=true)
 
-Diseño final home (pantalla grande):
+_Not found message:_
+![Not found message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/notfound.JPG?raw=true)
 
-![Diseño Final Dispositivo Pantalla Grande](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(big).JPG?raw=true)
+_Pokemon type filter menu:_
+![Pokemon type filter menu](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/filterview.png?raw=true)
 
-Diseño final home (pantalla celular o tablet):
+_Sort by select menu:_
+![Sort by select menu](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/selectview.jpg?raw=true)
 
-![Diseño Final Dispositivo Pantalla Pequeña](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(small).jpg?raw=true)
+---
 
-Vista de dialog con información detallada:
-![Vista de detalles de pokemon](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/detailsview.JPG?raw=true)
+## 4. Unit Testing
 
-Vista de mensaje sin input en la búsqueda:
-![Vista de mensaje sin input](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/noinput.JPG?raw=true)
+Unit tests were implemented with a coverage of 100% statements, branches, functions and lines. You can check the results below:
 
-Vista de mensaje para búsqueda sin resultados:
-![Vista de búsqueda sin resultados](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/notfound.JPG?raw=true)
+![Unit tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/tests.JPG?raw=true)
 
-Vista de menú dropdown con filtro por tipos de pokemon:
-![Vista de dropdown con filtro](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/filterview.png?raw=true)
+---
 
-Vista de menú select para ordenar alfabéticamente/numéricamente:
-![Vista de menú select para ordenar](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/selectview.jpg?raw=true)
+## 5. Usability Tests
 
-Vista de mensaje para contar pokemones en pantalla:
+When running usability tests with different users, we identified some bugs and details that we had not noticed previously. These errors are the following:
 
-![Mensaje para contar pokemones en pantalla](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/countview.JPG?raw=true)
+- Upon entering the website, at the bottom center, two white dots can be seen corresponding to empty dialogs.
+- When viewing the website on a mobile device, sometimes the names of the Pokemon overflow from the cards.
+- After searching for a Pokemon by its name, the position of the close button in the dialog with Pokemon details changes.
 
-## 4. Test
+:bug:**These bugs were fixed on the latest deploy.**:bug:
 
-Se ejecutaron test con coverage de 89% de statements, 98% de branch, 88% de funciones, 89% de lines.
-Los resultados son los siguientes:
+---
 
-![Tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Tests.JPG?raw=true)
+## 6. Organization, Planning and Teamwork
 
-Detectamos los siguientes errores al hacer nuestros tests:
+For our planning and project management, we used Trello application. With this tool, we created a board and placed user stories on the left, followed by the product backlog containing all the features we wanted to implement. Then, we had columns for "Doing" and "Done". After completing a sprint, we moved all the progress of that sprint to the "Sprint backlog" column with the corresponding number. This system greatly assisted us in organization and provided a visual understanding of the progress we had made and how much work remained. Additionally, having user stories always visible was very helpful to keep the functionalities and acceptance criteria in mind.
 
-* Algunas de nuestras funciones, sobretodo las que no retornan nada, no supimos como testear.
-* Algunas funciones tenían una redacción rebuscada y repetitiva, lo que nos dificultó buscar dónde estaba la razón de que fallaran algunos tests.
-
-## 5. Problemas de usabilidad
-
-Al pedir pruebas de usabilidad con distintos usuarios, detectamos algunos errores y detalles de los que no nos habíamos percatado con anterioridad.
-Estos son los siguientes:
-
-* Al entrar en la web, abajo a final al centro, se pueden ver ds puntos blancos que corresponden a los dialogs vacíos.
-* Al ver la web en celular, a veces los nombres de los pokemones se salen de las tarjetas.
-* Luego de buscar un pokemon por su nombre, cambia la posición del botón cerrar en el dialog con detalles del pokemon.
-
-## 6. Organización, planificación y trabajo en equipo
-
-Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances de ese sprint en la columna "Sprint backlog" con el número correspondiente. Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles fue muy útil para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir.
-A continuación dejamos una imagen de nuestro tablero.
+Below, we provide an image of our Trello board (in Spanish).
 
 ![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/trello.JPG?raw=true)
 
-Además de Trello utilizamos Google calendar para agendar reuniones fuera del horario de bootcamp según nuestra disponibilidad.
+In addition to Trello, we used Google Calendar to schedule meetings outside of bootcamp hours based on our availability.
+
+_This project was originally written and developed by Sara Rioseco and Elena Norambuena on May 2023. However, the most recent deployment is a complete refactored version, with new features, added styles, transitions, graphs and full coverage unit test suites, all developed by Sara Rioseco._
