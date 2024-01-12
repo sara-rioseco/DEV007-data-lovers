@@ -3,10 +3,15 @@
 ## :bookmark_tabs: Índice
 
 :rocket: [1. Product Definition](#1-product-definition)
+
 :woman: [2. Users and User's Stories](#2-users-and-users-stories)
+
 :computer: [3. Interface](#3-interface)
+
 :pill: [4. Unit Testing](#4-unit-testing)
+
 :eyes: [5. Usability Tests](#5-usability-tests)
+
 :calendar: [6. Organization, Planning, and Teamwork](#6-organization-planning-and-teamwork)
 
 ---
