@@ -147,7 +147,7 @@ In the main part of our application, Pokemon are displayed in a grid layout, sho
 Images illustrating everything described above are presented below.
 
 _Final home design (desktop):_
-![Final home design (desktop)](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-desktop.JPG?raw=true)
+![Final home design (desktop)](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-desktop.jpg?raw=true)
 
 _Final home design (mobile):_
 ![Final home design (mobile)](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-mobile.jpg?raw=true)
@@ -170,7 +170,7 @@ _Not found message:_
 
 Unit tests were implemented with a coverage of 100% statements, branches, functions and lines. You can check the results below:
 
-![Unit tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/tests.JPG?raw=true)
+![Unit tests](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/tests.jpg?raw=true)
 
 ---
 
@@ -192,7 +192,7 @@ For our planning and project management, we used Trello application. With this t
 
 Below, we provide an image of our Trello board (in Spanish).
 
-![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/trello.JPG?raw=true)
+![Tablero trello](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/trello.jpg?raw=true)
 
 In addition to Trello, we used Google Calendar to schedule meetings outside of bootcamp hours based on our availability.
 
