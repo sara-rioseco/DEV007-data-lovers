@@ -11,25 +11,28 @@ const dataFunctions = {
       throw new Error(e);
     }
   },
+
   getPokeByName: function (data, name) {
-    if (!data || !name || typeof name !== "string"){
-      throw new Error("Wrong argument types")
+    if (!data || !name || typeof name !== "string") {
+      throw new Error("Wrong argument types");
     }
     return data.filter((poke) => poke.name.includes(name.toLowerCase()));
   },
-  getPokeByNumber:function (data, num) {
-    if (!data || !num || typeof num !== "string"){
-      throw new Error("Wrong argument types")
+
+  getPokeByNumber: function (data, num) {
+    if (!data || !num || typeof num !== "string") {
+      throw new Error("Wrong argument types");
     }
     return data.filter((poke) => poke.num.includes(num));
-
   },
+
   getPokeByType: function (data, type) {
-    if (!data || !type || typeof type !== "string"){
-      throw new Error("Wrong argument types")
+    if (!data || !type || typeof type !== "string") {
+      throw new Error("Wrong argument types");
     }
     return data.filter((poke) => poke.type.includes(type));
   },
+
   sortPokeByName: async function (data, nameArr) {
     const objArr = [];
     nameArr.forEach((poke) => {
@@ -37,6 +40,7 @@ const dataFunctions = {
     });
     return objArr;
   },
+
   sortPokeByNum: async function (data, numArr) {
     const objArr = [];
     numArr.forEach((poke) => {
@@ -94,8 +98,8 @@ const dataFunctions = {
   },
 
   capFirstLetter: (str) => {
-    if (typeof str !== "string" ) throw new TypeError('Wrong argument type');
-    else return str[0].toUpperCase() + str.slice(1)
+    if (typeof str !== "string") throw new TypeError("Wrong argument type");
+    else return str[0].toUpperCase() + str.slice(1);
   },
 
   showAttacks: function (attacksArr) {
