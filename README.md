@@ -24,7 +24,7 @@ The characters, known as Pokemon, can belong to one or two types, depending on t
 The data is obtained by consuming a **static JSON file** with the **Fetch API**. Our app also features a few graphs created with **Chart.js** displayed within the details modal window for each pokemon.
 
 _Final prototype and design:_
-![Final prototype and design](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/home.png?raw=true)
+![Final prototype and design](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-desktop.jpg?raw=true)
 
 ---
 
@@ -147,25 +147,22 @@ In the main part of our application, Pokemon are displayed in a grid layout, sho
 Images illustrating everything described above are presented below.
 
 _Final home design (desktop):_
-![Final home design (desktop)](<https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(big).JPG?raw=true>)
+![Final home design (desktop)](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-desktop.JPG?raw=true)
 
 _Final home design (mobile):_
-![Final home design (mobile)](<https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/Home(small).jpg?raw=true>)
+![Final home design (mobile)](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/final-mobile.jpg?raw=true)
 
-_Modal dialog with detailed information:_
-![Modal dialog with detailed information](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/detailsview.JPG?raw=true)
+_Modal dialog with detailed information (desktop):_
+![Modal dialog with detailed information](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/details-desktop.jpg?raw=true)
+
+_Modal dialog with detailed information (mobile):_
+![Modal dialog with detailed information](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/details-mobile.jpg?raw=true)
 
 _No input when searching message:_
-![No input when searching message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/noinput.JPG?raw=true)
+![No input when searching message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/no-input.jpg?raw=true)
 
 _Not found message:_
-![Not found message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/notfound.JPG?raw=true)
-
-_Pokemon type filter menu:_
-![Pokemon type filter menu](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/filterview.png?raw=true)
-
-_Sort by select menu:_
-![Sort by select menu](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/selectview.jpg?raw=true)
+![Not found message](https://github.com/sara-rioseco/DEV007-data-lovers/blob/main/src/assets/img/project/not-found.jpg?raw=true)
 
 ---
 
