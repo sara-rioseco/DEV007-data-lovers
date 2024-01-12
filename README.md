@@ -1,6 +1,6 @@
 # Pokedex Database :smiley_cat:
 
-## :bookmark_tabs: Índice
+## :bookmark_tabs: Contents
 
 :rocket: [1. Product Definition](#1-product-definition)
 
